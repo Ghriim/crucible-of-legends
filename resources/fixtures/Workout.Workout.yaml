@@ -1,0 +1,7 @@
+App\Domain\DataInteractor\DTO\Workout\WorkoutDTO:
+    base_workout (template):
+        createdDate : '<(new DateTime())>'
+        updatedDate : '<(new DateTime())>'
+
+    workout_{zeus, hera, ares, apollon, aphrodite, gaia} (extends base_workout):
+        name: '<current()>'

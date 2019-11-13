@@ -1,0 +1,19 @@
+App\Domain\DataInteractor\DTO\Workout\WorkoutDTO:
+    type: entity
+    repositoryClass: App\Repository\Workout\WorkoutDTORepository
+    table: "`workout`"
+    indexes:
+        name_index:
+            columns: [ name ]
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            length: 75
+            unique: false
+            nullable: false

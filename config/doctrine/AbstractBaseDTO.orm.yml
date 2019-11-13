@@ -1,0 +1,24 @@
+App\Domain\DataInteractor\DTO\AbstractBaseDTO:
+    type: mappedSuperclass
+
+    fields:
+        status:
+            type: string
+            length: 15
+            column: status
+            unique: false
+            nullable: false
+        createdDate:
+            type: datetime
+            column: created_date
+            unique: false
+            nullable: false
+            options:
+                default: "CURRENT_TIMESTAMP"
+        updatedDate:
+            type: datetime
+            column: updated_date
+            unique: false
+            nullable: false
+            options:
+                default: "CURRENT_TIMESTAMP"

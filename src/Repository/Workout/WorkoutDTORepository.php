@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Repository\Workout;
+
+use App\Repository\AbstractBaseEntityRepository;
+use Doctrine\ORM\QueryBuilder;
+
+final class WorkoutDTORepository extends AbstractBaseEntityRepository
+{
+    /**
+     * @param string|string[]|null $name
+     */
+    protected function addCriterionName(QueryBuilder $queryBuilder, $name): bool
+    {
+        return $this->addCriterion($queryBuilder, $this->getAlias(), 'name', $name);
+    }
+
+    public function getAlias(): string
+    {
+        return 'workout';
+    }
+}
