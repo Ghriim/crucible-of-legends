@@ -7,10 +7,10 @@
             </router-link>
         </div>
 
-        <div>
+        <div v-if="[] !== workouts">
             <ul>
                 <li v-for="workout in workouts">
-                    <router-link :to="{name: 'workout', params: {workoutName: workout.name}}">
+                    <router-link :to="{name: 'workout', params: {canonicalName: workout.canonicalName}}">
                         <a>{{ workout.name}}</a>
                     </router-link>
                     - <em>{{ workout.createdDate }}</em>

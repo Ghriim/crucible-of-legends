@@ -10,5 +10,8 @@ final class WorkoutGetManyVueModel extends AbstractBaseVueModel
     public $name;
 
     /** @var string */
+    public $canonicalName;
+
+    /** @var string */
     public $createdDate;
 }

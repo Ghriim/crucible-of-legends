@@ -21,6 +21,7 @@ final class WorkoutPostVuePresenter extends AbstractVuePresenter implements Sing
         $model = new WorkoutPostVueModel();
         $model->id = $dto->getId();
         $model->name = $dto->getName();
+        $model->canonicalName = $dto->getCanonicalName();
 
         return $model;
     }

@@ -15,6 +15,13 @@ final class WorkoutDTORepository extends AbstractBaseEntityRepository
         return $this->addCriterion($queryBuilder, $this->getAlias(), 'name', $name);
     }
 
+    /**
+     * @param string|string[]|null $canonicalName
+     */
+    protected function addCriterionCanonicalName(QueryBuilder $queryBuilder, $canonicalName): bool
+    {
+        return $this->addCriterion($queryBuilder, $this->getAlias(), 'canonicalName', $canonicalName);
+    }
 
     protected function addSelectExercises(QueryBuilder $queryBuilder): void
     {

@@ -24,6 +24,11 @@ final class WorkoutDTOProvider extends AbstractDTOProvider
         return $this->getRepository()->findOneByCriteria(['name' => $name], ['exercises']);
     }
 
+    public function doesCanonicalNameAlreadyExist(string $canonicalName): bool
+    {
+        return $this->getRepository()->exists(['canonicalName' => $canonicalName]);
+    }
+
     protected function getEntityClassName(): string
     {
         return WorkoutDTO::class;

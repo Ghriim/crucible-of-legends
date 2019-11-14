@@ -5,5 +5,5 @@ import router from "./router";
 new Vue({
   components: { App },
   template: "<App/>",
-    router
+  router
 }).$mount("#app");

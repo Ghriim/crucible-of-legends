@@ -26,7 +26,7 @@
             handleSubmit() {
                 axios.post('/api/workouts', this.workout)
                     .then(response => {
-                        console.log(response.data);
+                        this.$router.push({ name: "workout", params: {canonicalName: response.data.canonicalName}});
                     }).catch(error => {
                         this.errors.push(error);
                     })

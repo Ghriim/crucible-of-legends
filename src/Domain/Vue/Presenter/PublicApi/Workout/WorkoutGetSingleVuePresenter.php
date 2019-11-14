@@ -23,6 +23,7 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
         $model = new WorkoutGetSingleVueModel();
         $model->id = $dto->getId();
         $model->name = $dto->getName();
+        $model->canonicalName = $dto->getCanonicalName();
         $model->exercises = $this->buildExercisesForVueModel($dto->getExercises());
 
         return $model;

@@ -8,4 +8,7 @@ final class WorkoutPostVueModel extends AbstractBaseVueModel
 {
     /** @var string */
     public $name;
+
+    /** @var string */
+    public $canonicalName;
 }

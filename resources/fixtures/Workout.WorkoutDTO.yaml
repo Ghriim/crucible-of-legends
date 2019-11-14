@@ -5,11 +5,14 @@ App\Domain\DataInteractor\DTO\Workout\WorkoutDTO:
 
     workout_{zeus, hera} (extends base_workout):
         name: '<current()>'
+        canonicalName: '<current()>'
 
     workout_{ares, apollon} (extends base_workout):
         name: '<current()>'
+        canonicalName: '<current()>'
         createdDate : '<(new DateTime("-2 days"))>'
 
     workout_{aphrodite, gaia} (extends base_workout):
         name: '<current()>'
+        canonicalName: '<current()>'
         createdDate : '<(new DateTime("-3 days"))>'

@@ -9,6 +9,9 @@ final class WorkoutGetSingleVueModel extends AbstractBaseVueModel
     /** @var string */
     public $name;
 
+    /** @var string */
+    public $canonicalName;
+
     /** @var WorkoutGetSingleExercisesVueModel[] */
     public $exercises;
 }

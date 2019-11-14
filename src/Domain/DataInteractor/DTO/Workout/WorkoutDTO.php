@@ -11,6 +11,9 @@ final class WorkoutDTO extends AbstractBaseDTO
     /** @var string */
     private $name;
 
+    /** @var string */
+    private $canonicalName;
+
     /** @var PersistentCollection|ExerciseDTO[] */
     private $exercises;
 
@@ -27,6 +30,16 @@ final class WorkoutDTO extends AbstractBaseDTO
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getCanonicalName(): string
+    {
+        return $this->canonicalName;
+    }
+
+    public function setCanonicalName(string $canonicalName): void
+    {
+        $this->canonicalName = $canonicalName;
     }
 
     public function getExercises(): array

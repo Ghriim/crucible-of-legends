@@ -21,6 +21,7 @@ final class WorkoutGetManyVuePresenter extends AbstractVuePresenter implements M
             $model = new WorkoutGetManyVueModel();
             $model->id = $dto->getId();
             $model->name = $dto->getName();
+            $model->canonicalName = $dto->getCanonicalName();
             $model->createdDate = $this->dateTimeToString($dto->getCreatedDate());
 
             $models[] = $model;

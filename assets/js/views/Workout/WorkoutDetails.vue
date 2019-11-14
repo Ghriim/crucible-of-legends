@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="null !== workout">
         <div>
             <h2>{{ workout.name }}</h2>
         </div>
@@ -31,8 +31,8 @@
                 workout: null
             };
         },
-        created() {
-            axios.get('/api/workouts/' + this.$route.params.workoutName)
+        mounted() {
+            axios.get('/api/workouts/' + this.$route.params.canonicalName)
                 .then(response => {
                     this.workout = response.data;
                 }).catch(error => {

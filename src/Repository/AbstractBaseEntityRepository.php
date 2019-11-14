@@ -11,6 +11,7 @@ abstract class AbstractBaseEntityRepository extends EntityRepository implements 
 {
     public const ORDER_DIRECTION_ASC  = 'ASC';
     public const ORDER_DIRECTION_DESC = 'DESC';
+
     /**
      * {@inheritdoc}
      */
@@ -19,6 +20,18 @@ abstract class AbstractBaseEntityRepository extends EntityRepository implements 
         return $this->createQueryBuilder($this->getAlias())
                     ->select('DISTINCT ' . $this->getAlias());
     }
+
+    public function exists(array $criteria = []): bool
+    {
+        $queryBuilder = $this->getQueryBuilder();
+        $queryBuilder->select($this->getAlias() . '.id');
+        $queryBuilder->setMaxResults(1);
+        $this->addCriteria($queryBuilder, $this->addGenericCriteria($criteria));
+        $this->cleanQueryBuilder($queryBuilder);
+
+        return false === empty($queryBuilder->getQuery()->getArrayResult());
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -36,6 +49,7 @@ abstract class AbstractBaseEntityRepository extends EntityRepository implements 
             return null;
         }
     }
+
     /**
      * {@inheritdoc}
      */
@@ -49,6 +63,7 @@ abstract class AbstractBaseEntityRepository extends EntityRepository implements 
 
         return $queryBuilder;
     }
+
     /**
      * @param array $criteria
      * @param array $selects
