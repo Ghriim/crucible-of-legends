@@ -1,0 +1,54 @@
+App\Domain\DataInteractor\DTO\Workout\ExerciseDTO:
+    type: entity
+    repositoryClass: App\Repository\Workout\ExerciseDTORepository
+    table: "`exercise`"
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            length: 75
+            unique: false
+            nullable: false
+        durationProgrammed:
+            type: integer
+            unique: false
+            nullable: true
+        durationExecuted:
+            type: integer
+            unique: false
+            nullable: true
+        repetitionsProgrammed:
+            type: integer
+            unique: false
+            nullable: true
+        repetitionsExecuted:
+            type: integer
+            unique: false
+            nullable: true
+        position:
+            type: integer
+            unique: false
+            nullable: true
+        weightProgrammed:
+            type: integer
+            unique: false
+            nullable: true
+        weightExecuted:
+            type: integer
+            unique: false
+            nullable: true
+
+    manyToOne:
+        workout:
+            targetEntity: App\Domain\DataInteractor\DTO\Workout\WorkoutDTO
+            inversedBy: exercises
+            joinColumn:
+                name: workout_id
+                referencedColumnName: id
+                nullable: false
+                unique: false

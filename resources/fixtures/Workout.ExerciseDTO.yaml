@@ -1,0 +1,35 @@
+App\Domain\DataInteractor\DTO\Workout\ExerciseDTO:
+    base_exercise (template):
+        createdDate : '<(new DateTime())>'
+        updatedDate : '<(new DateTime())>'
+
+    exercise_ares_push_up (extends base_exercise):
+        name: 'push up'
+        position: 1
+        durationProgrammed: 30
+        workout: '@workout_ares'
+
+    exercise_ares_squat (extends base_exercise):
+        name: 'squat'
+        position: 2
+        durationProgrammed: 30
+        workout: '@workout_ares'
+
+    exercise_ares_crunch (extends base_exercise):
+        name: 'crunch'
+        position: 4
+        durationProgrammed: 30
+        workout: '@workout_ares'
+
+    exercise_ares_dead_lift (extends base_exercise):
+        name: 'dead lift'
+        position: 3
+        durationProgrammed: 30
+        workout: '@workout_ares'
+
+    exercise_ares_biceps_curl (extends base_exercise):
+        name: 'biceps curl'
+        position: 5
+        durationProgrammed: 30
+        weightProgrammed: 8
+        workout: '@workout_ares'

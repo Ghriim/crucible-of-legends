@@ -2,6 +2,10 @@
 
 namespace App\Domain\DataInteractor\DTO;
 
+use App\Domain\Exception\LazyLoadException;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\PersistentCollection;
+
 abstract class AbstractBaseDTO
 {
     public const STATUS_ACTIVE = 'active';
@@ -25,6 +29,24 @@ abstract class AbstractBaseDTO
     public function __construct()
     {
         $this->setStatus($this->getDefaultStatus());
+    }
+
+    /**
+     * @param Collection|null $entities
+     */
+    protected function lazyLoadProtect(?Collection $entities): void
+    {
+        if ($entities instanceof PersistentCollection && false === $entities->isInitialized()) {
+            $parentClass = get_class($this);
+            $lazyLoadedClass = $entities->getTypeClass()->getName();
+
+            throw new LazyLoadException($parentClass, $lazyLoadedClass);
+        }
+    }
+
+    public function isNew(): bool
+    {
+        return null === $this->getId();
     }
 
     public function getId(): ?int

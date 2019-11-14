@@ -16,12 +16,12 @@ final class WorkoutDTOProvider extends AbstractDTOProvider
      */
     public function loadForGetMany(): array
     {
-        return $this->getRepository()->findManyByCriteria([]);
+        return $this->getRepository()->findManyByCriteria([], [], ['createdDate' => self::ORDER_DIRECTION_DESC]);
     }
 
     public function loadForGetOne(string $name): ?WorkoutDTO
     {
-        return $this->getRepository()->findOneByCriteria(['name' => $name]);
+        return $this->getRepository()->findOneByCriteria(['name' => $name], ['exercises']);
     }
 
     protected function getEntityClassName(): string

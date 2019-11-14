@@ -10,12 +10,15 @@ use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutGetSingleVuePresenter;
 
 final class GetSingleWorkoutApiUseCase extends AbstractGetSingleUseCase
 {
-    private $dtoProvider;
+    private $workoutDtoProvider;
     private $presenter;
 
-    public function __construct(WorkoutDTOProvider $dtoProvider, WorkoutGetSingleVuePresenter $presenter)
+    public function __construct(
+        WorkoutDTOProvider $workoutDtoProvider,
+        WorkoutGetSingleVuePresenter $presenter
+    )
     {
-        $this->dtoProvider = $dtoProvider;
+        $this->workoutDtoProvider = $workoutDtoProvider;
         $this->presenter = $presenter;
     }
 
@@ -26,7 +29,7 @@ final class GetSingleWorkoutApiUseCase extends AbstractGetSingleUseCase
      */
     public function execute($identifier, array $parameters): ?AbstractBaseVueModel
     {
-        $workout = $this->dtoProvider->loadForGetOne($identifier);
+        $workout = $this->workoutDtoProvider->loadForGetOne($identifier);
         if (null === $workout) {
             return null;
         }

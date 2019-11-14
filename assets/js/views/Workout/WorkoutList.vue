@@ -2,6 +2,9 @@
     <div>
         <div>
             <h2>Workouts</h2>
+            <router-link :to="{name: 'workoutCreate'}">
+                <a>Add workout</a>
+            </router-link>
         </div>
 
         <div>
@@ -10,6 +13,7 @@
                     <router-link :to="{name: 'workout', params: {workoutName: workout.name}}">
                         <a>{{ workout.name}}</a>
                     </router-link>
+                    - <em>{{ workout.createdDate }}</em>
                 </li>
             </ul>
         </div>

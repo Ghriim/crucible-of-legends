@@ -4,9 +4,17 @@
             <h2>{{ workout.name }}</h2>
         </div>
 
-        <div>
-            <p></p>
-        </div>
+        <section>
+
+            <div v-for="exercise in workout.exercises">
+                <h3>{{ exercise.position }} - {{ exercise.name }}</h3>
+                <ul>
+                    <li v-for="(detail, key) in exercise.details">
+                        {{ key }} {{ detail }}
+                    </li>
+                </ul>
+            </div>
+        </section>
     </div>
 </template>
 

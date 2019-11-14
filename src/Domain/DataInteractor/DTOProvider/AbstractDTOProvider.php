@@ -12,6 +12,8 @@ use Doctrine\ORM\EntityRepository;
 abstract class AbstractDTOProvider
 {
     protected const DEFAULT_ENTITY_MANAGER = 'default';
+    protected const ORDER_DIRECTION_ASC = 'ASC';
+    protected const ORDER_DIRECTION_DESC = 'DESC';
 
     protected $doctrine;
 

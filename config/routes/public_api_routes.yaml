@@ -7,3 +7,8 @@ public_workout_get_single:
     path: /workouts/{name}
     methods: ['GET']
     controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::getSingle
+
+public_workout_post:
+    path: /workouts
+    methods: ['POST']
+    controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::post

@@ -2,10 +2,14 @@ public_api:
     resource: 'routes/public_api_routes.yaml'
     prefix: /api
 
-index:
+index_root:
     path: /
     controller: App\Controller\FrontAppController::index
 
-index_routes_vue:
-    path: /{vueRouting}
+index_level_1:
+    path: /{level1}
+    controller: App\Controller\FrontAppController::index
+
+index_level_2:
+    path: /{level1}/{level2}
     controller: App\Controller\FrontAppController::index

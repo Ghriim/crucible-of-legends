@@ -17,3 +17,8 @@ App\Domain\DataInteractor\DTO\Workout\WorkoutDTO:
             length: 75
             unique: false
             nullable: false
+
+    oneToMany:
+        exercises:
+            targetEntity: App\Domain\DataInteractor\DTO\Workout\ExerciseDTO
+            mappedBy: workout
