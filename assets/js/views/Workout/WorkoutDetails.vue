@@ -16,6 +16,9 @@
             </div>
         </section>
     </div>
+    <div  v-else>
+        <p v-for="error in errors">{{ error }}</p>
+    </div>
 </template>
 
 <script>
@@ -28,7 +31,8 @@
         },
         data() {
             return {
-                workout: null
+                workout: null,
+                errors: []
             };
         },
         mounted() {
@@ -36,7 +40,11 @@
                 .then(response => {
                     this.workout = response.data;
                 }).catch(error => {
-                    this.errors.push(error);
+                    if (404 === error.response.status) {
+                        this.errors.push('No matching workout found');
+                    } else {
+                        this.errors.push('An error has occurred, please try again later.')
+                    }
                 })
         }
     };

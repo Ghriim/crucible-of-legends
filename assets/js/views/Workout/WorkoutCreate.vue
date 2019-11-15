@@ -18,7 +18,8 @@
         data() {
             return {
                 workout: {
-                    name: null
+                    name: null,
+                    errors: []
                 }
             }
         },
@@ -26,7 +27,7 @@
             handleSubmit() {
                 axios.post('/api/workouts', this.workout)
                     .then(response => {
-                        this.$router.push({ name: "workout", params: {canonicalName: response.data.canonicalName}});
+                        this.$router.push({ name: "workoutUpdate", params: {canonicalName: response.data.canonicalName}});
                     }).catch(error => {
                         this.errors.push(error);
                     })

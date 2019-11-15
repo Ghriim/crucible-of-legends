@@ -2,6 +2,7 @@
 
 namespace App\Repository\Workout;
 
+use App\Domain\DataInteractor\DTO\Workout\ExerciseDTO;
 use App\Repository\AbstractBaseEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
@@ -27,6 +28,8 @@ final class WorkoutDTORepository extends AbstractBaseEntityRepository
     {
         $queryBuilder->leftJoin($this->getAlias() . '.exercises', 'workout_exercise')
                      ->addSelect('workout_exercise')
+                     ->andWhere('workout_exercise.status != :exercise_status_deleted')
+                     ->setParameter('exercise_status_deleted', ExerciseDTO::STATUS_DELETED)
                      ->addOrderBy('workout_exercise.position');
     }
 

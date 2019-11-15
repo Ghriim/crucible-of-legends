@@ -8,6 +8,7 @@ use App\Repository\Workout\ExerciseDTORepository;
 
 /**
  * @method ExerciseDTORepository getRepository()
+ * @method ExerciseDTO loadOneById($id)
  */
 final class ExerciseDTOProvider extends AbstractDTOProvider
 {

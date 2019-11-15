@@ -3,12 +3,13 @@
 namespace App\Domain\UseCase\PublicApi\Workout;
 
 use App\Domain\DataInteractor\DTOProvider\Workout\WorkoutDTOProvider;
-use App\Domain\UseCase\AbstractGetSingleUseCase;
+use App\Domain\UseCase\AbstractUseCase;
+use App\Domain\UseCase\GetSingleUseCaseInterface;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleVueModel;
 use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutGetSingleVuePresenter;
 
-final class GetSingleWorkoutApiUseCase extends AbstractGetSingleUseCase
+final class GetSingleWorkoutApiUseCase extends AbstractUseCase implements GetSingleUseCaseInterface
 {
     private $workoutDtoProvider;
     private $presenter;

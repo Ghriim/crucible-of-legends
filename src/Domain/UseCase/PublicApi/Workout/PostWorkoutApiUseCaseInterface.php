@@ -5,14 +5,14 @@ namespace App\Domain\UseCase\PublicApi\Workout;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 use App\Domain\DataInteractor\DTOPersister\Workout\WorkoutDTOPersister;
 use App\Domain\DataInteractor\DTOProvider\Workout\WorkoutDTOProvider;
-use App\Domain\UseCase\AbstractPostUseCase;
+use App\Domain\UseCase\AbstractUseCase;
+use App\Domain\UseCase\PostUseCaseInterface;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutPostVuePresenter;
 use App\Tools\String\CanonicalizeString;
 use App\Tools\String\RandomString;
-use Ramsey\Uuid\Uuid;
 
-final class PostWorkoutApiUseCase extends AbstractPostUseCase
+final class PostWorkoutApiUseCaseInterface extends AbstractUseCase implements PostUseCaseInterface
 {
     private $workoutDtoPersister;
     private $workoutDtoProvider;

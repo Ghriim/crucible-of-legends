@@ -3,10 +3,11 @@
 namespace App\Domain\UseCase\PublicApi\Workout;
 
 use App\Domain\DataInteractor\DTOProvider\Workout\WorkoutDTOProvider;
-use App\Domain\UseCase\AbstractGetManyUseCase;
+use App\Domain\UseCase\GetManyUseCaseInterface;
+use App\Domain\UseCase\AbstractUseCase;
 use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutGetManyVuePresenter;
 
-final class GetManyWorkoutApiUseCase extends AbstractGetManyUseCase
+final class GetManyWorkoutApiUseCase extends AbstractUseCase implements GetManyUseCaseInterface
 {
     private $dtoProvider;
     private $presenter;

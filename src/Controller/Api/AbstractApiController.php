@@ -8,8 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractApiController extends AbstractController
 {
-    protected function buildResponse($data): Response
+    protected function buildResponse($data, bool $emptyResponse = false): Response
     {
+        if (true === $emptyResponse) {
+            return new JsonResponse(null, Response::HTTP_NO_CONTENT);
+        }
+
         return $this->toJSON($data);
     }
 

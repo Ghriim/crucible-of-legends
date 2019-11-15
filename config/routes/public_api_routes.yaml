@@ -4,7 +4,7 @@ public_workout_get_many:
     controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::getMany
 
 public_workout_get_single:
-    path: /workouts/{name}
+    path: /workouts/{workoutName}
     methods: ['GET']
     controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::getSingle
 
@@ -12,3 +12,9 @@ public_workout_post:
     path: /workouts
     methods: ['POST']
     controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::post
+
+
+public_workout_exercise_delete:
+    path: /workouts/{workoutName}/exercises/{exerciseId}
+    methods: ['DELETE']
+    controller: App\Controller\Api\PublicApi\Workout\ExerciseApiController::delete

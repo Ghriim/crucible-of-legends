@@ -27,7 +27,7 @@ final class ExerciseDTO extends AbstractBaseDTO
     /** @var int|null */
     private $weightExecuted;
 
-    /** @var int */
+    /** @var int|null */
     private $position;
 
     /** @var WorkoutDTO|null */
@@ -37,6 +37,18 @@ final class ExerciseDTO extends AbstractBaseDTO
     protected function getDefaultStatus(): string
     {
         return self::STATUS_ACTIVE;
+    }
+
+    /**
+     * Method overridden
+     */
+    public function setStatus(string $status): void
+    {
+        if (self::STATUS_DELETED === $status) {
+            $this->setPosition(null);
+        }
+
+        parent::setStatus($status);
     }
 
     public function getName(): string
@@ -109,12 +121,12 @@ final class ExerciseDTO extends AbstractBaseDTO
         $this->weightExecuted = $weightExecuted;
     }
 
-    public function getPosition(): int
+    public function getPosition(): ?int
     {
         return $this->position;
     }
 
-    public function setPosition(int $position): void
+    public function setPosition(?int $position): void
     {
         $this->position = $position;
     }

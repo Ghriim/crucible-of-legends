@@ -6,6 +6,7 @@ import Registration from "../views/Registration/Registration";
 import Dashboard from "../views/Dashboard/Dashboard";
 import WorkoutDetails from "../views/Workout/WorkoutDetails";
 import WorkoutCreate from "../views/Workout/WorkoutCreate";
+import WorkoutEdit from "../views/Workout/WorkoutEdit";
 import WorkoutList from "../views/Workout/WorkoutList";
 
 Vue.use(VueRouter);
@@ -39,6 +40,7 @@ export default new VueRouter({
         { name: "workouts", path: "/workouts", component: WorkoutList/*, beforeEnter: requireAuth */},
         { name: "workoutCreate", path: "/workouts/create", component: WorkoutCreate /*, beforeEnter: requireAuth */},
         { name: "workout", path: "/workouts/:canonicalName", component: WorkoutDetails/*, beforeEnter: requireAuth */, props: true},
+        { name: "workoutEdit", path: "/workouts/:canonicalName/edit", component: WorkoutEdit/*, beforeEnter: requireAuth */, props: true},
 
         { path: "*", redirect: "/" }
     ]

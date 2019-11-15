@@ -14,6 +14,10 @@
                         <a>{{ workout.name}}</a>
                     </router-link>
                     - <em>{{ workout.createdDate }}</em>
+
+                    <router-link :to="{name: 'workoutEdit', params: {canonicalName: workout.canonicalName}}">
+                        <a>Edit</a>
+                    </router-link>
                 </li>
             </ul>
         </div>

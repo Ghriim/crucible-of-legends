@@ -71,10 +71,10 @@ abstract class AbstractDTOPersister
     /**
      * @param AbstractBaseDTO[] $dtos
      */
-    protected function deleteAll(array $dtos, bool $flush = true): void
+    protected function softDeleteAll(array $dtos, bool $flush = true): void
     {
         foreach ($dtos as $dto) {
-            $this->delete($dto, false);
+            $this->softDelete($dto, false);
         }
 
         if (true === $flush) {
@@ -82,7 +82,7 @@ abstract class AbstractDTOPersister
         }
     }
 
-    protected function delete(AbstractBaseDTO $dto, bool $flush = true): void
+    protected function softDelete(AbstractBaseDTO $dto, bool $flush = true): void
     {
         $dto->setStatus(AbstractBaseDTO::STATUS_DELETED);
 

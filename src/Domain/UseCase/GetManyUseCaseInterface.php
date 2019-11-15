@@ -4,10 +4,10 @@ namespace App\Domain\UseCase;
 
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 
-abstract class AbstractGetManyUseCase extends AbstractUseCase
+interface GetManyUseCaseInterface
 {
     /**
      * @return AbstractBaseVueModel[]
      */
-    abstract public function execute(array $parameters): array;
+    public function execute(array $parameters): array;
 }

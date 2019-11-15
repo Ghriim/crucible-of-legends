@@ -13,3 +13,7 @@ index_level_1:
 index_level_2:
     path: /{level1}/{level2}
     controller: App\Controller\FrontAppController::index
+
+index_level_3:
+    path: /{level1}/{level2}/{level3}
+    controller: App\Controller\FrontAppController::index
