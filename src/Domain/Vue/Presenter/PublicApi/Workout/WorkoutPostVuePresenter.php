@@ -7,9 +7,9 @@ use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutPostVueModel;
 use App\Domain\Vue\Presenter\AbstractVuePresenter;
-use App\Domain\Vue\Presenter\SingleObjectVueModelInterface;
+use App\Domain\Vue\Presenter\SingleObjectVuePresenterInterface;
 
-final class WorkoutPostVuePresenter extends AbstractVuePresenter implements SingleObjectVueModelInterface
+final class WorkoutPostVuePresenter extends AbstractVuePresenter implements SingleObjectVuePresenterInterface
 {
     /**
      * @param WorkoutDTO $dto

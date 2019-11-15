@@ -18,3 +18,9 @@ public_workout_exercise_delete:
     path: /workouts/{workoutName}/exercises/{exerciseId}
     methods: ['DELETE']
     controller: App\Controller\Api\PublicApi\Workout\ExerciseApiController::delete
+
+
+public_reference_exercise_get_many:
+    path: /references/exercises
+    methods: ['GET']
+    controller: App\Controller\Api\PublicApi\Workout\ReferenceExerciseApiController::getMany

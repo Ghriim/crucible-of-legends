@@ -7,7 +7,7 @@ use App\Domain\UseCase\GetManyUseCaseInterface;
 use App\Domain\UseCase\AbstractUseCase;
 use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutGetManyVuePresenter;
 
-final class GetManyWorkoutApiUseCase extends AbstractUseCase implements GetManyUseCaseInterface
+final class WorkoutGetManyApiUseCase extends AbstractUseCase implements GetManyUseCaseInterface
 {
     private $dtoProvider;
     private $presenter;

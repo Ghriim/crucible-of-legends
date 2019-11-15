@@ -3,7 +3,7 @@
 namespace App\Controller\Api\PublicApi\Workout;
 
 use App\Controller\Api\AbstractApiController;
-use App\Domain\UseCase\PublicApi\Workout\DeleteExerciseApiUseCase;
+use App\Domain\UseCase\PublicApi\Workout\ExerciseDeleteApiUseCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class ExerciseApiController extends AbstractApiController
@@ -11,7 +11,7 @@ final class ExerciseApiController extends AbstractApiController
     public function delete(
         string $workoutName,
         int $exerciseId,
-        DeleteExerciseApiUseCase $deleteExerciseApiUseCase
+        ExerciseDeleteApiUseCase $deleteExerciseApiUseCase
     ): Response
     {
         $deleteExerciseApiUseCase->execute($exerciseId, ['workoutName' => $workoutName]);

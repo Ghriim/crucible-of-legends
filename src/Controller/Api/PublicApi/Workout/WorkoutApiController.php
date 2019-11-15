@@ -3,9 +3,9 @@
 namespace App\Controller\Api\PublicApi\Workout;
 
 use App\Controller\Api\AbstractApiController;
-use App\Domain\UseCase\PublicApi\Workout\GetManyWorkoutApiUseCase;
-use App\Domain\UseCase\PublicApi\Workout\GetSingleWorkoutApiUseCase;
-use App\Domain\UseCase\PublicApi\Workout\PostWorkoutApiUseCaseInterface;
+use App\Domain\UseCase\PublicApi\Workout\WorkoutGetManyApiUseCase;
+use App\Domain\UseCase\PublicApi\Workout\WorkoutGetSingleApiUseCase;
+use App\Domain\UseCase\PublicApi\Workout\WorkoutPostApiUseCaseInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,7 +13,7 @@ final class WorkoutApiController extends AbstractApiController
 {
     public function getMany(
         Request $request,
-        GetManyWorkoutApiUseCase $getManyWorkoutApiUseCase
+        WorkoutGetManyApiUseCase $getManyWorkoutApiUseCase
     ): Response
     {
         return $this->buildResponse(
@@ -24,7 +24,7 @@ final class WorkoutApiController extends AbstractApiController
     public function getSingle(
         string $workoutName,
         Request $request,
-        GetSingleWorkoutApiUseCase $getSingleWorkoutApiUseCase
+        WorkoutGetSingleApiUseCase $getSingleWorkoutApiUseCase
     ): Response
     {
         return $this->buildResponse(
@@ -34,7 +34,7 @@ final class WorkoutApiController extends AbstractApiController
 
     public function post(
         Request $request,
-        PostWorkoutApiUseCaseInterface $postWorkoutApiUseCase
+        WorkoutPostApiUseCaseInterface $postWorkoutApiUseCase
     ) :Response
     {
         return $this->buildResponse(

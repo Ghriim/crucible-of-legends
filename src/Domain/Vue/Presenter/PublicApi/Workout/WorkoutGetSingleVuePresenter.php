@@ -9,9 +9,9 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleExercisesVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleVueModel;
 use App\Domain\Vue\Presenter\AbstractVuePresenter;
-use App\Domain\Vue\Presenter\SingleObjectVueModelInterface;
+use App\Domain\Vue\Presenter\SingleObjectVuePresenterInterface;
 
-final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements SingleObjectVueModelInterface
+final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements SingleObjectVuePresenterInterface
 {
     /**
      * @param WorkoutDTO $dto

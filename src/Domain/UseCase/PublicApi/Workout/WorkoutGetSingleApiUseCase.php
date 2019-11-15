@@ -9,7 +9,7 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleVueModel;
 use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutGetSingleVuePresenter;
 
-final class GetSingleWorkoutApiUseCase extends AbstractUseCase implements GetSingleUseCaseInterface
+final class WorkoutGetSingleApiUseCase extends AbstractUseCase implements GetSingleUseCaseInterface
 {
     private $workoutDtoProvider;
     private $presenter;

@@ -5,9 +5,9 @@ namespace App\Domain\Vue\Presenter\PublicApi\Workout;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetManyVueModel;
 use App\Domain\Vue\Presenter\AbstractVuePresenter;
-use App\Domain\Vue\Presenter\MultipleObjectVueModelInterface;
+use App\Domain\Vue\Presenter\MultipleObjectVuePresenterInterface;
 
-final class WorkoutGetManyVuePresenter extends AbstractVuePresenter implements MultipleObjectVueModelInterface
+final class WorkoutGetManyVuePresenter extends AbstractVuePresenter implements MultipleObjectVuePresenterInterface
 {
     /**
      * @param WorkoutDTO[] $dtos

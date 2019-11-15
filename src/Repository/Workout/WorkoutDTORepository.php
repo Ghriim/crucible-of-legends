@@ -2,7 +2,6 @@
 
 namespace App\Repository\Workout;
 
-use App\Domain\DataInteractor\DTO\Workout\ExerciseDTO;
 use App\Repository\AbstractBaseEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 

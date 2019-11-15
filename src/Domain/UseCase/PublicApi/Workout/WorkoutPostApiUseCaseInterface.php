@@ -12,7 +12,7 @@ use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutPostVuePresenter;
 use App\Tools\String\CanonicalizeString;
 use App\Tools\String\RandomString;
 
-final class PostWorkoutApiUseCaseInterface extends AbstractUseCase implements PostUseCaseInterface
+final class WorkoutPostApiUseCaseInterface extends AbstractUseCase implements PostUseCaseInterface
 {
     private $workoutDtoPersister;
     private $workoutDtoProvider;

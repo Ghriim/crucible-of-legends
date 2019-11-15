@@ -9,7 +9,7 @@ use App\Domain\UseCase\AbstractUseCase;
 use App\Domain\UseCase\DeleteUseCaseInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-final class DeleteExerciseApiUseCase extends AbstractUseCase implements DeleteUseCaseInterface
+final class ExerciseDeleteApiUseCase extends AbstractUseCase implements DeleteUseCaseInterface
 {
     private $workoutDtoProvider;
     private $exerciseDtoProvider;
