@@ -32,6 +32,22 @@
                     </select>
                 </div>
 
+                <div>
+                    <label for="durationProgrammed">Duration</label>
+                    <input type="number" id="durationProgrammed" v-model="exercise.durationProgrammed" />
+                </div>
+
+
+                <div>
+                    <label for="repetitionsProgrammed">Repetitions</label>
+                    <input type="number" id="repetitionsProgrammed" v-model="exercise.repetitionsProgrammed" />
+                </div>
+
+                <div>
+                    <label for="weightProgrammed">Weight</label>
+                    <input type="number" id="weightProgrammed" v-model="exercise.weightProgrammed" />
+                </div>
+
                 <button type="submit">Add</button>
             </form>
         </section>
@@ -54,7 +70,11 @@
                 workout: null,
                 exercise: {
                     workoutCanonicalName: null,
-                    referenceExerciseId: null
+                    referenceExerciseId: null,
+                    durationProgrammed: null,
+                    repetitionsProgrammed: null,
+                    weightProgrammed: null
+
                 },
                 referenceExercises: [],
                 formErrors: [],

@@ -55,6 +55,9 @@ final class ExercisePostApiUseCase extends AbstractUseCase implements PostUseCas
         $exercise->setWorkout($workout);
         $exercise->setReferenceExercise($referenceExercise);
         $exercise->setPosition($workout->getHighestPosition() + 1);
+        $exercise->setDurationProgrammed($jsonObject->durationProgrammed);
+        $exercise->setRepetitionsProgrammed($jsonObject->repetitionsProgrammed);
+        $exercise->setWeightProgrammed($jsonObject->weightProgrammed);
 
         return $exercise;
     }
