@@ -14,6 +14,11 @@ public_workout_post:
     controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::post
 
 
+public_workout_exercise_post:
+    path: /workouts/{workoutName}/exercises
+    methods: ['POST']
+    controller: App\Controller\Api\PublicApi\Workout\ExerciseApiController::post
+
 public_workout_exercise_delete:
     path: /workouts/{workoutName}/exercises/{exerciseId}
     methods: ['DELETE']

@@ -42,6 +42,9 @@ final class WorkoutDTO extends AbstractBaseDTO
         $this->canonicalName = $canonicalName;
     }
 
+    /**
+     * @return ExerciseDTO[]
+     */
     public function getExercises(): array
     {
         if ($this->exercises instanceof Collection) {
@@ -56,5 +59,17 @@ final class WorkoutDTO extends AbstractBaseDTO
     public function setExercises(array $exercises): void
     {
         $this->exercises = $exercises;
+    }
+
+    public function getHighestPosition(): int
+    {
+        $highestPosition = 0;
+        foreach ($this->getExercises() as $exercise) {
+            if ($exercise->getPosition() > $highestPosition) {
+                $highestPosition = $exercise->getPosition();
+            }
+        }
+
+        return $highestPosition;
     }
 }

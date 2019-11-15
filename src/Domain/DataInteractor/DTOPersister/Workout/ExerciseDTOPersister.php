@@ -7,6 +7,13 @@ use App\Domain\DataInteractor\DTOPersister\AbstractDTOPersister;
 
 final class ExerciseDTOPersister extends AbstractDTOPersister
 {
+    public function addToWorkout(ExerciseDTO $exerciseDTO): ExerciseDTO
+    {
+        $this->save($exerciseDTO);
+
+        return $exerciseDTO;
+    }
+
     /**
      * @param ExerciseDTO[] $exercises
      */
@@ -22,16 +29,6 @@ final class ExerciseDTOPersister extends AbstractDTOPersister
         }
 
         $this->flush();
-    }
-
-    /**
-     * @param ExerciseDTO[] $exercises
-     *
-     * @return ExerciseDTO
-     */
-    public function recomputeExercisesPosition(array $exercises): array
-    {
-
     }
 
     protected function getEntityClassName(): string

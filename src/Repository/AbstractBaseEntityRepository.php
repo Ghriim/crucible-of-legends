@@ -133,9 +133,10 @@ abstract class AbstractBaseEntityRepository extends EntityRepository implements 
      */
     public function addCriterionLike(QueryBuilder $queryBuilder, $alias, $fieldName, $value): bool
     {
-        if (null === $value) {
+        if (true === empty($value)) {
             return false;
         }
+
         $parameter = $alias . '_' . $fieldName;
         $value     = '%' . $value . '%';
         $queryBuilder->andWhere("$alias.$fieldName LIKE :" . $parameter);

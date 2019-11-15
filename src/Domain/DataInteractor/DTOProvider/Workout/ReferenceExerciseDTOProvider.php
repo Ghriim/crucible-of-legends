@@ -8,15 +8,16 @@ use App\Repository\Workout\ReferenceExerciseDTORepository;
 
 /**
  * @method ReferenceExerciseDTORepository getRepository()
+ * @method ReferenceExerciseDTO loadOneById($id)
  */
 final class ReferenceExerciseDTOProvider extends AbstractDTOProvider
 {
     /**
      * @return ReferenceExerciseDTO[]
      */
-    public function loadForGetMany(array $parameters): array
+    public function loadForGetMany(array $criteria): array
     {
-        return $this->getRepository()->findManyByCriteria([], [], ['name' => self::ORDER_DIRECTION_ASC]);
+        return $this->getRepository()->findManyByCriteria($criteria, [], ['name' => self::ORDER_DIRECTION_ASC]);
     }
 
     protected function getEntityClassName(): string

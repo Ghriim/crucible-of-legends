@@ -5,7 +5,6 @@
         </div>
 
         <section>
-
             <div v-for="(exercise, index) in workout.exercises">
                 <h3>{{ exercise.position }} - {{ exercise.name }}</h3>
                 <button v-on:click="handleDelete(exercise.id, index)">Delete</button>
@@ -15,6 +14,26 @@
                     </li>
                 </ul>
             </div>
+        </section>
+
+        <section>
+            <h3>Add an exercise</h3>
+
+            <form @submit.prevent="handleSubmit">
+                <div v-if="[] !== formErrors">
+                    <p v-for="formError in formErrors">{{ formError }}</p>
+                </div>
+                <div>
+                    <label for="referenceExercise">Reference Exercise</label>
+                    <select id="referenceExercise" v-model="exercise.referenceExerciseId">
+                        <option v-for="referenceExercise in referenceExercises" :value="referenceExercise.id">
+                            {{ referenceExercise.name }}
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit">Add</button>
+            </form>
         </section>
     </div>
     <div  v-else>
@@ -33,11 +52,18 @@
         data() {
             return {
                 workout: null,
+                exercise: {
+                    workoutCanonicalName: null,
+                    referenceExerciseId: null
+                },
+                referenceExercises: [],
+                formErrors: [],
                 errors: []
             };
         },
         mounted() {
             this.getWorkout(this.$route.params.canonicalName);
+            this.getReferenceExercises('');
 
         },
         methods: {
@@ -61,6 +87,24 @@
                         this.errors.push('An error has occurred, please try again later.')
                     }
                 })
+            },
+            getReferenceExercises(nameLike) {
+                axios.get('/api/references/exercises?nameLike=' + nameLike)
+                    .then(response => {
+                        this.referenceExercises = response.data;
+                    }).catch(error => {
+                        this.errors.push('An error has occurred, please try again later.')
+                    })
+            },
+            handleSubmit() {
+                this.exercise.workoutCanonicalName = this.workout.canonicalName;
+
+                axios.post('/api/workouts/' + this.workout.canonicalName + '/exercises', this.exercise)
+                    .then(response => {
+                        this.getWorkout(this.workout.canonicalName);
+                    }).catch(error => {
+                        this.formErrors.push('An error has occurred, please try again later.')
+                    })
             }
         }
     };
