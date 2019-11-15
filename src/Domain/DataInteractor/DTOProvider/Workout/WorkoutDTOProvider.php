@@ -19,14 +19,14 @@ final class WorkoutDTOProvider extends AbstractDTOProvider
         return $this->getRepository()->findManyByCriteria([], [], ['createdDate' => self::ORDER_DIRECTION_DESC]);
     }
 
-    public function loadForGetOne(string $name): ?WorkoutDTO
+    public function loadForGetOne(string $canonicalName): ?WorkoutDTO
     {
-        return $this->getRepository()->findOneByCriteria(['name' => $name], ['exercises']);
+        return $this->getRepository()->findOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
     }
 
-    public function loadOneWithExercise(string $name): ?WorkoutDTO
+    public function loadOneWithExercise(string $canonicalName): ?WorkoutDTO
     {
-        return $this->getRepository()->findOneByCriteria(['name' => $name], ['exercises']);
+        return $this->getRepository()->findOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
     }
 
     public function doesCanonicalNameAlreadyExist(string $canonicalName): bool

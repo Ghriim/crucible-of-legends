@@ -6,8 +6,6 @@ use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 
 final class ExerciseDTO extends AbstractBaseDTO
 {
-    /** @var string */
-    private $name;
 
     /** @var int|null in seconds */
     private $durationProgrammed;
@@ -30,9 +28,11 @@ final class ExerciseDTO extends AbstractBaseDTO
     /** @var int|null */
     private $position;
 
+    /** @var ReferenceExerciseDTO */
+    private $referenceExercise;
+
     /** @var WorkoutDTO|null */
     private $workout;
-
 
     protected function getDefaultStatus(): string
     {
@@ -49,16 +49,6 @@ final class ExerciseDTO extends AbstractBaseDTO
         }
 
         parent::setStatus($status);
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     public function getDurationProgrammed(): ?int
@@ -129,6 +119,16 @@ final class ExerciseDTO extends AbstractBaseDTO
     public function setPosition(?int $position): void
     {
         $this->position = $position;
+    }
+
+    public function getReferenceExercise(): ReferenceExerciseDTO
+    {
+        return $this->referenceExercise;
+    }
+
+    public function setReferenceExercise(ReferenceExerciseDTO $referenceExercise): void
+    {
+        $this->referenceExercise = $referenceExercise;
     }
 
     public function getWorkout(): ?WorkoutDTO

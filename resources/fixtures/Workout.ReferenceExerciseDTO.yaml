@@ -1,0 +1,19 @@
+App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO:
+    base_reference_exercise (template):
+        createdDate : '<(new DateTime())>'
+        updatedDate : '<(new DateTime())>'
+
+    ref_exercise_push_up (extends base_reference_exercise):
+        name: 'push up'
+
+    ref_exercise_squat (extends base_reference_exercise):
+        name: 'squat'
+
+    ref_exercise_crunch (extends base_reference_exercise):
+        name: 'crunch'
+
+    ref_exercise_dead_lift (extends base_reference_exercise):
+        name: 'dead lift'
+
+    ref_exercise_biceps_curl (extends base_reference_exercise):
+        name: 'biceps curl'

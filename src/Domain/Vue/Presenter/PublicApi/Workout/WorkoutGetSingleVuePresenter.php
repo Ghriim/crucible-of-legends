@@ -40,7 +40,7 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
         foreach ($exercises as $exercise) {
             $exerciseForVueModel = new WorkoutGetSingleExercisesVueModel();
             $exerciseForVueModel->id = $exercise->getId();
-            $exerciseForVueModel->name = $exercise->getName();
+            $exerciseForVueModel->name = $exercise->getReferenceExercise()->getName();
             $exerciseForVueModel->position = $exercise->getPosition();
 
             $exerciseForVueModel->details = $this->buildExerciseDetails($exercise);

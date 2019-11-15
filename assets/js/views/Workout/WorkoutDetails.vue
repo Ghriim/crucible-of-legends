@@ -5,7 +5,6 @@
         </div>
 
         <section>
-
             <div v-for="exercise in workout.exercises">
                 <h3>{{ exercise.position }} - {{ exercise.name }}</h3>
                 <ul>

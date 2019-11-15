@@ -26,11 +26,10 @@ final class WorkoutDTORepository extends AbstractBaseEntityRepository
 
     protected function addSelectExercises(QueryBuilder $queryBuilder): void
     {
-        $queryBuilder->leftJoin($this->getAlias() . '.exercises', 'workout_exercise')
-                     ->addSelect('workout_exercise')
-                     ->andWhere('workout_exercise.status != :exercise_status_deleted')
-                     ->setParameter('exercise_status_deleted', ExerciseDTO::STATUS_DELETED)
-                     ->addOrderBy('workout_exercise.position');
+        $this->addSelect($queryBuilder, $this->getAlias(), 'exercises', 'workout_exercise');
+        $this->addSelect($queryBuilder, 'workout_exercise', 'referenceExercise', 'reference_exercise');
+
+        $queryBuilder->addOrderBy('workout_exercise.position');
     }
 
     protected function addOrderByCreatedDate(QueryBuilder $queryBuilder, string $direction = self::ORDER_DIRECTION_ASC): void

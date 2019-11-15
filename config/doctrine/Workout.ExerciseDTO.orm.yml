@@ -9,11 +9,6 @@ App\Domain\DataInteractor\DTO\Workout\ExerciseDTO:
                 strategy: AUTO
 
     fields:
-        name:
-            type: string
-            length: 75
-            unique: false
-            nullable: false
         durationProgrammed:
             type: integer
             unique: false
@@ -44,6 +39,13 @@ App\Domain\DataInteractor\DTO\Workout\ExerciseDTO:
             nullable: true
 
     manyToOne:
+        referenceExercise:
+            targetEntity: App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO
+            joinColumn:
+                name: reference_exercise_id
+                referencedColumnName: id
+                nullable: false
+                unique: false
         workout:
             targetEntity: App\Domain\DataInteractor\DTO\Workout\WorkoutDTO
             inversedBy: exercises

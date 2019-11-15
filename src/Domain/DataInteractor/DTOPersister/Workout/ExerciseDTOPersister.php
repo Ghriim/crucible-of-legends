@@ -12,6 +12,8 @@ final class ExerciseDTOPersister extends AbstractDTOPersister
      */
     public function deleteFromList(ExerciseDTO $exercise, array $exercises): void
     {
+        $this->softDelete($exercise, false);
+
         foreach ($exercises as $exerciseFromList) {
             if (ExerciseDTO::STATUS_DELETED !== $exerciseFromList->getStatus()
                 && $exerciseFromList->getPosition() > $exercise->getPosition()) {
@@ -19,7 +21,7 @@ final class ExerciseDTOPersister extends AbstractDTOPersister
             }
         }
 
-        $this->softDelete($exercise);
+        $this->flush();
     }
 
     /**

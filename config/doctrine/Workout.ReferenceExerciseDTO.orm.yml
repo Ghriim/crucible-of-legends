@@ -1,0 +1,16 @@
+App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO:
+    type: entity
+    repositoryClass: App\Repository\Workout\ReferenceExerciseDTORepository
+    table: "`reference_exercise`"
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            length: 75
+            unique: false
+            nullable: false

@@ -219,6 +219,18 @@ abstract class AbstractBaseEntityRepository extends EntityRepository implements 
 
     /**
      * @param QueryBuilder $queryBuilder
+     * @param array        $selects
+     *
+     * @return $this
+     */
+    public function addSelect(QueryBuilder $queryBuilder, string $objectAlias, string $field, string $joinedObjectAlias): void
+    {
+        $queryBuilder->leftJoin($objectAlias . '.' . $field, $joinedObjectAlias, $joinedObjectAlias . '.status != ' . AbstractBaseDTO::STATUS_DELETED)
+                     ->addSelect($joinedObjectAlias);
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
      *
      * @return QueryBuilder
      */
