@@ -1,0 +1,14 @@
+App\Domain\DataInteractor\DTO\Agenda\AgendaEntryDTO:
+    base_agenda_entry (template):
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
+
+    agenda_ghriim_default_entry_1 (extends base_agenda_entry):
+        agenda: "@agenda_ghriim_default"
+        workout: "@workout_zeus"
+        programmedDate: "<(new DateTime('+1 days'))>"
+
+    agenda_ghriim_default_entry_2 (extends base_agenda_entry):
+        agenda: "@agenda_ghriim_default"
+        workout: "@workout_zeus"
+        programmedDate: "<(new DateTime('+3 days'))>"

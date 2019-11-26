@@ -4,7 +4,7 @@ namespace App\Domain\Vue\Model\PublicApi\Workout;
 
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 
-final class WorkoutGetSingleExercisesVueModel extends AbstractBaseVueModel
+final class WorkoutGetSingleExerciseVueModel extends AbstractBaseVueModel
 {
     /** @var string */
     public $name;
@@ -18,6 +18,6 @@ final class WorkoutGetSingleExercisesVueModel extends AbstractBaseVueModel
     /** @var string[] */
     public $details;
 
-    /** @var WorkoutGetSingleEquipmentsVueModel[] */
+    /** @var WorkoutGetSingleEquipmentVueModel[] */
     public $equipments;
 }

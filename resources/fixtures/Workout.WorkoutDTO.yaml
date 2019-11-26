@@ -1,18 +1,18 @@
 App\Domain\DataInteractor\DTO\Workout\WorkoutDTO:
     base_workout (template):
-        createdDate : '<(new DateTime())>'
-        updatedDate : '<(new DateTime())>'
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
 
     workout_{zeus, hera} (extends base_workout):
-        name: '<current()>'
-        canonicalName: '<current()>'
+        name: "<current()>"
+        canonicalName: "<current()>"
 
     workout_{ares, apollon} (extends base_workout):
-        name: '<current()>'
-        canonicalName: '<current()>'
-        createdDate : '<(new DateTime("-2 days"))>'
+        name: "<current()>"
+        canonicalName: "<current()>"
+        createdDate : "<(new DateTime('-2 days'))>"
 
     workout_{aphrodite, gaia} (extends base_workout):
-        name: '<current()>'
-        canonicalName: '<current()>'
-        createdDate : '<(new DateTime("-3 days"))>'
+        name: "<current()>"
+        canonicalName: "<current()>"
+        createdDate : "<(new DateTime('-3 days'))>"

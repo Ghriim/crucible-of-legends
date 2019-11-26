@@ -1,0 +1,30 @@
+App\Domain\DataInteractor\DTO\Agenda\AgendaDTO:
+    type: entity
+    repositoryClass: App\Repository\Agenda\AgendaDTORepository
+    table: "`agenda`"
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            length: 150
+            unique: false
+            nullable: false
+
+    oneToMany:
+        entries:
+            targetEntity: App\Domain\DataInteractor\DTO\Agenda\AgendaEntryDTO
+            mappedBy: agenda
+
+    manyToOne:
+        user:
+            targetEntity: App\Domain\DataInteractor\DTO\User\UserDTO
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+                unique: false

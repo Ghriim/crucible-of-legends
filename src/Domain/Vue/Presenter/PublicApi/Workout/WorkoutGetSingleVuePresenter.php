@@ -7,8 +7,8 @@ use App\Domain\DataInteractor\DTO\Workout\ExerciseDTO;
 use App\Domain\DataInteractor\DTO\Workout\ReferenceEquipmentDTO;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
-use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleEquipmentsVueModel;
-use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleExercisesVueModel;
+use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleEquipmentVueModel;
+use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleExerciseVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleVueModel;
 use App\Domain\Vue\Presenter\AbstractVuePresenter;
 use App\Domain\Vue\Presenter\SingleObjectVuePresenterInterface;
@@ -34,13 +34,13 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
     /**
      * @param ExerciseDTO[] $exercises
      *
-     * @return WorkoutGetSingleExercisesVueModel[]
+     * @return WorkoutGetSingleExerciseVueModel[]
      */
     private function buildExercisesForVueModel(array $exercises): array
     {
         $exercisesForVueModel = [];
         foreach ($exercises as $exercise) {
-            $exerciseForVueModel = new WorkoutGetSingleExercisesVueModel();
+            $exerciseForVueModel = new WorkoutGetSingleExerciseVueModel();
             $exerciseForVueModel->id = $exercise->getId();
             $exerciseForVueModel->name = $exercise->getReferenceExercise()->getName();
             $exerciseForVueModel->videoLink = $exercise->getReferenceExercise()->getVideoLink();
@@ -58,13 +58,13 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
     /**
      * @param ReferenceEquipmentDTO[] $equipments
      *
-     * @return WorkoutGetSingleEquipmentsVueModel[]
+     * @return WorkoutGetSingleEquipmentVueModel[]
      */
     private function buildEquipmentsForVueModel(array $equipments): array
     {
         $equipmentsForVueModel = [];
         foreach ($equipments as $equipment) {
-            $equipmentForVueModel = new WorkoutGetSingleEquipmentsVueModel();
+            $equipmentForVueModel = new WorkoutGetSingleEquipmentVueModel();
             $equipmentForVueModel->id = $equipment->getId();
             $equipmentForVueModel->name = $equipment->getName();
 

@@ -2,12 +2,34 @@
 
 namespace App\Controller\Api;
 
+use App\Domain\DataInteractor\DTO\User\UserDTO;
+use App\Domain\DataInteractor\DTOProvider\User\UserDTOProvider;
+use App\Domain\Exception\UserShouldExistException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractApiController extends AbstractController
 {
+    private $userDTOProvider;
+
+    public function __construct(UserDTOProvider $userDTOProvider)
+    {
+        $this->userDTOProvider = $userDTOProvider;
+    }
+
+    protected function getCurrentUser(Request $request): UserDTO
+    {
+        // TODO: Use id from token
+        $user = $this->userDTOProvider->loadOneById(1);
+        if (null === $user) {
+            throw new UserShouldExistException('User is load from JWT Token Id. It should exist !');
+        }
+
+        return $user;
+    }
+
     protected function buildResponse($data, bool $emptyResponse = false): Response
     {
         if (true === $emptyResponse) {

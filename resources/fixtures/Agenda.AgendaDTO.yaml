@@ -1,0 +1,7 @@
+App\Domain\DataInteractor\DTO\Agenda\AgendaDTO:
+    base_agenda (template):
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
+
+    agenda_ghriim_default (extends base_agenda):
+        user: "@user_ghriim"

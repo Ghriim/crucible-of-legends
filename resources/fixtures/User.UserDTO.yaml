@@ -1,0 +1,25 @@
+App\Domain\DataInteractor\DTO\User\UserDTO:
+    base_user (template):
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
+        password: "\\$2y\\$13\\$xuk1duzZe5Xr7swiTrPHMu6ee7dm4dTaTsqbEWZaL5OZI.jzW7e5y" #plain password: test123
+
+    user_ghriim (extends base_user):
+        username: ghriim
+        email: "ghriim\\@fakemail.com"
+        type: "player"
+
+    user_charo (extends base_user):
+        username: charo
+        email: "charo\\@fakemail.com"
+        type: "player"
+
+    user_lollipops (extends base_user):
+        username: lollipops
+        email: "lollipops\\@fakemail.com"
+        type: "admin"
+
+    user_coach (extends base_user):
+        username: coach
+        email: "coach\\@fakemail.com"
+        type: "coach"
