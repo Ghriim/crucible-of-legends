@@ -15,7 +15,7 @@ class AgendaDTO extends AbstractBaseDTO
     private $name = self::NAME_DEFAULT;
 
     /** @var UserDTO */
-    private $user;
+    private $player;
 
     /** @var PersistentCollection|AgendaEntryDTO[] */
     private $entries;
@@ -35,14 +35,14 @@ class AgendaDTO extends AbstractBaseDTO
         $this->name = $name;
     }
 
-    public function getUser(): UserDTO
+    public function getPlayer(): UserDTO
     {
-        return $this->user;
+        return $this->player;
     }
 
-    public function setUser(UserDTO $user): void
+    public function setPlayer(UserDTO $player): void
     {
-        $this->user = $user;
+        $this->player = $player;
     }
 
     /**

@@ -21,10 +21,10 @@ App\Domain\DataInteractor\DTO\Agenda\AgendaDTO:
             mappedBy: agenda
 
     manyToOne:
-        user:
+        player:
             targetEntity: App\Domain\DataInteractor\DTO\User\UserDTO
             joinColumn:
-                name: user_id
+                name: player_id
                 referencedColumnName: id
                 nullable: false
                 unique: false

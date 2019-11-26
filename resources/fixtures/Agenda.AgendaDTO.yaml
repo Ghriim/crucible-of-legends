@@ -4,4 +4,7 @@ App\Domain\DataInteractor\DTO\Agenda\AgendaDTO:
         updatedDate : "<(new DateTime())>"
 
     agenda_ghriim_default (extends base_agenda):
-        user: "@user_ghriim"
+        player: "@user_ghriim"
+
+    agenda_ghriim_charo (extends base_agenda):
+        player: "@user_charo"

@@ -7,6 +7,13 @@ use Doctrine\ORM\QueryBuilder;
 
 final class AgendaDTORepository extends AbstractBaseEntityRepository
 {
+    /**
+     * @param int|int[]|null $id
+     */
+    protected function addCriterionPlayer(QueryBuilder $queryBuilder, $id): bool
+    {
+        return $this->addCriterion($queryBuilder, $this->getAlias(), 'player', $id);
+    }
 
     protected function addSelectEntries(QueryBuilder $queryBuilder): void
     {
