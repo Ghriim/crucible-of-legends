@@ -27,6 +27,7 @@ final class WorkoutDTORepository extends AbstractBaseEntityRepository
     {
         $this->addSelect($queryBuilder, $this->getAlias(), 'exercises', 'workout_exercise');
         $this->addSelect($queryBuilder, 'workout_exercise', 'referenceExercise', 'reference_exercise');
+        $this->addSelect($queryBuilder, 'reference_exercise', 'referenceEquipments', 'workout_exercise_equipment');
 
         $queryBuilder->addOrderBy('workout_exercise.position');
     }

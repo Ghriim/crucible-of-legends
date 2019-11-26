@@ -14,3 +14,20 @@ App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO:
             length: 75
             unique: false
             nullable: false
+        videoLink:
+            type: string
+            length: 255
+            unique: false
+            nullable: true
+
+    manyToMany:
+        referenceEquipments:
+            targetEntity: App\Domain\DataInteractor\DTO\Workout\ReferenceEquipmentDTO
+            joinTable:
+                name: ref_exercise_has_ref_equipment
+                joinColumns:
+                    ref_exercise:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    ref_equipment:
+                        referencedColumnName: id

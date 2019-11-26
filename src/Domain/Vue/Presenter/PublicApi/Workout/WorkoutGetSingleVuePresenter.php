@@ -4,8 +4,10 @@ namespace App\Domain\Vue\Presenter\PublicApi\Workout;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 use App\Domain\DataInteractor\DTO\Workout\ExerciseDTO;
+use App\Domain\DataInteractor\DTO\Workout\ReferenceEquipmentDTO;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
+use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleEquipmentsVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleExercisesVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleVueModel;
 use App\Domain\Vue\Presenter\AbstractVuePresenter;
@@ -41,14 +43,35 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
             $exerciseForVueModel = new WorkoutGetSingleExercisesVueModel();
             $exerciseForVueModel->id = $exercise->getId();
             $exerciseForVueModel->name = $exercise->getReferenceExercise()->getName();
+            $exerciseForVueModel->videoLink = $exercise->getReferenceExercise()->getVideoLink();
             $exerciseForVueModel->position = $exercise->getPosition();
 
             $exerciseForVueModel->details = $this->buildExerciseDetails($exercise);
+            $exerciseForVueModel->equipments = $this->buildEquipmentsForVueModel($exercise->getReferenceExercise()->getReferenceEquipments());
 
             $exercisesForVueModel[] = $exerciseForVueModel;
         }
 
         return $exercisesForVueModel;
+    }
+
+    /**
+     * @param ReferenceEquipmentDTO[] $equipments
+     *
+     * @return WorkoutGetSingleEquipmentsVueModel[]
+     */
+    private function buildEquipmentsForVueModel(array $equipments): array
+    {
+        $equipmentsForVueModel = [];
+        foreach ($equipments as $equipment) {
+            $equipmentForVueModel = new WorkoutGetSingleEquipmentsVueModel();
+            $equipmentForVueModel->id = $equipment->getId();
+            $equipmentForVueModel->name = $equipment->getName();
+
+            $equipmentsForVueModel[] = $equipmentForVueModel;
+        }
+
+        return $equipmentsForVueModel;
     }
 
     private function buildExerciseDetails(ExerciseDTO $exercise): array

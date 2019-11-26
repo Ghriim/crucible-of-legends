@@ -12,6 +12,12 @@ final class WorkoutGetSingleExercisesVueModel extends AbstractBaseVueModel
     /** @var int|null */
     public $position;
 
+    /** @var string|null */
+    public $videoLink;
+
     /** @var string[] */
     public $details;
+
+    /** @var WorkoutGetSingleEquipmentsVueModel[] */
+    public $equipments;
 }

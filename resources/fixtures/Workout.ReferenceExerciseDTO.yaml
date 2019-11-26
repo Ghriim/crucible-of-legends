@@ -14,6 +14,8 @@ App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO:
 
     ref_exercise_dead_lift (extends base_reference_exercise):
         name: 'dead lift'
+        referenceEquipments: ['@ref_equipment_barbell']
 
     ref_exercise_biceps_curl (extends base_reference_exercise):
         name: 'biceps curl'
+        referenceEquipments: ['@ref_equipment_dumbbell']

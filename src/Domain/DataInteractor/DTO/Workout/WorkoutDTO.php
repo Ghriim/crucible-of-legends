@@ -17,6 +17,9 @@ final class WorkoutDTO extends AbstractBaseDTO
     /** @var PersistentCollection|ExerciseDTO[] */
     private $exercises;
 
+    /** @var PersistentCollection|ReferenceEquipmentDTO[] */
+    private $equipments;
+
     protected function getDefaultStatus(): string
     {
         return self::STATUS_ACTIVE;
@@ -56,9 +59,34 @@ final class WorkoutDTO extends AbstractBaseDTO
         return $this->exercises;
     }
 
+    /**
+     * @param ExerciseDTO[] $exercises
+     */
     public function setExercises(array $exercises): void
     {
         $this->exercises = $exercises;
+    }
+
+    /**
+     * @return ReferenceEquipmentDTO[]
+     */
+    public function getEquipments(): array
+    {
+        if ($this->equipments instanceof Collection) {
+            $this->lazyLoadProtect($this->equipments);
+
+            return $this->equipments->toArray();
+        }
+
+        return $this->equipments;
+    }
+
+    /**
+     * @param ReferenceEquipmentDTO[] $equipments
+     */
+    public function setEquipments(array $equipments): void
+    {
+        $this->equipments = $equipments;
     }
 
     public function getHighestPosition(): int

@@ -1,0 +1,10 @@
+App\Domain\DataInteractor\DTO\Workout\ReferenceEquipmentDTO:
+    base_reference_equipment (template):
+        createdDate : '<(new DateTime())>'
+        updatedDate : '<(new DateTime())>'
+
+    ref_equipment_{barbell, dumbbell, kettlebell} (extends base_reference_equipment):
+        name: '<current()>'
+
+    ref_equipment_jump_rope (extends base_reference_equipment):
+        name: 'jump rope'
