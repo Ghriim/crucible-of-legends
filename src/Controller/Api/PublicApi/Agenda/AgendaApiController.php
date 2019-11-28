@@ -33,12 +33,12 @@ final class AgendaApiController extends AbstractApiController
 
     public function getOne(
         Request $request,
-        int $agendaId,
+        int $id,
         AgendaGetOneApiUseCase $getOneAgendaApiUseCase
     ): Response
     {
         return $this->buildResponse(
-            $getOneAgendaApiUseCase->execute($agendaId, $request->query->all())
+            $getOneAgendaApiUseCase->execute($id, $request->query->all())
         );
     }
 }

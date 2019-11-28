@@ -8,7 +8,7 @@ import WorkoutDetails from "../views/Workout/WorkoutDetails";
 import WorkoutCreate from "../views/Workout/WorkoutCreate";
 import WorkoutEdit from "../views/Workout/WorkoutEdit";
 import WorkoutList from "../views/Workout/WorkoutList";
-import AgendaList from "../views/Agenda/AgendaList";
+import AgendaDetails from "../views/Agenda/AgendaDetails";
 
 Vue.use(VueRouter);
 
@@ -42,7 +42,7 @@ export default new VueRouter({
         { name: "workoutCreate", path: "/workouts/create", component: WorkoutCreate /*, beforeEnter: requireAuth */},
         { name: "workout", path: "/workouts/:canonicalName", component: WorkoutDetails/*, beforeEnter: requireAuth */, props: true},
         { name: "workoutEdit", path: "/workouts/:canonicalName/edit", component: WorkoutEdit/*, beforeEnter: requireAuth */, props: true},
-        { name: "agenda", path: "/agenda", component: AgendaList/*, beforeEnter: requireAuth*/ },
+        { name: "agenda", path: "/agenda", component: AgendaDetails/*, beforeEnter: requireAuth*/ },
 
         { path: "*", redirect: "/" }
     ]
