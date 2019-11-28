@@ -4,10 +4,12 @@
             <h2>Agenda</h2>
         </div>
 
-        <ul>
-            <li v-for="agenda in agendas">
-                <a href="#" @click.prevent="selectAgenda(agenda.id)">{{ agenda.name }}</a></li>
-        </ul>
+        <div v-if="agendas.length > 1">
+            <ul>
+                <li v-for="agenda in agendas">
+                    <a href="#" @click.prevent="selectAgenda(agenda.id)">{{ agenda.name }}</a></li>
+            </ul>
+        </div>
 
         <div v-if="null !== agenda">
             <div>

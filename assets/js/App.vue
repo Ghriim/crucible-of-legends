@@ -18,6 +18,9 @@
                 <a>Dashboard</a>
               </router-link>
               <router-link :to="{name: 'workouts'}">
+                <a>Agenda</a>
+              </router-link>
+              <router-link :to="{name: 'workouts'}">
                 <a>Workouts</a>
               </router-link>
             </ul>
