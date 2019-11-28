@@ -4,7 +4,7 @@ namespace App\Domain\DataInteractor\DTO\User;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 
-final class UserDTO extends AbstractBaseDTO
+class UserDTO extends AbstractBaseDTO
 {
     private const TYPE_PLAYER = 'player';
     private const TYPE_COACH = 'coach';

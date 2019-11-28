@@ -14,6 +14,10 @@ App\Domain\DataInteractor\DTO\Agenda\AgendaDTO:
             length: 150
             unique: false
             nullable: false
+        isDefault:
+            type: boolean
+            unique: false
+            nullable: false
 
     oneToMany:
         entries:

@@ -11,4 +11,9 @@ App\Domain\DataInteractor\DTO\Agenda\AgendaEntryDTO:
     agenda_ghriim_default_entry_2 (extends base_agenda_entry):
         agenda: "@agenda_ghriim_default"
         workout: "@workout_zeus"
+        programmedDate: "<(new DateTime('+5 days'))>"
+
+    agenda_ghriim_default_entry_3 (extends base_agenda_entry):
+        agenda: "@agenda_ghriim_default"
+        workout: "@workout_zeus"
         programmedDate: "<(new DateTime('+3 days'))>"

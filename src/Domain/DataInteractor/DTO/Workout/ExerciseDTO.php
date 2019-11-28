@@ -4,7 +4,7 @@ namespace App\Domain\DataInteractor\DTO\Workout;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 
-final class ExerciseDTO extends AbstractBaseDTO
+class ExerciseDTO extends AbstractBaseDTO
 {
 
     /** @var int|null in seconds */

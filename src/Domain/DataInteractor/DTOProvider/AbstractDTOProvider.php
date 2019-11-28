@@ -35,7 +35,7 @@ abstract class AbstractDTOProvider
             return null;
         }
 
-        return $this->getRepository()->findOneBy(['id' => $id]);
+        return $this->getRepository()->find($id);
     }
 
     /**

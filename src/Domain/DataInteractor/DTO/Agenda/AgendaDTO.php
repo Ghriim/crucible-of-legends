@@ -14,6 +14,9 @@ class AgendaDTO extends AbstractBaseDTO
     /** @var string */
     private $name = self::NAME_DEFAULT;
 
+    /** @var bool */
+    private $isDefault = false;
+
     /** @var UserDTO */
     private $player;
 
@@ -33,6 +36,16 @@ class AgendaDTO extends AbstractBaseDTO
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function isDefault(): bool
+    {
+        return $this->isDefault;
+    }
+
+    public function setIsDefault(bool $isDefault): void
+    {
+        $this->isDefault = $isDefault;
     }
 
     public function getPlayer(): UserDTO

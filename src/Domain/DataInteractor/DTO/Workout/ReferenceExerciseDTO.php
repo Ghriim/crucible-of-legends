@@ -6,7 +6,7 @@ use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\PersistentCollection;
 
-final class ReferenceExerciseDTO extends AbstractBaseDTO
+class ReferenceExerciseDTO extends AbstractBaseDTO
 {
     /** @var string */
     private $name;

@@ -4,7 +4,7 @@ namespace App\Domain\Vue\Model\PublicApi\Agenda;
 
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 
-final class AgendaGetManyEntryVueModel  extends AbstractBaseVueModel
+final class AgendaGetSingleEntryVueModel  extends AbstractBaseVueModel
 {
     /** @var string */
     public $workoutName;

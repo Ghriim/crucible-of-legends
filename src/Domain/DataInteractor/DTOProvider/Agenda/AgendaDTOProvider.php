@@ -8,6 +8,8 @@ use App\Repository\Agenda\AgendaDTORepository;
 
 /**
  * @method AgendaDTORepository getRepository()
+ * @method ?AgendaDTO loadOneById($id)
+ * @method ?AgendaDTO loadOneByCriteria(array $criteria = [], array $selects = [])
  */
 final class AgendaDTOProvider extends AbstractDTOProvider
 {
@@ -16,7 +18,16 @@ final class AgendaDTOProvider extends AbstractDTOProvider
      */
     public function loadForGetMany(array $criteria): array
     {
-        return $this->getRepository()->findManyByCriteria($criteria, ['entries']);
+        return $this->getRepository()->findManyByCriteria($criteria);
+    }
+
+    public function loadForGetOneOrDefault(?int $identifier): ?AgendaDTO
+    {
+        if (null === $identifier) {
+            return $this->loadOneByCriteria(['isDefault' => true], ['entries']);
+        }
+
+        return $this->loadOneByCriteria(['id' => $identifier], ['entries']);
     }
 
     protected function getEntityClassName(): string

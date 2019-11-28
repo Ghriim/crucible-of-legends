@@ -4,7 +4,7 @@ namespace App\Domain\DataInteractor\DTO\Workout;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 
-final class ReferenceEquipmentDTO extends AbstractBaseDTO
+class ReferenceEquipmentDTO extends AbstractBaseDTO
 {
     /** @var string */
     private $name;

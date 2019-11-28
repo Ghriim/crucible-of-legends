@@ -10,21 +10,21 @@ use App\Domain\Vue\Presenter\PublicApi\Agenda\AgendaGetManyVuePresenter;
 
 final class AgendaGetManyApiUseCase extends AbstractUseCase implements GetManyUseCaseInterface
 {
-    private $dtoProvider;
+    private $agendaDtoProvider;
     private $presenter;
 
     public function __construct(
-        AgendaDTOProvider $dtoProvider,
+        AgendaDTOProvider $agendaDtoProvider,
         AgendaGetManyVuePresenter $presenter
     )
     {
-        $this->dtoProvider = $dtoProvider;
+        $this->agendaDtoProvider = $agendaDtoProvider;
         $this->presenter = $presenter;
     }
 
     public function execute(array $parameters): array
     {
-        $agendas = $this->dtoProvider->loadForGetMany(
+        $agendas = $this->agendaDtoProvider->loadForGetMany(
             $this->computeCriteriaFromCurrentUser($parameters['user'])
         );
 

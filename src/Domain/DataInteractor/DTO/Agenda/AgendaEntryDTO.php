@@ -5,7 +5,7 @@ namespace App\Domain\DataInteractor\DTO\Agenda;
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 
-final class AgendaEntryDTO extends AbstractBaseDTO
+class AgendaEntryDTO extends AbstractBaseDTO
 {
     public const STATUS_PROGRAMMED = 'programmed';
     public const STATUS_OVERDUE = 'overdue';

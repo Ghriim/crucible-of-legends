@@ -5,6 +5,11 @@ App\Domain\DataInteractor\DTO\Agenda\AgendaDTO:
 
     agenda_ghriim_default (extends base_agenda):
         player: "@user_ghriim"
+        isDefault: true
+
+    agenda_ghriim_triathlon (extends base_agenda):
+        name: 'triathlon'
+        player: "@user_ghriim"
 
     agenda_ghriim_charo (extends base_agenda):
         player: "@user_charo"

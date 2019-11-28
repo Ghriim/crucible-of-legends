@@ -4,6 +4,7 @@ namespace App\Controller\Api\PublicApi\Agenda;
 
 use App\Controller\Api\AbstractApiController;
 use App\Domain\UseCase\PublicApi\Agenda\AgendaGetManyApiUseCase;
+use App\Domain\UseCase\PublicApi\Agenda\AgendaGetOneApiUseCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -19,4 +20,25 @@ final class AgendaApiController extends AbstractApiController
         );
     }
 
+
+    public function getDefault(
+        Request $request,
+        AgendaGetOneApiUseCase $getOneAgendaApiUseCase
+    ): Response
+    {
+        return $this->buildResponse(
+            $getOneAgendaApiUseCase->execute(null, $request->query->all())
+        );
+    }
+
+    public function getOne(
+        Request $request,
+        int $agendaId,
+        AgendaGetOneApiUseCase $getOneAgendaApiUseCase
+    ): Response
+    {
+        return $this->buildResponse(
+            $getOneAgendaApiUseCase->execute($agendaId, $request->query->all())
+        );
+    }
 }

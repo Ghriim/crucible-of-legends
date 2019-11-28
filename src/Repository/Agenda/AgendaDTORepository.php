@@ -15,12 +15,14 @@ final class AgendaDTORepository extends AbstractBaseEntityRepository
         return $this->addCriterion($queryBuilder, $this->getAlias(), 'player', $id);
     }
 
+    protected function addCriterionIsDefault(QueryBuilder $queryBuilder, bool $isDefault): bool
+    {
+        return $this->addCriterion($queryBuilder, $this->getAlias(), 'isDefault', $isDefault);
+    }
+
     protected function addSelectEntries(QueryBuilder $queryBuilder): void
     {
-        $queryBuilder->leftJoin($this->getAlias() . '.entries', 'agenda_entry')
-                     ->addSelect('agenda_entry')
-                     ->leftJoin('agenda_entry.workout', 'agenda_entry_workout')
-                     ->addSelect('agenda_entry_workout');
+        $this->addSelect($queryBuilder, $this->getAlias(), 'entries', 'agenda_entry');
     }
 
     public function getAlias(): string
