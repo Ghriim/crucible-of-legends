@@ -8,35 +8,31 @@
       </h1>
       <nav>
         <div class="top-bar">
-          <div class="top-bar-left">
+          <div v-if="true === this.$store.state.isLogged" class="top-bar-left">
             <ul class="menu">
-              <router-link :to="{name: 'home'}">
-                <a>Home</a>
-              </router-link>
-
-              <router-link :to="{name: 'dashboard'}">
-                <a>Dashboard</a>
-              </router-link>
-              <router-link :to="{name: 'workouts'}">
-                <a>Agenda</a>
-              </router-link>
-              <router-link :to="{name: 'workouts'}">
-                <a>Workouts</a>
-              </router-link>
+              <li>
+                  <router-link :to="{name: 'dashboard'}"><a>Dashboard</a></router-link>
+              </li>
+              <li>
+                  <router-link :to="{name: 'agenda'}"><a>Agenda</a></router-link>
+              </li>
+              <li>
+                  <router-link :to="{name: 'workouts'}"><a>Workouts</a></router-link>
+              </li>
             </ul>
           </div>
 
           <div class="top-bar-right">
             <ul class="menu">
-              <router-link :to="{name: 'registration'}">
-                <a>Registration</a>
-              </router-link>
-              <router-link :to="{name: 'login'}">
-                <a>Login</a>
-              </router-link>
-              <router-link :to="{name: 'logout'}">
-                <a>Logout</a>
-              </router-link>
+              <li v-if="false === this.$store.state.isLogged">
+                <router-link :to="{name: 'registration'}"><a>Registration</a></router-link>
+              </li>
+              <li v-if="false === this.$store.state.isLogged">
+                  <router-link :to="{name: 'login'}"><a>Login</a></router-link>
+              </li>
+              <li v-if="true === this.$store.state.isLogged">
+                  <router-link :to="{name: 'logout'}"><a>Logout</a></router-link>
+              </li>
             </ul>
           </div>
         </div>
@@ -52,6 +48,13 @@
 
 <script>
 export default {
-  name: "App",
+    name: "App",
+    data() {
+        return {
+            isLogged: false
+        }
+    },
+    updated() {
+    },
 }
 </script>

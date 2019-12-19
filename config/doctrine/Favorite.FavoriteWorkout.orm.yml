@@ -1,0 +1,29 @@
+App\Domain\DataInteractor\DTO\Favorite\FavoriteWorkout:
+    type: entity
+    repositoryClass: App\Repository\User\UserDTORepository
+    table: "`favorite_workout`"
+    indexes:
+        workout_index:
+            columns: [ workout ]
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        user:
+            targetEntity: App\Domain\DataInteractor\DTO\User\UserDTO
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+                unique: false
+
+        workout:
+            targetEntity: App\Domain\DataInteractor\DTO\Workout\WorkoutDTO
+            joinColumn:
+                name: workout_id
+                referencedColumnName: id
+                nullable: false
+                unique: false
