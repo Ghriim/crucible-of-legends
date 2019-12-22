@@ -1,7 +1,15 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        Domain\DataInteractor\User\UserDTO:
+            algorithm: bcrypt
+            cost:      13
+
     providers:
-        in_memory: { memory: null }
+        user_provider:
+            entity:
+                class: Domain\DataInteractor\User\UserDTO
+                property: email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -9,14 +17,31 @@ security:
         main:
             anonymous: true
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
+        api_login:
+            pattern: /api/login
+            stateless: true
+            anonymous: true
+            form_login:
+                check_path:               /api/login_check
+                username_parameter:       email
+                password_parameter:       password
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+        api_register:
+            pattern: ^/api/users/registration
+            methods: [POST]
+            anonymous: true
+            stateless: true
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+        api_secured_area:
+            provider:  user_provider
+            pattern:   ^/api
+            stateless: true
+            guard:
+                authenticators:
+                    - col_api.jwt_token_authenticator
+
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api, roles: ROLE_USER }
