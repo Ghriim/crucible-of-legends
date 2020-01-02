@@ -4,7 +4,7 @@ App\Domain\DataInteractor\DTO\Favorite\FavoriteWorkout:
     table: "`favorite_workout`"
     indexes:
         workout_index:
-            columns: [ workout ]
+            columns: [ workout_id ]
     id:
         id:
             type: integer

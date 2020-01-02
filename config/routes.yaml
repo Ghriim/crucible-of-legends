@@ -1,3 +1,7 @@
+public_api_login_check:
+    path: /api/login_check
+    methods: ['POST']
+
 public_api:
     resource: 'routes/public_api_routes.yaml'
     prefix: /api
@@ -5,15 +9,19 @@ public_api:
 index_root:
     path: /
     controller: App\Controller\FrontAppController::index
+    methods: ['GET']
 
 index_level_1:
     path: /{level1}
     controller: App\Controller\FrontAppController::index
+    methods: ['GET']
 
 index_level_2:
     path: /{level1}/{level2}
     controller: App\Controller\FrontAppController::index
+    methods: ['GET']
 
 index_level_3:
     path: /{level1}/{level2}/{level3}
     controller: App\Controller\FrontAppController::index
+    methods: ['GET']

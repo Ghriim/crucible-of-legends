@@ -2,7 +2,7 @@ App\Domain\DataInteractor\DTO\User\UserDTO:
     base_user (template):
         createdDate : "<(new DateTime())>"
         updatedDate : "<(new DateTime())>"
-        password: "\\$2y\\$13\\$xuk1duzZe5Xr7swiTrPHMu6ee7dm4dTaTsqbEWZaL5OZI.jzW7e5y" #plain password: test123
+        password: "\\$argon2id\\$v=19\\$m=65536,t=4,p=1\\$CdWWnFthBBRMb+tuYIhy4A\\$709d6zkSfuG8EiJQ3aTiwTlw9pyPjY7dcBq89b0+IOw" #plain password: Test123!
 
     user_ghriim (extends base_user):
         username: ghriim

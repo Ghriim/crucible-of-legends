@@ -18,3 +18,5 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+    col.security.guard.jwt_token_authenticator: '@App\Security\Guard\JWTTokenAuthenticator'

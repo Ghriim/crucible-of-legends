@@ -19,10 +19,15 @@ abstract class AbstractApiController extends AbstractController
         $this->userDTOProvider = $userDTOProvider;
     }
 
-    protected function getCurrentUser(Request $request): UserDTO
+    protected function getCurrentUserId(Request $request): int
     {
         // TODO: Use id from token
-        $user = $this->userDTOProvider->loadOneById(1);
+        return 1;
+    }
+
+    protected function getCurrentUser(Request $request): UserDTO
+    {
+        $user = $this->userDTOProvider->loadOneById($this->getCurrentUserId($request));
         if (null === $user) {
             throw new UserShouldExistException('User is load from JWT Token Id. It should exist !');
         }

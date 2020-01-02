@@ -3,8 +3,9 @@
 namespace App\Domain\DataInteractor\DTO\User;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-class UserDTO extends AbstractBaseDTO
+class UserDTO extends AbstractBaseDTO implements UserInterface
 {
     private const TYPE_PLAYER = 'player';
     private const TYPE_COACH = 'coach';
@@ -80,5 +81,25 @@ class UserDTO extends AbstractBaseDTO
     public function isAnAdmin(): bool
     {
         return self::TYPE_ADMIN === $this->getType();
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_USER'];
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+    /**
+     * @return null|string
+     */
+    public function eraseCredentials(): ?string
+    {
+        return null;
     }
 }

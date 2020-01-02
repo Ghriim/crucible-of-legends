@@ -44,3 +44,14 @@ public_agenda_get_one:
     path: /agendas/{id}
     methods: ['GET']
     controller: App\Controller\Api\PublicApi\Agenda\AgendaApiController::getOne
+
+
+public_user_get_current:
+    path: /users/current
+    methods: ['GET']
+    controller: App\Controller\Api\PublicApi\User\UserApiController::getCurrent
+
+public_user_post:
+    path: /users/registration
+    methods: ['post']
+    controller: App\Controller\Api\PublicApi\User\UserApiController::post

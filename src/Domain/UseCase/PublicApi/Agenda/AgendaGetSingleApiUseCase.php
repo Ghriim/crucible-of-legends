@@ -8,7 +8,7 @@ use App\Domain\UseCase\GetSingleUseCaseInterface;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Presenter\PublicApi\Agenda\AgendaGetOneVuePresenter;
 
-final class AgendaGetOneApiUseCase extends AbstractUseCase implements GetSingleUseCaseInterface
+final class AgendaGetSingleApiUseCase extends AbstractUseCase implements GetSingleUseCaseInterface
 {
 
     private $agendaDtoProvider;
