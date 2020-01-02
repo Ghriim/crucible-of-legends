@@ -19,6 +19,8 @@ final class UserPostVuePresenter extends AbstractVuePresenter implements SingleO
     public function buildSingleObjectVueModel(AbstractBaseDTO $dto): AbstractBaseVueModel
     {
         $model = new UserPostVueModel();
+        $model->id = $dto->getId();
+        $model->username = $dto->getUsername();
         $model->email = $dto->getEmail();
 
         return $model;

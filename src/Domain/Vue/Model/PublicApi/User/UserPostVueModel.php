@@ -7,5 +7,8 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 final class UserPostVueModel extends AbstractBaseVueModel
 {
     /** @var string */
+    public $username;
+
+    /** @var string */
     public $email;
 }
