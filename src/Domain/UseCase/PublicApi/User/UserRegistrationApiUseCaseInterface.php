@@ -7,10 +7,10 @@ use App\Domain\DataInteractor\DTOPersister\User\UserDTOPersister;
 use App\Domain\UseCase\AbstractUseCase;
 use App\Domain\UseCase\PostUseCaseInterface;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
-use App\Domain\Vue\Presenter\PublicApi\User\UserPostVuePresenter;
+use App\Domain\Vue\Presenter\PublicApi\User\UserRegistrationVuePresenter;
 use App\Security\Handler\PasswordHandler;
 
-final class UserPostApiUseCaseInterface extends AbstractUseCase implements PostUseCaseInterface
+final class UserRegistrationApiUseCaseInterface extends AbstractUseCase implements PostUseCaseInterface
 {
     private $userDtoPersister;
     private $presenter;
@@ -19,7 +19,7 @@ final class UserPostApiUseCaseInterface extends AbstractUseCase implements PostU
 
     public function __construct(
         UserDTOPersister $userDtoPersister,
-        UserPostVuePresenter $presenter,
+        UserRegistrationVuePresenter $presenter,
         PasswordHandler $passwordHandler
     )
     {
