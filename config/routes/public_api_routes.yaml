@@ -51,7 +51,7 @@ public_user_get_current:
     methods: ['GET']
     controller: App\Controller\Api\PublicApi\User\UserApiController::getCurrent
 
-public_user_post:
+public_user_registration:
     path: /users/registration
     methods: ['post']
-    controller: App\Controller\Api\PublicApi\User\UserApiController::post
+    controller: App\Controller\Api\PublicApi\User\UserApiController::registration

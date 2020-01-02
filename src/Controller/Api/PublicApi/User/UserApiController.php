@@ -20,7 +20,7 @@ final class UserApiController extends AbstractApiController
         );
     }
 
-    public function post(
+    public function registration(
         Request $request,
         UserRegistrationApiUseCaseInterface $userRegistrationApiUseCase
     ) :Response
