@@ -15,7 +15,7 @@ final class ExerciseApiController extends AbstractApiController
         ExercisePostApiUseCase $exercisePostApiUseCase
     ): Response
     {
-        $exercisePostApiUseCase->execute(json_decode($request->getContent()));
+        $exercisePostApiUseCase->execute((object) $request->request->all());
 
         return $this->buildResponse(null, true);
     }

@@ -26,7 +26,7 @@ final class UserApiController extends AbstractApiController
     ) :Response
     {
         return $this->buildResponse(
-            $userRegistrationApiUseCase->execute(json_decode($request->getContent()))
+            $userRegistrationApiUseCase->execute((object) $request->request->all())
         );
     }
 }

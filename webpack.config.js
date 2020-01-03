@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+var path = require('path');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -35,6 +36,11 @@ Encore
     })
 
     .enableVueLoader()
+
+    .addAliases({
+        '@tools': path.resolve(__dirname, 'assets/js/tools'),
+        '@views': path.resolve(__dirname, 'assets/js/views')
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();

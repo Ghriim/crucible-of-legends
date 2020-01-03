@@ -24,6 +24,11 @@ final class WorkoutDTOProvider extends AbstractDTOProvider
         return $this->getRepository()->findOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
     }
 
+    public function loadForDelete(string $canonicalName): ?WorkoutDTO
+    {
+        return $this->getRepository()->findOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
+    }
+
     public function loadOneWithExercise(string $canonicalName): ?WorkoutDTO
     {
         return $this->getRepository()->findOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);

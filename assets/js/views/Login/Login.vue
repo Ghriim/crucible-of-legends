@@ -7,12 +7,12 @@
         <form @submit.prevent="handleSubmit">
             <div>
                 <label for="email">Email</label>
-                <input id="email" type="text" v-model="email" required />
+                <input id="email" type="text" v-model="login.email" required />
             </div>
 
             <div>
               <label for="password">Password</label>
-              <input id="password" type="password" v-model="password" required />
+              <input id="password" type="password" v-model="login.password" required />
             </div>
 
             <button type="submit">Create</button>
@@ -21,25 +21,36 @@
 </template>
 
 <script>
-export default {
-  name: 'Login',
-  props: {},
-  data() {
-      return {
-          email: null,
-          password: null
-      }
-  },
-  methods: {
-      handleSubmit() {
-          this.$store.commit('loginUser');
+    import apiClient from '@tools/api_client';
 
-          if (this.$route.query.redirect) {
-              this.$router.push(this.$route.query.redirect);
-          } else {
-              this.$router.push({name: 'dashboard'});
+    export default {
+      name: 'Login',
+      props: {},
+      data() {
+          return {
+              login: {
+                  email: null,
+                  password: null
+              },
+              errors: []
+          }
+      },
+      methods: {
+          handleSubmit() {
+              this.$store.commit('loginUser');
+              apiClient.post('/api/login_check', this.login)
+                  .then(response => {
+                  }).catch(error => {
+                      this.errors.push(error);
+                  });
+
+              /*
+              if (this.$route.query.redirect) {
+                  this.$router.push(this.$route.query.redirect);
+              } else {
+                  this.$router.push({name: 'dashboard'});
+              }*/
           }
       }
-  }
-};
+    };
 </script>

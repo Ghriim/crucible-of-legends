@@ -26,7 +26,7 @@ final class ExerciseDeleteApiUseCase extends AbstractUseCase implements DeleteUs
         $this->exerciseDtoPersister = $exerciseDtoPersister;
     }
 
-    public function execute(int $exerciseId, array $parameters): void
+    public function execute($exerciseId, array $parameters = []): void
     {
         $workout = $this->workoutDtoProvider->loadOneWithExercise($parameters['workoutName']);
         if (null === $workout) {
@@ -38,6 +38,6 @@ final class ExerciseDeleteApiUseCase extends AbstractUseCase implements DeleteUs
             throw new NotFoundHttpException('No matching exercise has been found');
         }
 
-        $this->exerciseDtoPersister->deleteFromList($exercise, $workout->getExercises());
+        $this->exerciseDtoPersister->deleteFromWorkout($exercise);
     }
 }

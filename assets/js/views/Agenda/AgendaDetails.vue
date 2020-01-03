@@ -27,6 +27,7 @@
 
 <script>
     import axios from 'axios';
+    import apiClient from '@tools/api_client';
 
     export default {
         name: 'AgendaDetails',
@@ -40,14 +41,14 @@
             };
         },
         created() {
-            axios.get('/api/agendas/default')
+            apiClient.getOne('/api/agendas', 'default')
                 .then(response => {
                     this.agenda = response.data;
                 }).catch(error => {
                     this.errors.push(error);
                 });
 
-            axios.get('/api/agendas')
+            apiClient.getMany('/api/agendas')
                 .then(response => {
                     this.agendas = response.data;
                 }).catch(error => {
@@ -56,7 +57,7 @@
         },
         methods: {
             selectAgenda(agendaId) {
-                axios.get('/api/agendas/' + agendaId)
+                apiClient.getOne('/api/agendas', agendaId)
                     .then(response => {
                         this.agenda = response.data;
                     }).catch(error => {

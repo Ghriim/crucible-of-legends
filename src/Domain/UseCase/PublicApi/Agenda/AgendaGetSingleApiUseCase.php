@@ -23,7 +23,7 @@ final class AgendaGetSingleApiUseCase extends AbstractUseCase implements GetSing
         $this->presenter = $presenter;
     }
 
-    public function execute($identifier, array $parameters): ?AbstractBaseVueModel
+    public function execute($identifier, array $parameters = []): ?AbstractBaseVueModel
     {
         $agenda = $this->agendaDtoProvider->loadForGetOneOrDefault($identifier);
         if (null === $agenda) {

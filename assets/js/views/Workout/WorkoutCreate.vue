@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    import apiClient from '@tools/api_client';
 
     export default {
         name: 'WorkoutCreate',
@@ -25,12 +25,12 @@
         },
         methods: {
             handleSubmit() {
-                axios.post('/api/workouts', this.workout)
+                apiClient.post('/api/workouts', this.workout)
                     .then(response => {
-                        this.$router.push({ name: "workoutUpdate", params: {canonicalName: response.data.canonicalName}});
+                        this.$router.push({ name: "workoutEdit", params: {canonicalName: response.data.canonicalName}});
                     }).catch(error => {
                         this.errors.push(error);
-                    })
+                    });
             }
         }
     }

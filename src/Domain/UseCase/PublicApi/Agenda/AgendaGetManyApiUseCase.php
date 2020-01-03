@@ -22,7 +22,7 @@ final class AgendaGetManyApiUseCase extends AbstractUseCase implements GetManyUs
         $this->presenter = $presenter;
     }
 
-    public function execute(array $parameters): array
+    public function execute(array $parameters = []): array
     {
         $agendas = $this->agendaDtoProvider->loadForGetMany(
             $this->computeCriteriaFromCurrentUser($parameters['user'])

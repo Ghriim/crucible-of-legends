@@ -58,7 +58,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    import apiClient from '@tools/api_client';
 
     export default {
         name: 'WorkoutEdit',
@@ -89,7 +89,7 @@
         methods: {
             handleDelete(exerciseId, index) {
                 this.workout.exercises.splice(index, 1);
-                axios.delete('/api/workouts/' + this.workout.canonicalName + '/exercises/' + exerciseId)
+                apiClient.deleteOne('/api/workouts/' + this.workout.canonicalName + '/exercises/', exerciseId)
                     .then(response => {
                         this.getWorkout(this.workout.canonicalName);
                     }).catch(error => {
@@ -97,19 +97,19 @@
                     })
             },
             getWorkout(canonicalName) {
-                axios.get('/api/workouts/' + canonicalName)
+                apiClient.getOne('/api/workouts', canonicalName)
                     .then(response => {
                         this.workout = response.data;
                     }).catch(error => {
-                    if (404 === error.response.status) {
-                        this.errors.push('No matching workout found');
-                    } else {
-                        this.errors.push('An error has occurred, please try again later.')
-                    }
-                })
+                        if (404 === error.response.status) {
+                            this.errors.push('No matching workout found');
+                        } else {
+                            this.errors.push('An error has occurred, please try again later.')
+                        }
+                    })
             },
             getReferenceExercises(nameLike) {
-                axios.get('/api/references/exercises?nameLike=' + nameLike)
+                apiClient.getMany('/api/references/exercises', {'nameLike': nameLike})
                     .then(response => {
                         this.referenceExercises = response.data;
                     }).catch(error => {
@@ -119,7 +119,7 @@
             handleSubmit() {
                 this.exercise.workoutCanonicalName = this.workout.canonicalName;
 
-                axios.post('/api/workouts/' + this.workout.canonicalName + '/exercises', this.exercise)
+                apiClient.post('/api/workouts/' + this.workout.canonicalName + '/exercises', this.exercise)
                     .then(response => {
                         this.getWorkout(this.workout.canonicalName);
                     }).catch(error => {

@@ -9,5 +9,5 @@ interface GetSingleUseCaseInterface
     /**
      * @param int|string $identifier
      */
-    public function execute($identifier, array $parameters): ?AbstractBaseVueModel;
+    public function execute($identifier, array $parameters = []): ?AbstractBaseVueModel;
 }

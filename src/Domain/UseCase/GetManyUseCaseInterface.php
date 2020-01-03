@@ -9,5 +9,5 @@ interface GetManyUseCaseInterface
     /**
      * @return AbstractBaseVueModel[]
      */
-    public function execute(array $parameters): array;
+    public function execute(array $parameters = []): array;
 }

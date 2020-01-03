@@ -21,12 +21,24 @@ final class ReferenceExerciseGetManyApiUseCase extends AbstractUseCase implement
     /**
      * @return array
      */
-    public function execute(array $parameters): array
+    public function execute(array $parameters = []): array
     {
         $referenceExercises = $this->referenceExerciseDtoProvider->loadForGetMany(
-            ['nameLike' => $parameters['nameLike']]
+            $this->buildSearchParameters($parameters)
         );
 
         return $this->presenter->buildMultipleObjectVueModel($referenceExercises);
+    }
+
+    private function buildSearchParameters(array $parameters): array
+    {
+        $searchParams = [];
+        foreach ($parameters as $key => $value) {
+            if (in_array($key, ['nameLike'])) {
+                $searchParams['nameLike'] = $value;
+            }
+        }
+
+        return $searchParams;
     }
 }

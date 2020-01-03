@@ -3,6 +3,7 @@
 namespace App\Controller\Api\PublicApi\Workout;
 
 use App\Controller\Api\AbstractApiController;
+use App\Domain\UseCase\PublicApi\Workout\WorkoutDeleteApiUseCase;
 use App\Domain\UseCase\PublicApi\Workout\WorkoutGetManyApiUseCase;
 use App\Domain\UseCase\PublicApi\Workout\WorkoutGetSingleApiUseCase;
 use App\Domain\UseCase\PublicApi\Workout\WorkoutPostApiUseCaseInterface;
@@ -38,7 +39,7 @@ final class WorkoutApiController extends AbstractApiController
     ) :Response
     {
         return $this->buildResponse(
-            $postWorkoutApiUseCase->execute(json_decode($request->getContent()))
+            $postWorkoutApiUseCase->execute((object) $request->request->all())
         );
     }
 
@@ -47,8 +48,13 @@ final class WorkoutApiController extends AbstractApiController
         return new Response('OK put!');
     }
 
-    public function delete() :Response
+    public function delete(
+        string $workoutName,
+        WorkoutDeleteApiUseCase $deleteWorkoutApiUseCase
+    ) :Response
     {
-        return new Response('OK delete!');
+        $deleteWorkoutApiUseCase->execute($workoutName);
+
+        return $this->buildResponse(null, true);
     }
 }

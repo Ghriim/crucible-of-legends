@@ -18,7 +18,7 @@ final class WorkoutGetManyApiUseCase extends AbstractUseCase implements GetManyU
         $this->presenter = $presenter;
     }
 
-    public function execute(array $parameters): array
+    public function execute(array $parameters = []): array
     {
         $workouts = $this->dtoProvider->loadForGetMany();
         if (true === empty($workouts)) {

@@ -29,7 +29,7 @@ class UserGetCurrentApiUseCase extends AbstractUseCase implements GetSingleUseCa
      *
      * @return UserGetCurrentVueModel
      */
-    public function execute($identifier, array $parameters): ?AbstractBaseVueModel
+    public function execute($identifier, array $parameters = []): ?AbstractBaseVueModel
     {
         try {
             $user = $this->userDtoProvider->loadForGetCurrent($identifier);

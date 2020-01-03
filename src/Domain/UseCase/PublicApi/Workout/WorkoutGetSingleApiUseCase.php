@@ -28,7 +28,7 @@ final class WorkoutGetSingleApiUseCase extends AbstractUseCase implements GetSin
      *
      * @return WorkoutGetSingleVueModel
      */
-    public function execute($identifier, array $parameters): ?AbstractBaseVueModel
+    public function execute($identifier, array $parameters = []): ?AbstractBaseVueModel
     {
         $workout = $this->workoutDtoProvider->loadForGetOne($identifier);
         if (null === $workout) {

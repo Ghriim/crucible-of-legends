@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    import apiClient from '@tools/api_client';
 
     export default {
         name: 'Workout',
@@ -35,7 +35,7 @@
             };
         },
         mounted() {
-            axios.get('/api/workouts/' + this.$route.params.canonicalName)
+            apiClient.getOne('/api/workouts', this.$route.params.canonicalName)
                 .then(response => {
                     this.workout = response.data;
                 }).catch(error => {

@@ -16,6 +16,11 @@ final class WorkoutDTOPersister extends AbstractDTOPersister
         return $dto;
     }
 
+    public function delete(WorkoutDTO $dto): void
+    {
+        $this->softDelete($dto);
+    }
+
     public function recomputeEquipments(WorkoutDTO $workout): void
     {
         $equipments = [];

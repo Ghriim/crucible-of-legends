@@ -4,5 +4,5 @@ namespace App\Domain\UseCase;
 
 interface DeleteUseCaseInterface
 {
-    public function execute(int $exerciseId, array $parameters): void;
+    public function execute($exerciseId, array $parameters = []): void;
 }
