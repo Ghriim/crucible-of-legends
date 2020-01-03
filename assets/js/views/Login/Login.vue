@@ -22,6 +22,7 @@
 
 <script>
     import apiClient from '@tools/api_client';
+    import store from "@tools/store";
 
     export default {
       name: 'Login',
@@ -35,22 +36,23 @@
               errors: []
           }
       },
-      methods: {
-          handleSubmit() {
-              this.$store.commit('loginUser');
-              apiClient.post('/api/login_check', this.login)
-                  .then(response => {
-                  }).catch(error => {
-                      this.errors.push(error);
-                  });
+        methods: {
+            handleSubmit() {
+                apiClient.post('/api/login_check', this.login)
+                    .then(response => {
+                        store.state.token = response.data.token;
+                        store.commit('loginUser');
+                    }).catch(error => {
+                        this.errors.push(error);
+                    });
 
-              /*
-              if (this.$route.query.redirect) {
-                  this.$router.push(this.$route.query.redirect);
-              } else {
-                  this.$router.push({name: 'dashboard'});
-              }*/
-          }
-      }
+            /*
+            if (this.$route.query.redirect) {
+              this.$router.push(this.$route.query.redirect);
+            } else {
+              this.$router.push({name: 'dashboard'});
+            }*/
+            }
+        }
     };
 </script>

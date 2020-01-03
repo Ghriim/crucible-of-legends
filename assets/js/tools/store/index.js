@@ -5,11 +5,12 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        isLogged: null !== localStorage.getItem('authToken')
+        isLogged: null !== localStorage.getItem('authToken'),
+        token: localStorage.getItem('authToken')
     },
     mutations: {
         loginUser(state) {
-            localStorage.setItem('authToken', 'auth_token');
+            localStorage.setItem('authToken', state.token);
             state.isLogged = true;
         },
         logoutUser(state) {
