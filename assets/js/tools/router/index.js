@@ -50,7 +50,7 @@ export default new VueRouter({
         { name: "login", path: "/login", component: Login, beforeEnter: isAlreadyLogged },
         { name: "logout", path: "/logout", beforeEnter: logout },
         { name: "dashboard", path: "/dashboard", component: Dashboard, beforeEnter: requireAuth },
-        { name: "workouts", path: "/workouts", component: WorkoutList },
+        { name: "workouts", path: "/workouts", component: WorkoutList, beforeEnter: requireAuth },
         { name: "workoutCreate", path: "/workouts/create", component: WorkoutCreate, beforeEnter: requireAuth },
         { name: "workout", path: "/workouts/:canonicalName", component: WorkoutDetails, beforeEnter: requireAuth , props: true},
         { name: "workoutEdit", path: "/workouts/:canonicalName/edit", component: WorkoutEdit, beforeEnter: requireAuth , props: true},
