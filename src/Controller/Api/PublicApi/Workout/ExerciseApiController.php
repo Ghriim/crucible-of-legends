@@ -22,11 +22,11 @@ final class ExerciseApiController extends AbstractApiController
 
     public function delete(
         string $workoutName,
-        int $exerciseId,
+        int $id,
         ExerciseDeleteApiUseCase $deleteExerciseApiUseCase
     ): Response
     {
-        $deleteExerciseApiUseCase->execute($exerciseId, ['workoutName' => $workoutName]);
+        $deleteExerciseApiUseCase->execute($id, ['workoutName' => $workoutName]);
 
         return $this->buildResponse(null, true);
     }

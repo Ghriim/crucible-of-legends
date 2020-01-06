@@ -1,0 +1,41 @@
+App\Domain\DataInteractor\DTO\Statistic\WeightDTO:
+    base_weight (template):
+        createdDate : "<(new DateTime('4 weeks ago'))>"
+        updatedDate : "<(new DateTime('4 weeks ago'))>"
+
+    weight_ghriim_1 (extends base_weight):
+        totalWeight: 78.6
+        user: "@user_ghriim"
+        createdDate : "<(new DateTime('3 weeks ago'))>"
+        updatedDate : "<(new DateTime('3 weeks ago'))>"
+
+    weight_ghriim_2 (extends base_weight):
+        totalWeight: 79.1
+        bodyMassIndex: 23.6
+        user: "@user_ghriim"
+        createdDate : "<(new DateTime('2 weeks ago'))>"
+        updatedDate : "<(new DateTime('2 weeks ago'))>"
+
+    weight_ghriim_3 (extends base_weight):
+        totalWeight: 79.3
+        bodyMassIndex: 23.7
+        bodyFatPercent: 22.1
+        user: "@user_ghriim"
+        createdDate : "<(new DateTime('1 weeks ago'))>"
+        updatedDate : "<(new DateTime('1 weeks ago'))>"
+
+    weight_ghriim_4 (extends base_weight):
+        totalWeight: 79.0
+        bodyMassIndex: 23.6
+        bodyFatPercent: 22.0
+        user: "@user_ghriim"
+        createdDate : "<(new DateTime('3 days ago'))>"
+        updatedDate : "<(new DateTime('3 days ago'))>"
+
+    weight_ghriim_5 (extends base_weight):
+        totalWeight: 78.8
+        bodyMassIndex: 23.6
+        bodyFatPercent: 21.8
+        user: "@user_ghriim"
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"

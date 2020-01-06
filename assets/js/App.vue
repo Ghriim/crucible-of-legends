@@ -19,6 +19,9 @@
               <li>
                   <router-link :to="{name: 'workouts'}"><a>Workouts</a></router-link>
               </li>
+              <li>
+                  <router-link :to="{name: 'statistics'}"><a>Statistics</a></router-link>
+              </li>
             </ul>
           </div>
 

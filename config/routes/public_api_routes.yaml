@@ -1,62 +1,14 @@
-public_workout_get_many:
-    path: /workouts
-    methods: ['GET']
-    controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::getMany
+public_api_agenda:
+    resource: 'public_api/public_api_agenda_routes.yaml'
 
-public_workout_get_single:
-    path: /workouts/{workoutName}
-    methods: ['GET']
-    controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::getSingle
+public_api_reference:
+    resource: 'public_api/public_api_reference_routes.yaml'
 
-public_workout_post:
-    path: /workouts
-    methods: ['POST']
-    controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::post
+public_api_statistic:
+    resource: 'public_api/public_api_statistic_routes.yaml'
 
-public_workout_delete:
-    path: /workouts/{workoutName}
-    methods: ['DELETE']
-    controller: App\Controller\Api\PublicApi\Workout\WorkoutApiController::delete
+public_api_user:
+    resource: 'public_api/public_api_user_routes.yaml'
 
-
-public_workout_exercise_post:
-    path: /workouts/{workoutName}/exercises
-    methods: ['POST']
-    controller: App\Controller\Api\PublicApi\Workout\ExerciseApiController::post
-
-public_workout_exercise_delete:
-    path: /workouts/{workoutName}/exercises/{exerciseId}
-    methods: ['DELETE']
-    controller: App\Controller\Api\PublicApi\Workout\ExerciseApiController::delete
-
-
-public_reference_exercise_get_many:
-    path: /references/exercises
-    methods: ['GET']
-    controller: App\Controller\Api\PublicApi\Workout\ReferenceExerciseApiController::getMany
-
-public_agenda_get_many:
-    path: /agendas
-    methods: ['GET']
-    controller: App\Controller\Api\PublicApi\Agenda\AgendaApiController::getMany
-
-public_agenda_get_default:
-    path: /agendas/default
-    methods: ['GET']
-    controller: App\Controller\Api\PublicApi\Agenda\AgendaApiController::getDefault
-
-public_agenda_get_signle:
-    path: /agendas/{id}
-    methods: ['GET']
-    controller: App\Controller\Api\PublicApi\Agenda\AgendaApiController::getSingle
-
-
-public_user_get_current:
-    path: /users/current
-    methods: ['GET']
-    controller: App\Controller\Api\PublicApi\User\UserApiController::getCurrent
-
-public_user_registration:
-    path: /users/registration
-    methods: ['post']
-    controller: App\Controller\Api\PublicApi\User\UserApiController::registration
+public_api_workout:
+    resource: 'public_api/public_api_workout_routes.yaml'

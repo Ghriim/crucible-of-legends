@@ -10,6 +10,7 @@ import WorkoutCreate from "@views/Workout/WorkoutCreate";
 import WorkoutEdit from "@views/Workout/WorkoutEdit";
 import WorkoutList from "@views/Workout/WorkoutList";
 import AgendaDetails from "@views/Agenda/AgendaDetails";
+import StatisticsOverview from "@views/Statistics/StatisticsOverview";
 
 Vue.use(VueRouter);
 
@@ -55,6 +56,7 @@ export default new VueRouter({
         { name: "workout", path: "/workouts/:canonicalName", component: WorkoutDetails, beforeEnter: requireAuth , props: true},
         { name: "workoutEdit", path: "/workouts/:canonicalName/edit", component: WorkoutEdit, beforeEnter: requireAuth , props: true},
         { name: "agenda", path: "/agenda", component: AgendaDetails, beforeEnter: requireAuth },
+        { name: "statistics", path: "/statistics", component: StatisticsOverview, beforeEnter: requireAuth },
 
         { path: "*", redirect: "/" }
     ]

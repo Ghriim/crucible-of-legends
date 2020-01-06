@@ -1,0 +1,16 @@
+public_statistic_weight_get_many:
+    path: /statistics/weights
+    methods: ['GET']
+    controller: App\Controller\Api\PublicApi\Statistic\WeightApiController::getMany
+
+public_statistic_weight_get_default:
+    path: /statistics/weights/default
+    methods: ['GET']
+    controller: App\Controller\Api\PublicApi\Statistic\WeightApiController::getDefault
+
+public_statistic_weight_get_single:
+    path: /statistics/weights/{id}
+    requirements:
+        id: '\d+'
+    methods: ['GET']
+    controller: App\Controller\Api\PublicApi\Statistic\WeightApiController::getMany

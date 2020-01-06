@@ -41,8 +41,8 @@ final class AgendaGetOneVuePresenter extends AbstractVuePresenter implements Sin
             $entryForVueModel->id = $entry->getId();
             $entryForVueModel->workoutName = $entry->getWorkout()->getName();
             $entryForVueModel->workoutCanonicalName = $entry->getWorkout()->getName();
-            $entryForVueModel->programmedDate = $this->dateTimeToString($entry->getProgrammedDate());
-            $entryForVueModel->completedDate = $this->dateTimeToString($entry->getCompletedDate());
+            $entryForVueModel->programmedDate = $this->dateTimeString($entry->getProgrammedDate());
+            $entryForVueModel->completedDate = $this->dateTimeString($entry->getCompletedDate());
 
             $entryForVueModels[] = $entryForVueModel;
         }
