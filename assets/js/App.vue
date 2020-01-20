@@ -21,6 +21,14 @@
               </li>
               <li>
                   <router-link :to="{name: 'statistics'}"><a>Statistics</a></router-link>
+                  <ul>
+                    <li>
+                      <router-link :to="{name: 'weightHistory'}"><a>Weight History</a></router-link>
+                    </li>
+                    <li>
+                      <router-link :to="{name: 'measurementHistory'}"><a>Measurement History</a></router-link>
+                    </li>
+                  </ul>
               </li>
             </ul>
           </div>

@@ -7,6 +7,20 @@ function getAuthHeaders() {
     return 'Bearer ' + store.state.token;
 }
 
+function handleCommonApiError(response) {
+    if (401 === response.status) {
+        store.commit('logoutUser');
+    }
+
+    if (403 === response.status) {
+        window.alert('With great powers come great responsibilities ! (You do not have the rights to realize this action)');
+    }
+
+    if (500 <= response.status && 600 > response.status) {
+        window.alert('Error 5**. What to do ?');
+    }
+}
+
 function urlEncodeParameters(parametersBag) {
     if (null === parametersBag) {
         return "";
@@ -44,9 +58,7 @@ function getOne(url, id, params) {
 function getMany(url, params) {
     return axios.get(buildUrl(url, params), { headers: { 'Authorization': getAuthHeaders() } })
         .catch(error => {
-            if (401 === error.response.status) {
-                store.commit('logoutUser');
-            }
+            handleCommonApiError(error.response);
         });
 }
 

@@ -11,6 +11,8 @@ import WorkoutEdit from "@views/Workout/WorkoutEdit";
 import WorkoutList from "@views/Workout/WorkoutList";
 import AgendaDetails from "@views/Agenda/AgendaDetails";
 import StatisticsOverview from "@views/Statistics/StatisticsOverview";
+import WeightHistory from "@views/Statistics/WeightHistory";
+import MeasurementHistory from "@views/Statistics/MeasurementHistory";
 
 Vue.use(VueRouter);
 
@@ -57,6 +59,8 @@ export default new VueRouter({
         { name: "workoutEdit", path: "/workouts/:canonicalName/edit", component: WorkoutEdit, beforeEnter: requireAuth , props: true},
         { name: "agenda", path: "/agenda", component: AgendaDetails, beforeEnter: requireAuth },
         { name: "statistics", path: "/statistics", component: StatisticsOverview, beforeEnter: requireAuth },
+        { name: "weightHistory", path: "/statistics/weights", component: WeightHistory, beforeEnter: requireAuth },
+        { name: "measurementHistory", path: "/statistics/measurements", component: MeasurementHistory, beforeEnter: requireAuth },
 
         { path: "*", redirect: "/" }
     ]
