@@ -42,7 +42,12 @@ function getOne(url, id, params) {
 }
 
 function getMany(url, params) {
-    return axios.get(buildUrl(url, params), { headers: { 'Authorization': getAuthHeaders() } });
+    return axios.get(buildUrl(url, params), { headers: { 'Authorization': getAuthHeaders() } })
+        .catch(error => {
+            if (401 === error.response.status) {
+                store.commit('logoutUser');
+            }
+        });
 }
 
 function post(url, objectToPost) {

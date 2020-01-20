@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import router from "@tools/router";
 
 Vue.use(Vuex);
 
@@ -16,6 +17,8 @@ const store = new Vuex.Store({
         logoutUser(state) {
             localStorage.removeItem('authToken');
             state.isLogged = false;
+
+            router.push({name: 'login'});
         }
     }
 });

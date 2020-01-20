@@ -6,13 +6,13 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 
 final class WeightGetManyVueModel extends AbstractBaseVueModel
 {
-    /** @var float */
+    /** @var float|null */
     public $totalWeight;
 
-    /** @var float */
+    /** @var float|null */
     public $bodyFatPercent;
 
-    /** @var float */
+    /** @var float|null */
     public $bodyMassIndex;
 
     /** @var string */

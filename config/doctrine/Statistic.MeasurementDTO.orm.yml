@@ -1,0 +1,40 @@
+App\Domain\DataInteractor\DTO\Statistic\MeasurementDTO:
+    type: entity
+    repositoryClass: App\Repository\Statistic\MeasurementDTORepository
+    table: "`measurement`"
+    indexes:
+        user_index:
+            columns: [ user_id ]
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        biceps:
+            type: integer
+            unique: false
+            nullable: true
+        chest:
+            type: integer
+            unique: false
+            nullable: true
+        waist:
+            type: integer
+            unique: false
+            nullable: true
+        thigh:
+            type: integer
+            unique: false
+            nullable: true
+
+    manyToOne:
+        user:
+            targetEntity: App\Domain\DataInteractor\DTO\User\UserDTO
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+                unique: false
+

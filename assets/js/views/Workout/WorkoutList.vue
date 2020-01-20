@@ -39,7 +39,7 @@
                 errors: []
             };
         },
-        created() {
+        mounted() {
             apiClient.getMany('/api/workouts')
                 .then(response => {
                     this.workouts = response.data;

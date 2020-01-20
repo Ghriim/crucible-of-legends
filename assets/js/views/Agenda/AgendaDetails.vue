@@ -40,7 +40,7 @@
                 errors: []
             };
         },
-        created() {
+        mounted() {
             apiClient.getOne('/api/agendas', 'default')
                 .then(response => {
                     this.agenda = response.data;

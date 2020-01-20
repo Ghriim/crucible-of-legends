@@ -7,13 +7,13 @@ use App\Domain\DataInteractor\DTO\User\UserDTO;
 
 class WeightDTO extends AbstractBaseDTO
 {
-    /** @var float */
+    /** @var float in kilogrammes */
     private $totalWeight;
 
     /** @var float|null */
     private $bodyMassIndex;
 
-    /** @var float|null */
+    /** @var float|null in percent */
     private $bodyFatPercent;
 
     /** @var UserDTO */
