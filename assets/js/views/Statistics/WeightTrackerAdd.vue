@@ -23,7 +23,7 @@
     import apiClient from '@tools/api_client';
 
     export default {
-        name: 'WeighHistoryCreate',
+        name: 'WeighTrackerAdd',
         data() {
             return {
                 weight: {
@@ -38,7 +38,7 @@
             handleSubmit() {
                 apiClient.post('/api/statistics/weights', this.weight)
                     .then(response => {
-                        this.$router.push({ name: "weightHistory"});
+                        this.$router.push({ name: "weightTracker"});
                     }).catch(error => {
                         this.errors.push(error);
                     });

@@ -23,10 +23,10 @@
                   <router-link :to="{name: 'statistics'}"><a>Statistics</a></router-link>
                   <ul>
                     <li>
-                      <router-link :to="{name: 'weightHistory'}"><a>Weight History</a></router-link>
+                      <router-link :to="{name: 'weightTracker'}"><a>Weight Tracker</a></router-link>
                     </li>
                     <li>
-                      <router-link :to="{name: 'measurementHistory'}"><a>Measurement History</a></router-link>
+                      <router-link :to="{name: 'measurementTracker'}"><a>Measurement Tracker</a></router-link>
                     </li>
                   </ul>
               </li>

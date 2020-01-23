@@ -2,37 +2,37 @@
     <div>
         <h3>Measurements Tracker</h3>
         <div>
-            <router-link :to="{name: 'measurementHistoryCreate'}"><a>Add measurements entry</a></router-link>
+            <router-link :to="{name: 'measurementTrackerAdd'}"><a>Add measurements entry</a></router-link>
         </div>
         <section>
-            <div v-if="[] !== bicepsHistory">
+            <div v-if="[] !== bicepsTracker">
                 <h4>Biceps</h4>
                 <ul>
-                    <li v-for="biceps in bicepsHistory" v-if="null !== biceps.value">
+                    <li v-for="biceps in bicepsTracker" v-if="null !== biceps.value">
                         {{ biceps.date }} - {{ biceps.value }}
                     </li>
                 </ul>
             </div>
-            <div v-if="[] !== bicepsHistory">
+            <div v-if="[] !== bicepsTracker">
                 <h4>Chest</h4>
                 <ul>
-                    <li v-for="chest in chestHistory" v-if="null !== chest.value">
+                    <li v-for="chest in chestTracker" v-if="null !== chest.value">
                         {{ chest.date }} - {{ chest.value }}
                     </li>
                 </ul>
             </div>
-            <div v-if="[] !== waistHistory">
+            <div v-if="[] !== waistTracker">
                 <h4>Waist</h4>
                 <ul>
-                    <li v-for="waist in waistHistory" v-if="null !== waist.value">
+                    <li v-for="waist in waistTracker" v-if="null !== waist.value">
                         {{ waist.date }} - {{ waist.value }}
                     </li>
                 </ul>
             </div>
-            <div v-if="[] !== thighHistory">
+            <div v-if="[] !== thighTracker">
                 <h4>Thigh</h4>
                 <ul>
-                    <li v-for="thigh in thighHistory" v-if="null !== thigh.value">
+                    <li v-for="thigh in thighTracker" v-if="null !== thigh.value">
                         {{ thigh.date }} - {{ thigh.value }}
                     </li>
                 </ul>
@@ -45,16 +45,16 @@
     import apiClient from '@tools/api_client';
 
     export default {
-        name: 'MeasurementHistory',
+        name: 'MeasurementTracker',
         props: {
 
         },
         data() {
             return {
-                bicepsHistory: [],
-                chestHistory: [],
-                waistHistory: [],
-                thighHistory: [],
+                bicepsTracker: [],
+                chestTracker: [],
+                waistTracker: [],
+                thighTracker: [],
                 errors: []
             };
         },
@@ -62,10 +62,10 @@
             apiClient.getMany('/api/statistics/measurements')
                 .then(response => {
                     response.data.forEach(element => {
-                        this.bicepsHistory.push({date: element.createdDate, value: element.biceps});
-                        this.chestHistory.push({date: element.createdDate, value: element.chest});
-                        this.waistHistory.push({date: element.createdDate, value: element.waist});
-                        this.thighHistory.push({date: element.createdDate, value: element.thigh});
+                        this.bicepsTracker.push({date: element.createdDate, value: element.biceps});
+                        this.chestTracker.push({date: element.createdDate, value: element.chest});
+                        this.waistTracker.push({date: element.createdDate, value: element.waist});
+                        this.thighTracker.push({date: element.createdDate, value: element.thigh});
                     });
                 }).catch(error => {
                 this.errors.push(error);

@@ -11,10 +11,10 @@ import WorkoutEdit from "@views/Workout/WorkoutEdit";
 import WorkoutList from "@views/Workout/WorkoutList";
 import AgendaDetails from "@views/Agenda/AgendaDetails";
 import StatisticsOverview from "@views/Statistics/StatisticsOverview";
-import WeightHistory from "@views/Statistics/WeightHistory";
-import WeightHistoryCreate from "@views/Statistics/WeightHistoryCreate";
-import MeasurementHistory from "@views/Statistics/MeasurementHistory";
-import MeasurementHistoryCreate from "@views/Statistics/MeasurementHistoryCreate";
+import WeightTracker from "@views/Statistics/WeightTracker";
+import WeightTrackerAdd from "@views/Statistics/WeightTrackerAdd";
+import MeasurementTracker from "@views/Statistics/MeasurementTracker";
+import MeasurementTrackerAdd from "@views/Statistics/MeasurementTrackerAdd";
 
 Vue.use(VueRouter);
 
@@ -61,10 +61,10 @@ export default new VueRouter({
         { name: "workoutEdit", path: "/workouts/:canonicalName/edit", component: WorkoutEdit, beforeEnter: requireAuth , props: true},
         { name: "agenda", path: "/agenda", component: AgendaDetails, beforeEnter: requireAuth },
         { name: "statistics", path: "/statistics", component: StatisticsOverview, beforeEnter: requireAuth },
-        { name: "weightHistory", path: "/statistics/weights", component: WeightHistory, beforeEnter: requireAuth },
-        { name: "weightHistoryCreate", path: "/statistics/weights/add", component: WeightHistoryCreate, beforeEnter: requireAuth },
-        { name: "measurementHistory", path: "/statistics/measurements", component: MeasurementHistory, beforeEnter: requireAuth },
-        { name: "measurementHistoryCreate", path: "/statistics/measurements/add", component: MeasurementHistoryCreate, beforeEnter: requireAuth },
+        { name: "weightTracker", path: "/statistics/weights", component: WeightTracker, beforeEnter: requireAuth },
+        { name: "weightTrackerAdd", path: "/statistics/weights/add", component: WeightTrackerAdd, beforeEnter: requireAuth },
+        { name: "measurementTracker", path: "/statistics/measurements", component: MeasurementTracker, beforeEnter: requireAuth },
+        { name: "measurementTrackerAdd", path: "/statistics/measurements/add", component: MeasurementTrackerAdd, beforeEnter: requireAuth },
 
         { path: "*", redirect: "/" }
     ]

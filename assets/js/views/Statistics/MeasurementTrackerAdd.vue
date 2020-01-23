@@ -27,7 +27,7 @@
     import apiClient from '@tools/api_client';
 
     export default {
-        name: 'MeasurementHistoryCreate',
+        name: 'MeasurementTrackerCreate',
         data() {
             return {
                 measurement: {
@@ -43,7 +43,7 @@
             handleSubmit() {
                 apiClient.post('/api/statistics/measurements', this.measurement)
                     .then(response => {
-                        this.$router.push({ name: "measurementHistory"});
+                        this.$router.push({ name: "measurementTracker"});
                     }).catch(error => {
                         this.errors.push(error);
                     });
