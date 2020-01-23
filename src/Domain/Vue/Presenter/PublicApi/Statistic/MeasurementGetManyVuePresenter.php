@@ -20,10 +20,10 @@ final class MeasurementGetManyVuePresenter extends AbstractVuePresenter implemen
         foreach ($dtos as $dto) {
             $model = new MeasurementGetManyVueModel();
             $model->id = $dto->getId();
-            $model->biceps = $dto->getBiceps();
-            $model->chest = $dto->getChest();
-            $model->waist = $dto->getWaist();
-            $model->thigh = $dto->getThigh();
+            $model->biceps = $this->getDisplayInCm($dto->getBiceps());
+            $model->chest = $this->getDisplayInCm($dto->getChest());
+            $model->waist = $this->getDisplayInCm($dto->getWaist());
+            $model->thigh = $this->getDisplayInCm($dto->getThigh());
             $model->createdDate = $this->dateString($dto->getCreatedDate());
 
             $models[] = $model;

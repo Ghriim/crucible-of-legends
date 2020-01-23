@@ -6,16 +6,16 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 
 final class MeasurementGetManyVueModel extends AbstractBaseVueModel
 {
-    /** @var int|null */
+    /** @var string|null */
     public $biceps;
 
-    /** @var int|null */
+    /** @var string|null */
     public $chest;
 
-    /** @var int|null */
+    /** @var string|null */
     public $waist;
 
-    /** @var int|null */
+    /** @var string|null */
     public $thigh;
 
     /** @var string */

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Weight</h3>
+        <h3>Weight Tracker</h3>
         <div>
             <router-link :to="{name: 'weightHistoryCreate'}"><a>Add weight entry</a></router-link>
         </div>
@@ -9,7 +9,7 @@
                 <h4>Total weight</h4>
                 <ul>
                     <li v-for="totalWeight in weightHistory">
-                        {{ totalWeight.date }} - {{ totalWeight.value }} kg
+                        {{ totalWeight.date }} - {{ totalWeight.value }}
                     </li>
                 </ul>
             </div>
@@ -27,7 +27,7 @@
                 <h4>Body Far Percent</h4>
                 <ul>
                     <li v-for="bodyFatPercent in bodyFatPercentHistory" v-if="null !== bodyFatPercent.value">
-                        {{ bodyFatPercent.date }} - {{ bodyFatPercent.value }}%
+                        {{ bodyFatPercent.date }} - {{ bodyFatPercent.value }}
                     </li>
                 </ul>
             </div>

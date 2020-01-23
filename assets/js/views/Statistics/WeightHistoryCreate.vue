@@ -38,9 +38,8 @@
             handleSubmit() {
                 apiClient.post('/api/statistics/weights', this.weight)
                     .then(response => {
-                        console.log(response);
+                        this.$router.push({ name: "weightHistory"});
                     }).catch(error => {
-                        console.log(error);
                         this.errors.push(error);
                     });
             }

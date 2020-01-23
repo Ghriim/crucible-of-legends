@@ -20,9 +20,9 @@ final class WeightGetManyVuePresenter extends AbstractVuePresenter implements Mu
         foreach ($dtos as $dto) {
             $model = new WeightGetManyVueModel();
             $model->id = $dto->getId();
-            $model->totalWeight = $dto->getTotalWeight();
-            $model->bodyMassIndex = $dto->getBodyMassIndex();
-            $model->bodyFatPercent = $dto->getBodyFatPercent();
+            $model->totalWeight = $this->getDisplayInKg($dto->getTotalWeight());
+            $model->bodyMassIndex = $this->getDisplayFloat($dto->getBodyMassIndex());
+            $model->bodyFatPercent = $this->getDisplayInPercent($dto->getBodyFatPercent());
             $model->createdDate = $this->dateString($dto->getCreatedDate());
 
             $models[] = $model;

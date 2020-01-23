@@ -1,12 +1,15 @@
 <template>
     <div>
-        <h3>Measurements</h3>
+        <h3>Measurements Tracker</h3>
+        <div>
+            <router-link :to="{name: 'measurementHistoryCreate'}"><a>Add measurements entry</a></router-link>
+        </div>
         <section>
             <div v-if="[] !== bicepsHistory">
                 <h4>Biceps</h4>
                 <ul>
                     <li v-for="biceps in bicepsHistory" v-if="null !== biceps.value">
-                        {{ biceps.date }} - {{ biceps.value }} mm
+                        {{ biceps.date }} - {{ biceps.value }}
                     </li>
                 </ul>
             </div>
@@ -14,7 +17,7 @@
                 <h4>Chest</h4>
                 <ul>
                     <li v-for="chest in chestHistory" v-if="null !== chest.value">
-                        {{ chest.date }} - {{ chest.value }} mm
+                        {{ chest.date }} - {{ chest.value }}
                     </li>
                 </ul>
             </div>
@@ -22,7 +25,7 @@
                 <h4>Waist</h4>
                 <ul>
                     <li v-for="waist in waistHistory" v-if="null !== waist.value">
-                        {{ waist.date }} - {{ waist.value }} mm
+                        {{ waist.date }} - {{ waist.value }}
                     </li>
                 </ul>
             </div>
@@ -30,7 +33,7 @@
                 <h4>Thigh</h4>
                 <ul>
                     <li v-for="thigh in thighHistory" v-if="null !== thigh.value">
-                        {{ thigh.date }} - {{ thigh.value }} mm
+                        {{ thigh.date }} - {{ thigh.value }}
                     </li>
                 </ul>
             </div>

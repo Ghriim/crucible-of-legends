@@ -4,39 +4,39 @@ App\Domain\DataInteractor\DTO\Statistic\MeasurementDTO:
         updatedDate : "<(new DateTime('4 weeks ago'))>"
 
     measurement_ghriim_1 (extends base_measurement):
-        biceps: 331
-        chest: 1110
+        biceps: 33100
+        chest: 111000
         user: "@user_ghriim"
         createdDate : "<(new DateTime('3 weeks ago'))>"
         updatedDate : "<(new DateTime('3 weeks ago'))>"
 
     measurement_ghriim_2 (extends base_measurement):
-        biceps: 334
-        chest: 1116
-        waist: 1021
+        biceps: 33400
+        chest: 111600
+        waist: 102100
         user: "@user_ghriim"
         createdDate : "<(new DateTime('2 weeks ago'))>"
         updatedDate : "<(new DateTime('2 weeks ago'))>"
 
     measurement_ghriim_3 (extends base_measurement):
-        biceps: 333
-        chest: 1117
-        waist: 1020
-        thigh: 764
+        biceps: 33300
+        chest: 111700
+        waist: 102000
+        thigh: 76400
         user: "@user_ghriim"
         createdDate : "<(new DateTime('1 weeks ago'))>"
         updatedDate : "<(new DateTime('1 weeks ago'))>"
 
     measurement_ghriim_4 (extends base_measurement):
-        biceps: 333
-        waist: 1118
-        thigh: 766
+        biceps: 33300
+        waist: 111800
+        thigh: 76600
         user: "@user_ghriim"
         createdDate : "<(new DateTime('3 days ago'))>"
         updatedDate : "<(new DateTime('3 days ago'))>"
 
     measurement_ghriim_5 (extends base_measurement):
-        biceps: 336
+        biceps: 33600
         user: "@user_ghriim"
         createdDate : "<(new DateTime())>"
         updatedDate : "<(new DateTime())>"

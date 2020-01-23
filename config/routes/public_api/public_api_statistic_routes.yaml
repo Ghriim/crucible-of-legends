@@ -37,3 +37,8 @@ public_statistic_measurement_get_single:
         id: '\d+'
     methods: ['GET']
     controller: App\Controller\Api\PublicApi\Statistic\MeasurementApiController::getSingle
+
+public_statistic_measurement_post:
+    path: /statistics/measurements
+    methods: ['POST']
+    controller: App\Controller\Api\PublicApi\Statistic\MeasurementApiController::post

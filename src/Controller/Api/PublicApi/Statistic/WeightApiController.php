@@ -17,8 +17,14 @@ final class WeightApiController extends AbstractApiController
         WeightGetManyApiUseCase $getManyWeightApiUseCase
     ): Response
     {
+        try {
+            $user = $this->getCurrentUser($request);
+        } catch (UserShouldExistException $exception) {
+            return $this->currentUserWasNotFound();
+        }
+
         return $this->buildResponse(
-            $getManyWeightApiUseCase->execute(['user' => $this->getCurrentUser($request)])
+            $getManyWeightApiUseCase->execute(['user' => $user])
         );
     }
 

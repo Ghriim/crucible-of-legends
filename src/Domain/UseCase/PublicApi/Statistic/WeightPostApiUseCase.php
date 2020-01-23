@@ -4,19 +4,17 @@ namespace App\Domain\UseCase\PublicApi\Statistic;
 
 use App\Domain\DataInteractor\DTO\Statistic\WeightDTO;
 use App\Domain\DataInteractor\DTOPersister\Statistic\WeightDTOPersister;
-use App\Domain\DataInteractor\DTOProvider\User\UserDTOProvider;
 use App\Domain\UseCase\AbstractUseCase;
 use App\Domain\UseCase\PostUseCaseInterface;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Presenter\PublicApi\Statistic\WeightPostVuePresenter;
 
-class WeightPostApiUseCase extends AbstractUseCase implements PostUseCaseInterface
+final class WeightPostApiUseCase extends AbstractUseCase implements PostUseCaseInterface
 {
     private $weightDtoPersister;
     private $presenter;
 
     public function __construct(
-        UserDTOProvider $userDtoProvider,
         WeightDTOPersister $weightDtoPersister,
         WeightPostVuePresenter $presenter
     )
@@ -29,7 +27,7 @@ class WeightPostApiUseCase extends AbstractUseCase implements PostUseCaseInterfa
     {
         $weight = new WeightDTO();
         $weight->setUser($parameters['user']);
-        $weight->setTotalWeight($this->toFloatOrNull($jsonObject->totalWeight));
+        $weight->setTotalWeight(((int) $jsonObject->totalWeight) * 1000);
         $weight->setBodyMassIndex($this->toFloatOrNull($jsonObject->bodyMassIndex));
         $weight->setBodyFatPercent($this->toFloatOrNull($jsonObject->bodyFatPercent));
 

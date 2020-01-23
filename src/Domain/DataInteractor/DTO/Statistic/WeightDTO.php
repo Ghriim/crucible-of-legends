@@ -7,7 +7,7 @@ use App\Domain\DataInteractor\DTO\User\UserDTO;
 
 class WeightDTO extends AbstractBaseDTO
 {
-    /** @var float in kilogrammes */
+    /** @var float in grammes */
     private $totalWeight;
 
     /** @var float|null */
