@@ -44,6 +44,11 @@ abstract class AbstractApiController extends AbstractController
         return $this->toJSON($data);
     }
 
+    protected function currentUserWasNotFound(): JsonResponse
+    {
+        return new JsonResponse('', Response::HTTP_UNAUTHORIZED);
+    }
+
     private function toJSON($data): JsonResponse
     {
         if (null === $data) {

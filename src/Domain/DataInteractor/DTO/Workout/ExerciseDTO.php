@@ -19,10 +19,10 @@ class ExerciseDTO extends AbstractBaseDTO
     /** @var int|null */
     private $repetitionsExecuted;
 
-    /** @var int|null */
+    /** @var int|null in grammes */
     private $weightProgrammed;
 
-    /** @var int|null */
+    /** @var int|null in grammes */
     private $weightExecuted;
 
     /** @var int|null */

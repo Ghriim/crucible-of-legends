@@ -71,8 +71,12 @@ function post(url, objectToPost) {
                 'Authorization': getAuthHeaders(),
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }
-    );
+        })
+        .catch(error => {
+            handleCommonApiError(error.response);
+
+            return error;
+        });
 }
 
 function deleteOne(url, id) {

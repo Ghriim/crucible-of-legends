@@ -7,6 +7,13 @@ use App\Domain\DataInteractor\DTOPersister\AbstractDTOPersister;
 
 final class WeightDTOPersister extends AbstractDTOPersister
 {
+    public function create(WeightDTO $dto): WeightDTO
+    {
+        $this->save($dto);
+
+        return $dto;
+    }
+
     protected function getEntityClassName(): string
     {
         return WeightDTO::class;

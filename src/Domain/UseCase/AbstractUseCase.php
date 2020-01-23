@@ -8,4 +8,14 @@ abstract class AbstractUseCase
     {
         return json_encode($data);
     }
+
+    protected function toIntOrNull(string $value): ?int
+    {
+        return '' === $value ? null : (int) $value;
+    }
+
+    protected function toFloatOrNull(string $value): ?float
+    {
+        return '' === $value ? null : (float) $value;
+    }
 }

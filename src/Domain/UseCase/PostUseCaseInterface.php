@@ -6,5 +6,5 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 
 interface PostUseCaseInterface
 {
-    public function execute(\stdClass $jsonObject): ?AbstractBaseVueModel;
+    public function execute(\stdClass $jsonObject, array $parameters = []): ?AbstractBaseVueModel;
 }

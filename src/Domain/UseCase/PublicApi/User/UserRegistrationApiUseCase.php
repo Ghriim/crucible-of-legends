@@ -10,7 +10,7 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Presenter\PublicApi\User\UserRegistrationVuePresenter;
 use App\Security\Handler\PasswordHandler;
 
-final class UserRegistrationApiUseCaseInterface extends AbstractUseCase implements PostUseCaseInterface
+final class UserRegistrationApiUseCase extends AbstractUseCase implements PostUseCaseInterface
 {
     private $userDtoPersister;
     private $presenter;
@@ -28,7 +28,7 @@ final class UserRegistrationApiUseCaseInterface extends AbstractUseCase implemen
         $this->passwordHandler = $passwordHandler;
     }
 
-    public function execute(\stdClass $jsonObject): ?AbstractBaseVueModel
+    public function execute(\stdClass $jsonObject, array $parameters = []): ?AbstractBaseVueModel
     {
         $user = new UserDTO();
         $user->setUsername(trim($jsonObject->username));

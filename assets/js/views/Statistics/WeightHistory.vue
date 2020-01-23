@@ -1,6 +1,9 @@
 <template>
     <div>
         <h3>Weight</h3>
+        <div>
+            <router-link :to="{name: 'weightHistoryCreate'}"><a>Add weight entry</a></router-link>
+        </div>
         <section>
             <div v-if="[] !== weightHistory">
                 <h4>Total weight</h4>

@@ -25,7 +25,7 @@
                 </div>
                 <div>
                     <label for="referenceExercise">Reference Exercise</label>
-                    <select id="referenceExercise" v-model="exercise.referenceExerciseId">
+                    <select id="referenceExercise" v-model="exercise.referenceExerciseId" required>
                         <option v-for="referenceExercise in referenceExercises" :value="referenceExercise.id">
                             {{ referenceExercise.name }}
                         </option>
@@ -34,18 +34,18 @@
 
                 <div>
                     <label for="durationProgrammed">Duration</label>
-                    <input type="number" id="durationProgrammed" v-model="exercise.durationProgrammed" />
+                    <input type="number"  min="0" id="durationProgrammed" v-model="exercise.durationProgrammed" />
                 </div>
 
 
                 <div>
                     <label for="repetitionsProgrammed">Repetitions</label>
-                    <input type="number" id="repetitionsProgrammed" v-model="exercise.repetitionsProgrammed" />
+                    <input type="number" min="0" id="repetitionsProgrammed" v-model="exercise.repetitionsProgrammed" />
                 </div>
 
                 <div>
                     <label for="weightProgrammed">Weight</label>
-                    <input type="number" id="weightProgrammed" v-model="exercise.weightProgrammed" />
+                    <input type="number" min="0" step="0.05" id="weightProgrammed" v-model="exercise.weightProgrammed" />
                 </div>
 
                 <button type="submit">Add</button>
@@ -68,20 +68,14 @@
         data() {
             return {
                 workout: null,
-                exercise: {
-                    workoutCanonicalName: null,
-                    referenceExerciseId: null,
-                    durationProgrammed: null,
-                    repetitionsProgrammed: null,
-                    weightProgrammed: null
-
-                },
+                exercise: null,
                 referenceExercises: [],
                 formErrors: [],
                 errors: []
             };
         },
         mounted() {
+            this.initExercise();
             this.getWorkout(this.$route.params.canonicalName);
             this.getReferenceExercises('');
 
@@ -122,9 +116,20 @@
                 apiClient.post('/api/workouts/' + this.workout.canonicalName + '/exercises', this.exercise)
                     .then(response => {
                         this.getWorkout(this.workout.canonicalName);
+                        this.initExercise();
                     }).catch(error => {
                         this.formErrors.push('An error has occurred, please try again later.')
                     })
+            },
+            initExercise() {
+                this.exercise = {
+                    workoutCanonicalName: null,
+                        referenceExerciseId: null,
+                        durationProgrammed: null,
+                        repetitionsProgrammed: null,
+                        weightProgrammed: null
+
+                };
             }
         }
     };

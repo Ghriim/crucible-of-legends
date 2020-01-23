@@ -30,7 +30,7 @@ final class ExercisePostApiUseCase extends AbstractUseCase implements PostUseCas
         $this->exerciseDtoPersister = $exerciseDtoPersister;
     }
 
-    public function execute(\stdClass $jsonObject): ?AbstractBaseVueModel
+    public function execute(\stdClass $jsonObject, array $parameters = []): ?AbstractBaseVueModel
     {
         $workout = $this->workoutDtoProvider->loadOneWithExercise($jsonObject->workoutCanonicalName);
         if (null === $workout) {
@@ -55,9 +55,11 @@ final class ExercisePostApiUseCase extends AbstractUseCase implements PostUseCas
         $exercise->setWorkout($workout);
         $exercise->setReferenceExercise($referenceExercise);
         $exercise->setPosition($workout->getHighestPosition() + 1);
-        $exercise->setDurationProgrammed($jsonObject->durationProgrammed);
-        $exercise->setRepetitionsProgrammed($jsonObject->repetitionsProgrammed);
-        $exercise->setWeightProgrammed($jsonObject->weightProgrammed);
+        $exercise->setDurationProgrammed($this->toIntOrNull($jsonObject->durationProgrammed));
+        $exercise->setRepetitionsProgrammed($this->toIntOrNull($jsonObject->repetitionsProgrammed));
+
+        $weight = $this->toFloatOrNull($jsonObject->weightProgrammed);
+        $exercise->setWeightProgrammed(null === $weight ? null : $weight * 1000);
 
         return $exercise;
     }

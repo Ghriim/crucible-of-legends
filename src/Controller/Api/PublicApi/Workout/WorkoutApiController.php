@@ -6,7 +6,7 @@ use App\Controller\Api\AbstractApiController;
 use App\Domain\UseCase\PublicApi\Workout\WorkoutDeleteApiUseCase;
 use App\Domain\UseCase\PublicApi\Workout\WorkoutGetManyApiUseCase;
 use App\Domain\UseCase\PublicApi\Workout\WorkoutGetSingleApiUseCase;
-use App\Domain\UseCase\PublicApi\Workout\WorkoutPostApiUseCaseInterface;
+use App\Domain\UseCase\PublicApi\Workout\WorkoutPostApiUseCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -35,7 +35,7 @@ final class WorkoutApiController extends AbstractApiController
 
     public function post(
         Request $request,
-        WorkoutPostApiUseCaseInterface $postWorkoutApiUseCase
+        WorkoutPostApiUseCase $postWorkoutApiUseCase
     ) :Response
     {
         return $this->buildResponse(

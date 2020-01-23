@@ -4,7 +4,7 @@ namespace App\Controller\Api\PublicApi\User;
 
 use App\Controller\Api\AbstractApiController;
 use App\Domain\UseCase\PublicApi\User\UserGetCurrentApiUseCase;
-use App\Domain\UseCase\PublicApi\User\UserRegistrationApiUseCaseInterface;
+use App\Domain\UseCase\PublicApi\User\UserRegistrationApiUseCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,7 +22,7 @@ final class UserApiController extends AbstractApiController
 
     public function registration(
         Request $request,
-        UserRegistrationApiUseCaseInterface $userRegistrationApiUseCase
+        UserRegistrationApiUseCase $userRegistrationApiUseCase
     ) :Response
     {
         return $this->buildResponse(

@@ -12,7 +12,7 @@ use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutPostVuePresenter;
 use App\Tools\String\CanonicalizeString;
 use App\Tools\String\RandomString;
 
-final class WorkoutPostApiUseCaseInterface extends AbstractUseCase implements PostUseCaseInterface
+final class WorkoutPostApiUseCase extends AbstractUseCase implements PostUseCaseInterface
 {
     private $workoutDtoPersister;
     private $workoutDtoProvider;
@@ -29,7 +29,7 @@ final class WorkoutPostApiUseCaseInterface extends AbstractUseCase implements Po
         $this->presenter = $presenter;
     }
 
-    public function execute(\stdClass $jsonObject): ?AbstractBaseVueModel
+    public function execute(\stdClass $jsonObject, array $parameters = []): ?AbstractBaseVueModel
     {
         $workout = new WorkoutDTO();
         $workout->setName(trim($jsonObject->name));

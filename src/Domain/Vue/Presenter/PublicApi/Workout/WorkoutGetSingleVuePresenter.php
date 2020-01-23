@@ -86,7 +86,7 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
         }
 
         if (null !== $exercise->getWeightProgrammed()) {
-            $info['weight'] = $exercise->getWeightProgrammed() . ' kg';
+            $info['weight'] = ($exercise->getWeightProgrammed() / 1000) . ' kg';
         }
 
         return $info;

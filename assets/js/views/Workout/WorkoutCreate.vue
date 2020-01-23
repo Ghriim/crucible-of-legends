@@ -2,7 +2,7 @@
     <form @submit.prevent="handleSubmit">
         <div>
             <label for="name">Name</label>
-            <input id="name" type="text" v-model="workout.name"/>
+            <input id="name" type="text" v-model="workout.name" required/>
         </div>
 
         <button type="submit">Create</button>

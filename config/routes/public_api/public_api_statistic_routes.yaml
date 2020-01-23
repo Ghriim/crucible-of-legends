@@ -13,7 +13,13 @@ public_statistic_weight_get_single:
     requirements:
         id: '\d+'
     methods: ['GET']
-    controller: App\Controller\Api\PublicApi\Statistic\WeightApiController::getMany
+    controller: App\Controller\Api\PublicApi\Statistic\WeightApiController::getSingle
+
+public_statistic_weight_post:
+    path: /statistics/weights
+    methods: ['POST']
+    controller: App\Controller\Api\PublicApi\Statistic\WeightApiController::post
+
     
 public_statistic_measurement_get_many:
     path: /statistics/measurements
@@ -30,4 +36,4 @@ public_statistic_measurement_get_single:
     requirements:
         id: '\d+'
     methods: ['GET']
-    controller: App\Controller\Api\PublicApi\Statistic\MeasurementApiController::getMany
+    controller: App\Controller\Api\PublicApi\Statistic\MeasurementApiController::getSingle
