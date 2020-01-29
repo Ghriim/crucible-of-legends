@@ -12,6 +12,19 @@ a, a:hover {
     text-decoration: none !important;
 }
 
+html,body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#page-container, .md-app {
+    height: 100%;
+}
+
+#page-container .md-app-content {
+    background-color: lightgrey;
+}
+
 header .md-toolbar .md-title > a, header .md-toolbar .md-title > a:hover,
 header .md-toolbar .md-list-item > a, header .md-toolbar .md-list-item > a:hover  {
     color: #FFF;

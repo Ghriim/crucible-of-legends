@@ -1,12 +1,6 @@
 <template>
-  <div class="page-container">
-    <section v-if="true === this.$store.state.isLogged">
-      <UserApp />
-    </section>
-
-    <section v-if="false === this.$store.state.isLogged">
-      <PublicApp />
-    </section>
+  <div id="page-container">
+    <UserApp />
   </div>
 </template>
 
