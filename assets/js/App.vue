@@ -1,71 +1,22 @@
 <template>
-  <div>
-    <header>
-      <h1>
-        <router-link :to="{name: 'home'}">
-          <a>Crucible of Heroes</a>
-        </router-link>
-      </h1>
-      <nav>
-        <div class="top-bar">
-          <div v-if="true === this.$store.state.isLogged" class="top-bar-left">
-            <ul class="menu">
-              <li>
-                  <router-link :to="{name: 'dashboard'}"><a>Dashboard</a></router-link>
-              </li>
-              <li>
-                  <router-link :to="{name: 'agenda'}"><a>Agenda</a></router-link>
-              </li>
-              <li>
-                  <router-link :to="{name: 'workouts'}"><a>Workouts</a></router-link>
-              </li>
-              <li>
-                  <router-link :to="{name: 'statistics'}"><a>Statistics</a></router-link>
-                  <ul>
-                    <li>
-                      <router-link :to="{name: 'weightTracker'}"><a>Weight Tracker</a></router-link>
-                    </li>
-                    <li>
-                      <router-link :to="{name: 'measurementTracker'}"><a>Measurement Tracker</a></router-link>
-                    </li>
-                  </ul>
-              </li>
-            </ul>
-          </div>
+  <div class="page-container">
+    <section v-if="true === this.$store.state.isLogged">
+      <UserApp />
+    </section>
 
-          <div class="top-bar-right">
-            <ul class="menu">
-              <li v-if="false === this.$store.state.isLogged">
-                <router-link :to="{name: 'registration'}"><a>Registration</a></router-link>
-              </li>
-              <li v-if="false === this.$store.state.isLogged">
-                  <router-link :to="{name: 'login'}"><a>Login</a></router-link>
-              </li>
-              <li v-if="true === this.$store.state.isLogged">
-                  <router-link :to="{name: 'logout'}"><a>Logout</a></router-link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <article class="grid-container">
-      <transition name="fade" mode="out-in">
-        <router-view />
-      </transition>
-    </article>
+    <section v-if="false === this.$store.state.isLogged">
+      <PublicApp />
+    </section>
   </div>
 </template>
 
 <script>
+import UserApp from "@user-views/UserApp";
+import PublicApp from "@public-views/PublicApp";
+
+
 export default {
     name: "App",
-    data() {
-        return {
-            isLogged: false
-        }
-    },
-    updated() {
-    },
+    components: {PublicApp, UserApp},
 }
 </script>

@@ -14,6 +14,9 @@ Encore
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
+
+    .addStyleEntry('style', './assets/scss/style.scss')
+
     .copyFiles({
         from: './assets/images',
         to: 'images/[path][name].[ext]'
@@ -28,6 +31,7 @@ Encore
     .enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
+    .enableSassLoader()
 
     // enables @babel/preset-env polyfills
     .configureBabel(() => {}, {
@@ -39,7 +43,9 @@ Encore
 
     .addAliases({
         '@tools': path.resolve(__dirname, 'assets/js/tools'),
-        '@views': path.resolve(__dirname, 'assets/js/views')
+        '@public-views': path.resolve(__dirname, 'assets/js/views/Public'),
+        '@user-views': path.resolve(__dirname, 'assets/js/views/User'),
+        '@admin-views': path.resolve(__dirname, 'assets/js/views/Admin'),
     })
 ;
 

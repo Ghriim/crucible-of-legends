@@ -1,20 +1,20 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@tools/store";
-import Home from "@views/Home/Home";
-import Login from "@views/Login/Login";
-import Registration from "@views/Registration/Registration";
-import Dashboard from "@views/Dashboard/Dashboard";
-import WorkoutDetails from "@views/Workout/WorkoutDetails";
-import WorkoutCreate from "@views/Workout/WorkoutCreate";
-import WorkoutEdit from "@views/Workout/WorkoutEdit";
-import WorkoutList from "@views/Workout/WorkoutList";
-import AgendaDetails from "@views/Agenda/AgendaDetails";
-import StatisticsOverview from "@views/Statistics/StatisticsOverview";
-import WeightTracker from "@views/Statistics/WeightTracker";
-import WeightTrackerAdd from "@views/Statistics/WeightTrackerAdd";
-import MeasurementTracker from "@views/Statistics/MeasurementTracker";
-import MeasurementTrackerAdd from "@views/Statistics/MeasurementTrackerAdd";
+import Home from "@public-views/Home/Home";
+import Login from "@public-views/Login/Login";
+import Registration from "@public-views/Registration/Registration";
+import Dashboard from "@user-views/Dashboard/Dashboard";
+import WorkoutDetails from "@user-views/Workout/WorkoutDetails";
+import WorkoutCreate from "@user-views/Workout/WorkoutCreate";
+import WorkoutEdit from "@user-views/Workout/WorkoutEdit";
+import WorkoutList from "@user-views/Workout/WorkoutList";
+import AgendaDetails from "@user-views/Agenda/AgendaDetails";
+import StatisticsOverview from "@user-views/Statistics/StatisticsOverview";
+import WeightTracker from "@user-views/Statistics/WeightTracker";
+import WeightTrackerAdd from "@user-views/Statistics/WeightTrackerAdd";
+import MeasurementTracker from "@user-views/Statistics/MeasurementTracker";
+import MeasurementTrackerAdd from "@user-views/Statistics/MeasurementTrackerAdd";
 
 Vue.use(VueRouter);
 
