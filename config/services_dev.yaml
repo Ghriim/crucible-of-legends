@@ -1,0 +1,15 @@
+parameters:
+    defaultUserId: '%env(int:DEV_DEFAULT_USER_ID)%'
+    autoAddToken: '%env(bool:DEV_DEFAULT_AUTO_ADD_TOKEN)%'
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    App\Event\Dev\ApiCallWithoutTokenEventListener:
+        arguments:
+            $defaultUserId: '%defaultUserId%'
+            $autoAddToken: '%autoAddToken%'
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: addTokenToRequest, priority: 999 }
