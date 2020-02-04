@@ -40,7 +40,6 @@ class ApiCallWithoutTokenEventListener
         $user = $this->userDtoProvider->loadOneById($this->defaultUserId);
         if (null !== $user) {
             $token = $this->tokenManager->create($user);
-            var_dump($token); die;
             $request->headers->add(['Authorization' => "Bearer $token"]);
         }
     }
