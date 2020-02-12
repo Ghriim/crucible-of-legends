@@ -11,6 +11,8 @@ RUN apt-get update -qq \
         mongodb \
     && docker-php-ext-install -j$(nproc) \
         zip \
+        mysqli \
+        pdo_mysql \
     && apt-get clean \
     && pecl clear-cache \
     && rm -rf /var/lib/apt/lists/* \
