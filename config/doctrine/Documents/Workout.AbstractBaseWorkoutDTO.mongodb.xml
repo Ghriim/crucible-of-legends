@@ -1,0 +1,19 @@
+<doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+                    http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
+
+    <mapped-superclass name="App\Domain\DataInteractor\DTO\Workout\AbstractBaseWorkoutDTO">
+        <field field-name="name" type="string" unique="true"  />
+        <field field-name="canonicalName" type="string" unique="true"  />
+
+        <indexes>
+            <index unique="true">
+                <key name="name" order="desc" />
+            </index>
+            <index unique="true">
+                <key name="canonicalName" order="desc" />
+            </index>
+        </indexes>
+    </mapped-superclass>
+</doctrine-mongo-mapping>

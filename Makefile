@@ -24,10 +24,10 @@ down:
 	@$(DOCKER) down --remove-orphan
 
 create_db: create_db_mongo
-	$(SF_CONSOLE) hautelook:fixtures:load --purge-with-truncate --no-interaction --env=dev
+	# $(SF_CONSOLE) hautelook:fixtures:load --purge-with-truncate --no-interaction --env=dev
 
 create_db_mongo:
-	$(SF_CONSOLE) doctrine:mongodb:schema:create --env=dev
+	$(SF_CONSOLE) doctrine:mongodb:schema:update --env=dev
 
 mysql.connect.default:
 	@$(DOCKER_EXEC) mysql-default /bin/bash -c 'mysql -u$$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DEFAULT_DB_NAME'
