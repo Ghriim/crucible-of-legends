@@ -1,0 +1,3 @@
+App\Domain\DataInteractor\DTO\Workout\CategoryDTO:
+    workout_category_fitness:
+        title: fitness

@@ -1,0 +1,25 @@
+<doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+                    http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
+
+    <document name="App\Domain\DataInteractor\DTO\User\UserDTO" collection="user">
+        <id />
+        <field field-name="username" type="string" unique="true"  />
+        <field field-name="email" type="string" unique="true" />
+        <field field-name="password" type="string" />
+        <field field-name="type" type="string" />
+
+        <indexes>
+            <index unique="true">
+                <key name="username" order="desc" />
+            </index>
+            <index unique="true">
+                <key name="email" order="desc" />
+            </index>
+            <index unique="true">
+                <key name="type" order="desc" />
+            </index>
+        </indexes>
+    </document>
+</doctrine-mongo-mapping>

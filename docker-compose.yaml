@@ -28,21 +28,15 @@ services:
         networks:
           - "crucible-of-heroes"
 
-    mysql-default:
-        container_name: mysql-${PROJECT}
+    mongo-default:
+        container_name: mongo-${PROJECT}-default
         build:
-            context: ./.docker/mysql/${MYSQL_VERSION}
+            context: ./.docker/mongo/${MONGO_VERSION}
+        command: "mongod --smallfiles"
         ports:
-            - ${MYSQL_DEFAULT_PORT}
-        environment:
-            MYSQL_DATABASE: ${MYSQL_DEFAULT_DB_NAME}
-            MYSQL_ROOT_USER: ${MYSQL_USER}
-            MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
-            MYSQL_USER: ${MYSQL_USER}
-            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-        volumes:
-            - ${PWD}:/var/www/html
-        working_dir: /var/www/html
+            - ${MONGO_DEFAULT_PORT}
+        ulimits:
+            nproc: 65535
         networks:
             - "crucible-of-heroes"
 
