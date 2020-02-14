@@ -1,6 +1,8 @@
 parameters:
     app_env: '%env(resolve:APP_ENV)%'
     app_locale: '%env(resolve:APP_LOCALE)%'
+    env(MONGODB_URL): ''
+    env(MONGODB_DB): ''
 
 services:
     _defaults:

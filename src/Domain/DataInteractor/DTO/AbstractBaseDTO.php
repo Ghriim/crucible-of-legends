@@ -12,7 +12,6 @@ abstract class AbstractBaseDTO
     public const STATUS_DRAFT = 'draft';
     public const STATUS_DELETED = 'deleted';
 
-    /** @var int|null */
     protected $id;
 
     /** @var \DateTimeInterface */
@@ -49,7 +48,7 @@ abstract class AbstractBaseDTO
         return null === $this->getId();
     }
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
