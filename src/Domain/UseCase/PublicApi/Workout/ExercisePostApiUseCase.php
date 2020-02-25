@@ -3,7 +3,7 @@
 namespace App\Domain\UseCase\PublicApi\Workout;
 
 use App\Domain\DataInteractor\DTO\Workout\ExerciseDTO;
-use App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO;
+use App\Domain\DataInteractor\DTO\Workout\AbstractReferenceExerciseDTO;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 use App\Domain\DataInteractor\DTOPersister\Workout\ExerciseDTOPersister;
 use App\Domain\DataInteractor\DTOProvider\Workout\ReferenceExerciseDTOProvider;
@@ -49,7 +49,7 @@ final class ExercisePostApiUseCase extends AbstractUseCase implements PostUseCas
         return null;
     }
 
-    private function buildExerciseDTO(WorkoutDTO $workout, ReferenceExerciseDTO $referenceExercise, $jsonObject): ExerciseDTO
+    private function buildExerciseDTO(WorkoutDTO $workout, AbstractReferenceExerciseDTO $referenceExercise, $jsonObject): ExerciseDTO
     {
         $exercise = new ExerciseDTO();
         $exercise->setWorkout($workout);

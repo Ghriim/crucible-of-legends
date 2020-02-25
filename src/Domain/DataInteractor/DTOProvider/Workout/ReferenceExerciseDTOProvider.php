@@ -2,18 +2,18 @@
 
 namespace App\Domain\DataInteractor\DTOProvider\Workout;
 
-use App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO;
+use App\Domain\DataInteractor\DTO\Workout\AbstractReferenceExerciseDTO;
 use App\Domain\DataInteractor\DTOProvider\AbstractDTOProvider;
 use App\Repository\Workout\ReferenceExerciseDTORepository;
 
 /**
  * @method ReferenceExerciseDTORepository getRepository()
- * @method ReferenceExerciseDTO loadOneById($id)
+ * @method AbstractReferenceExerciseDTO loadOneById($id)
  */
 final class ReferenceExerciseDTOProvider extends AbstractDTOProvider
 {
     /**
-     * @return ReferenceExerciseDTO[]
+     * @return AbstractReferenceExerciseDTO[]
      */
     public function loadForGetMany(array $criteria): array
     {
@@ -22,6 +22,6 @@ final class ReferenceExerciseDTOProvider extends AbstractDTOProvider
 
     protected function getEntityClassName(): string
     {
-        return ReferenceExerciseDTO::class;
+        return AbstractReferenceExerciseDTO::class;
     }
 }

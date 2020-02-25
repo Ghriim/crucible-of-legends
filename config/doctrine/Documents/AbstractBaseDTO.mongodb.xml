@@ -5,7 +5,7 @@
 
     <mapped-superclass name="App\Domain\DataInteractor\DTO\AbstractBaseDTO">
         <field field-name="status" type="string" />
-        <field field-name="createdDate" type="datetime" />
-        <field field-name="updatedDate" type="datetime" />
+        <field field-name="createdDate" type="date" />
+        <field field-name="updatedDate" type="date" />
     </mapped-superclass>
 </doctrine-mongo-mapping>

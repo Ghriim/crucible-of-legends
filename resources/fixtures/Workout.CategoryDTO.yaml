@@ -1,3 +1,7 @@
 App\Domain\DataInteractor\DTO\Workout\CategoryDTO:
-    workout_category_fitness:
-        title: fitness
+    base_workout_category (template):
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
+
+    workout_category_{fitness, running, biking, boxing} (extends base_workout_category):
+        title: '<current()>'

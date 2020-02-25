@@ -28,7 +28,7 @@ class ExerciseDTO extends AbstractBaseDTO
     /** @var int|null */
     private $position;
 
-    /** @var ReferenceExerciseDTO */
+    /** @var AbstractReferenceExerciseDTO */
     private $referenceExercise;
 
     /** @var WorkoutDTO|null */
@@ -121,12 +121,12 @@ class ExerciseDTO extends AbstractBaseDTO
         $this->position = $position;
     }
 
-    public function getReferenceExercise(): ReferenceExerciseDTO
+    public function getReferenceExercise(): AbstractReferenceExerciseDTO
     {
         return $this->referenceExercise;
     }
 
-    public function setReferenceExercise(ReferenceExerciseDTO $referenceExercise): void
+    public function setReferenceExercise(AbstractReferenceExerciseDTO $referenceExercise): void
     {
         $this->referenceExercise = $referenceExercise;
     }

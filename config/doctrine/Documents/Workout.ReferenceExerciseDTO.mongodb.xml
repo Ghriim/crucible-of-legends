@@ -3,8 +3,7 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                     http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <mapped-superclass name="App\Domain\DataInteractor\DTO\Workout\AbstractBaseWorkoutDTO">
-        <field field-name="name" type="string" unique="true" index="true" order="asc" />
-        <field field-name="canonicalName" type="string" unique="true" index="true" order="desc" />
-    </mapped-superclass>
+    <document name="App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO" collection="reference_exercise">
+        <id />
+    </document>
 </doctrine-mongo-mapping>

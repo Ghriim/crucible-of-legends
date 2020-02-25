@@ -17,7 +17,7 @@
             <index unique="true">
                 <key name="email" order="desc" />
             </index>
-            <index unique="true">
+            <index unique="false">
                 <key name="type" order="desc" />
             </index>
         </indexes>

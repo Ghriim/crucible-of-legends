@@ -1,0 +1,16 @@
+App\Domain\DataInteractor\DTO\Workout\ReferenceEquipmentDTO:
+    base_reference_equipment (template):
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
+
+    ref_equipment_{barbell, dumbbell, kettlebell} (extends base_reference_equipment):
+        name: "<current()>"
+        amazonLink: "/links/amazon/equipments/<current()>"
+
+    ref_equipment_exercise_bench (extends base_reference_equipment):
+        name: "exercise-bench"
+        amazonLink: "/links/amazon/equipments/exercise-bench"
+
+    ref_equipment_jump_rope (extends base_reference_equipment):
+        name: "jump-rope"
+        amazonLink: "/links/amazon/equipments/jump-rope"

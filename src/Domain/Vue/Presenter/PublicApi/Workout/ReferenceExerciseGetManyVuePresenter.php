@@ -2,7 +2,7 @@
 
 namespace App\Domain\Vue\Presenter\PublicApi\Workout;
 
-use App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO;
+use App\Domain\DataInteractor\DTO\Workout\AbstractReferenceExerciseDTO;
 use App\Domain\Vue\Model\PublicApi\Workout\ReferenceExerciseGetManyVueModel;
 use App\Domain\Vue\Presenter\AbstractVuePresenter;
 use App\Domain\Vue\Presenter\MultipleObjectVuePresenterInterface;
@@ -10,7 +10,7 @@ use App\Domain\Vue\Presenter\MultipleObjectVuePresenterInterface;
 final class ReferenceExerciseGetManyVuePresenter extends AbstractVuePresenter implements MultipleObjectVuePresenterInterface
 {
     /**
-     * @param ReferenceExerciseDTO[] $dtos
+     * @param AbstractReferenceExerciseDTO[] $dtos
      *
      * @return ReferenceExerciseGetManyVueModel[]
      */
