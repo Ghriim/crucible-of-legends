@@ -31,7 +31,7 @@ create_db_mysql:
 	$(SF_CONSOLE) doctrine:schema:create --env=dev
 
 create_db_mongo:
-	$(SF_CONSOLE) doctrine:mongodb:schema:drop --env=dev
+	# $(SF_CONSOLE) doctrine:mongodb:schema:drop --env=dev
 	$(SF_CONSOLE) doctrine:mongodb:schema:update --env=dev
 	$(SF_CONSOLE) load-odm-fixtures
 
