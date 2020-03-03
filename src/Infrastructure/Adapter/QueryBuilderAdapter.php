@@ -32,6 +32,11 @@ final class QueryBuilderAdapter
         $this->queryBuilder->sort($fieldName, 'ASC' === $direction ? 0 : 1);
     }
 
+    public function addSelect(string $fieldName): void
+    {
+        $this->queryBuilder->select($fieldName);
+    }
+
     /**
      * @return AbstractBaseDTO[]
      */

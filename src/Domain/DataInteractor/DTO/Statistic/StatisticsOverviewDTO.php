@@ -3,10 +3,13 @@
 namespace App\Domain\DataInteractor\DTO\Statistic;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
 use App\Domain\DataInteractor\DTO\User\UserDTO;
 
 class StatisticsOverviewDTO extends AbstractBaseDTO
 {
+    use TimeAwareDTOTrait;
+
     /** @var WeightDTO|null */
     private $firstWeight;
 

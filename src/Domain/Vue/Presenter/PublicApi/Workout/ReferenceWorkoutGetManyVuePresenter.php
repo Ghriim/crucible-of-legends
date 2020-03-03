@@ -19,7 +19,6 @@ final class ReferenceWorkoutGetManyVuePresenter extends AbstractVuePresenter imp
         $models = [];
         foreach ($dtos as $dto) {
             $model = new ReferenceWorkoutGetManyVueModel();
-            $model->id = $dto->getId();
             $model->name = $dto->getName();
             $model->canonicalName = $dto->getCanonicalName();
             $model->createdDate = $this->dateTimeString($dto->getCreatedDate());

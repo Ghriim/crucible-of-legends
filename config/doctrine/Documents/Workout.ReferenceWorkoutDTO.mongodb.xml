@@ -5,6 +5,8 @@
 
     <document name="App\Domain\DataInteractor\DTO\Workout\ReferenceWorkoutDTO" collection="reference_workout">
         <id />
-        <embed-many field="referenceExercises" target-document="App\Domain\DataInteractor\DTO\Workout\ReferenceWorkoutEmbedExerciseDTO" />
+        <field field-name="createdDate" type="date" />
+        <field field-name="updatedDate" type="date" />
+        <embed-many field="referenceExercises" target-document="App\Domain\DataInteractor\DTO\Workout\ReferenceWorkoutEmbedReferenceExerciseDTO" nullable="true" />
     </document>
 </doctrine-mongo-mapping>

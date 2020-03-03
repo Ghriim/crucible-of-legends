@@ -3,10 +3,13 @@
 namespace App\Domain\DataInteractor\DTO\Statistic;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
 use App\Domain\DataInteractor\DTO\User\UserDTO;
 
 class MeasurementDTO extends AbstractBaseDTO
 {
+    use TimeAwareDTOTrait;
+
     /** @var int|null in millimeters */
     private $biceps;
 

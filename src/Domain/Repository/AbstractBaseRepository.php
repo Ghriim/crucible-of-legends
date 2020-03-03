@@ -25,7 +25,7 @@ abstract class AbstractBaseRepository implements RepositoryInterface
      */
     public function findManyByCriteria(
         array $criteria = [],
-        array $select = [],
+        array $selects = [],
         array $orders = [],
         ?int $limit = null,
         ?int $offset = null
@@ -33,7 +33,9 @@ abstract class AbstractBaseRepository implements RepositoryInterface
     {
         $queryBuilder = $this->databaseAdapter->createQueryBuilder($this->getDTOClassName());
         $this->addCriteria($queryBuilder, $criteria)
-             ->addOrderBys($queryBuilder, $orders);
+             ->addOrderBys($queryBuilder, $orders)
+             ->addSelects($queryBuilder, $selects);
+
 
         $queryBuilder->limit($limit);
 
@@ -45,11 +47,12 @@ abstract class AbstractBaseRepository implements RepositoryInterface
      */
     public function findOneByCriteria(
         array $criteria,
-        array $select = []
+        array $selects = []
     ): ?AbstractBaseDTO
     {
         $queryBuilder = $this->databaseAdapter->createQueryBuilder($this->getDTOClassName());
-        $this->addCriteria($queryBuilder, $criteria);
+        $this->addCriteria($queryBuilder, $criteria)
+             ->addSelects($queryBuilder, $selects);
 
         return $queryBuilder->getSingleResult();
     }
@@ -67,6 +70,17 @@ abstract class AbstractBaseRepository implements RepositoryInterface
         foreach ($criteria as $field => $value) {
             if ($field) {
                 $this->{'addCriterion' . ucfirst($field)}($queryBuilder, $value);
+            }
+        }
+
+        return $this;
+    }
+
+    protected function addSelects(QueryBuilderAdapter $queryBuilder, array $selects = []): self
+    {
+        foreach ($selects as $field => $value) {
+            if ($field) {
+                $this->{'addSelect' . ucfirst($field)}($queryBuilder, $value);
             }
         }
 
@@ -102,6 +116,11 @@ abstract class AbstractBaseRepository implements RepositoryInterface
         }
 
         $queryBuilder->addOrderBy($fieldName, $direction);
+    }
+
+    protected function addSelect(QueryBuilderAdapter $queryBuilder, $fieldName): void
+    {
+        $queryBuilder->addSelect($fieldName);
     }
 
     protected function addCriterionId(QueryBuilderAdapter $queryBuilder, $id): bool

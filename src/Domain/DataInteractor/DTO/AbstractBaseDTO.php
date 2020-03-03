@@ -14,12 +14,6 @@ abstract class AbstractBaseDTO
 
     protected $id;
 
-    /** @var \DateTimeInterface */
-    protected $createdDate;
-
-    /** @var \DateTimeInterface */
-    protected $updatedDate;
-
     /** @var string */
     protected $status;
 
@@ -31,15 +25,16 @@ abstract class AbstractBaseDTO
     }
 
     /**
+     * @deprecated use DatabaseCollectionAdapter
+     *
      * @param Collection|null $entities
      */
     protected function lazyLoadProtect(?Collection $entities): void
     {
         if ($entities instanceof PersistentCollection && false === $entities->isInitialized()) {
-            $parentClass = get_class($this);
             $lazyLoadedClass = $entities->getTypeClass()->getName();
 
-            throw new LazyLoadException($parentClass, $lazyLoadedClass);
+            throw new LazyLoadException($lazyLoadedClass);
         }
     }
 
@@ -51,26 +46,6 @@ abstract class AbstractBaseDTO
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getCreatedDate(): \DateTimeInterface
-    {
-        return $this->createdDate;
-    }
-
-    public function setCreatedDate(\DateTimeInterface $createdDate): void
-    {
-        $this->createdDate = $createdDate;
-    }
-
-    public function getUpdatedDate(): \DateTimeInterface
-    {
-        return $this->updatedDate;
-    }
-
-    public function setUpdatedDate(\DateTimeInterface $updatedDate): void
-    {
-        $this->updatedDate = $updatedDate;
     }
 
     public function getStatus(): string

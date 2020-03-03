@@ -2,11 +2,14 @@
 
 namespace App\Domain\DataInteractor\DTO\Workout;
 
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\PersistentCollection;
 
 class WorkoutDTO extends AbstractBaseWorkoutDTO
 {
+    use TimeAwareDTOTrait;
+
     /** @var PersistentCollection|ExerciseDTO[] */
     private $exercises;
 

@@ -3,11 +3,14 @@
 namespace App\Domain\DataInteractor\DTO\Favorite;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
 use App\Domain\DataInteractor\DTO\User\UserDTO;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 
 class FavoriteWorkout extends AbstractBaseDTO
 {
+    use TimeAwareDTOTrait;
+
     /** @var UserDTO */
     private $user;
 

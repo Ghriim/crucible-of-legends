@@ -6,9 +6,20 @@ App\Domain\DataInteractor\DTO\Workout\ReferenceWorkoutDTO:
     reference_workout_ares (extends base_reference_workout):
         name: "ares"
         canonicalName: "ares"
-        referenceExercises: ["@reference_exercise_biceps_curl", "@reference_exercise_bench_press", "@reference_exercise_kettle_swing"]
+        referenceExercises:
+            - "@ref_ares_biceps_curl_4"
+            - "@ref_ares_bench_press_5"
+            - "@ref_ares_kettle_swing_6"
+            - "@ref_ares_biceps_curl_1"
+            - "@ref_ares_bench_press_2"
+            - "@ref_ares_kettle_swing_3"
+            - "@ref_ares_biceps_curl_7"
+            - "@ref_ares_bench_press_8"
+            - "@ref_ares_kettle_swing_9"
 
     reference_workout_hera (extends base_reference_workout):
         name: "hera"
         canonicalName: "hera"
-        referenceExercises: ["@reference_exercise_sit_up", "@reference_exercise_push_up"]
+        referenceExercises:
+            - "@ref_hera_sit_up_1"
+            - "@ref_hera_push_up_2"

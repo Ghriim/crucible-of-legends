@@ -7,6 +7,6 @@
         <id />
         <field field-name="name" type="string" index="true" />
         <field field-name="videoLink" type="string"/>
-        <embed-many field="referenceEquipments" target-document="App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseEmbedEquipmentDTO" />
+        <embed-many field="referenceEquipments" target-document="App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseEmbedReferenceEquipmentDTO" nullable="true" />
     </mapped-superclass>
 </doctrine-mongo-mapping>

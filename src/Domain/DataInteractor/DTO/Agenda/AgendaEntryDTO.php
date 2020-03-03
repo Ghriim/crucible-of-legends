@@ -3,10 +3,13 @@
 namespace App\Domain\DataInteractor\DTO\Agenda;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 
 class AgendaEntryDTO extends AbstractBaseDTO
 {
+    use TimeAwareDTOTrait;
+
     public const STATUS_PROGRAMMED = 'programmed';
     public const STATUS_OVERDUE = 'overdue';
     public const STATUS_COMPLETED = 'completed';

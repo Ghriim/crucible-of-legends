@@ -33,7 +33,9 @@ class LoadODMFixturesCommand extends Command
         $objectSet = $loader->loadFiles([
             $this->fixturesFolderPath . 'Workout.CategoryDTO.yaml',
             $this->fixturesFolderPath . 'Workout.ReferenceEquipmentDTO.yaml',
+            $this->fixturesFolderPath . 'Workout.ReferenceExerciseEmbedReferenceEquipmentDTO.yaml',
             $this->fixturesFolderPath . 'Workout.ReferenceExerciseDTO.yaml',
+            $this->fixturesFolderPath . 'Workout.ReferenceWorkoutEmbedReferenceExerciseDTO.yaml',
             $this->fixturesFolderPath . 'Workout.ReferenceWorkoutDTO.yaml',
             $this->fixturesFolderPath . 'User.UserDTO.yaml',
         ]);

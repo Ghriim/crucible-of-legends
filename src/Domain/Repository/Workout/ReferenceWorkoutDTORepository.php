@@ -18,6 +18,11 @@ final class ReferenceWorkoutDTORepository extends AbstractBaseRepository
         return $this->addCriterion($queryBuilder, 'name', $name);
     }
 
+    protected function addCriterionCanonicalName(QueryBuilder $queryBuilder, $name): bool
+    {
+        return $this->addCriterion($queryBuilder, 'canonicalName', $name);
+    }
+
     protected function addOrderByName(QueryBuilder $queryBuilder, string $direction = self::ORDER_DIRECTION_ASC): void
     {
         $this->addOrderBy($queryBuilder, 'name', $direction);
@@ -29,4 +34,8 @@ final class ReferenceWorkoutDTORepository extends AbstractBaseRepository
         $this->addOrderBy($queryBuilder, 'createdDate', $direction);
     }
 
+    protected function addSelectReferenceExercise(QueryBuilder $queryBuilder): void
+    {
+        $this->addSelect($queryBuilder, 'referenceExercises');
+    }
 }

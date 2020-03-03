@@ -3,10 +3,13 @@
 namespace App\Domain\DataInteractor\DTO\User;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserDTO extends AbstractBaseDTO implements UserInterface
 {
+    use TimeAwareDTOTrait;
+
     private const TYPE_PLAYER = 'player';
     private const TYPE_COACH = 'coach';
     private const TYPE_ADMIN = 'admin';

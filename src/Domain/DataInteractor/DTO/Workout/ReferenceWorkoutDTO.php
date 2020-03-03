@@ -2,12 +2,14 @@
 
 namespace App\Domain\DataInteractor\DTO\Workout;
 
-use Doctrine\ODM\MongoDB\PersistentCollection;
-use MongoDB\Collection;
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
+use App\Infrastructure\Adapter\DatabaseCollectionAdapter;
 
 class ReferenceWorkoutDTO extends AbstractBaseWorkoutDTO
 {
-    /** @var PersistentCollection|AbstractReferenceExerciseDTO[] */
+    use TimeAwareDTOTrait;
+
+    /** @var ReferenceWorkoutEmbedReferenceExerciseDTO[]|null */
     private $referenceExercises;
 
     protected function getDefaultStatus(): string
@@ -15,18 +17,18 @@ class ReferenceWorkoutDTO extends AbstractBaseWorkoutDTO
         return self::STATUS_ACTIVE;
     }
 
-    public function getReferenceExercises(): array
+    /**
+     * @return ReferenceWorkoutEmbedReferenceExerciseDTO[]|null
+     */
+    public function getReferenceExercises(): ?array
     {
-        if ($this->referenceExercises instanceof Collection) {
-            $this->lazyLoadProtect($this->referenceExercises);
-
-            return $this->referenceExercises->toArray();
-        }
-
-        return $this->referenceExercises;
+        return DatabaseCollectionAdapter::getDatabaseCollection($this->referenceExercises);
     }
 
-    public function setReferenceExercises(array $referenceExercises): void
+    /**
+     * @param ReferenceWorkoutEmbedReferenceExerciseDTO[]|null $referenceExercises
+     */
+    public function setReferenceExercises(?array $referenceExercises): void
     {
         $this->referenceExercises = $referenceExercises;
     }

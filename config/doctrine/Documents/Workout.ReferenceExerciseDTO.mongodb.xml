@@ -5,5 +5,7 @@
 
     <document name="App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseDTO" collection="reference_exercise">
         <id />
+        <field field-name="createdDate" type="date" />
+        <field field-name="updatedDate" type="date" />
     </document>
 </doctrine-mongo-mapping>

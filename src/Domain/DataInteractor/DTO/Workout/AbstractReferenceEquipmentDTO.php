@@ -9,9 +9,6 @@ abstract class AbstractReferenceEquipmentDTO extends AbstractBaseDTO
     /** @var string */
     protected $name;
 
-    /** @var string|null */
-    protected $amazonLink;
-
     protected function getDefaultStatus(): string
     {
         return self::STATUS_ACTIVE;
@@ -25,15 +22,5 @@ abstract class AbstractReferenceEquipmentDTO extends AbstractBaseDTO
     public function setName(string $name): void
     {
         $this->name = $name;
-    }
-
-    public function getAmazonLink(): ?string
-    {
-        return $this->amazonLink;
-    }
-
-    public function setAmazonLink(?string $amazonLink): void
-    {
-        $this->amazonLink = $amazonLink;
     }
 }

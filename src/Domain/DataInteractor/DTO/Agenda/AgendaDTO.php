@@ -3,12 +3,15 @@
 namespace App\Domain\DataInteractor\DTO\Agenda;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
 use App\Domain\DataInteractor\DTO\User\UserDTO;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\PersistentCollection;
 
 class AgendaDTO extends AbstractBaseDTO
 {
+    use TimeAwareDTOTrait;
+
     private const NAME_DEFAULT = 'default';
 
     /** @var string */

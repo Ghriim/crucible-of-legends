@@ -3,7 +3,7 @@
 namespace App\Domain\DataInteractor\DTOProvider\Workout;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
-use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
+use App\Domain\DataInteractor\DTO\Workout\ReferenceWorkoutDTO;
 use App\Domain\DataInteractor\DTOProvider\AbstractBaseDTOProvider;
 use App\Domain\Repository\Workout\ReferenceWorkoutDTORepository;
 
@@ -15,7 +15,7 @@ final class ReferenceWorkoutDTOProvider extends AbstractBaseDTOProvider
     }
 
     /**
-     * @return AbstractBaseDTO[]|WorkoutDTO[]
+     * @return AbstractBaseDTO[]|ReferenceWorkoutDTO[]
      */
     public function loadForGetMany(): array
     {
@@ -23,31 +23,10 @@ final class ReferenceWorkoutDTOProvider extends AbstractBaseDTOProvider
     }
 
     /**
-     * @return AbstractBaseDTO|WorkoutDTO|null
+     * @return AbstractBaseDTO|ReferenceWorkoutDTO|null
      */
-    public function loadForGetOne(string $canonicalName): ?WorkoutDTO
+    public function loadForGetOne(string $canonicalName): ?ReferenceWorkoutDTO
     {
-        return $this->getOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
-    }
-
-    /**
-     * @return AbstractBaseDTO|WorkoutDTO|null
-     */
-    public function loadForDelete(string $canonicalName): ?WorkoutDTO
-    {
-        return $this->getOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
-    }
-
-    /**
-     * @return AbstractBaseDTO|WorkoutDTO|null
-     */
-    public function loadOneWithExercise(string $canonicalName): ?WorkoutDTO
-    {
-        return $this->getOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
-    }
-
-    public function doesCanonicalNameAlreadyExist(string $canonicalName): bool
-    {
-        return $this->exists(['canonicalName' => $canonicalName]);
+        return $this->getOneByCriteria(['canonicalName' => $canonicalName], ['referenceExercises']);
     }
 }

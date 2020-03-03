@@ -3,6 +3,7 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                     http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <embedded-document name="App\Domain\DataInteractor\DTO\Workout\ReferenceExerciseEmbedEquipmentDTO">
+    <embedded-document name="App\Domain\DataInteractor\DTO\Workout\ReferenceWorkoutEmbedReferenceExerciseDTO">
+        <field field-name="order" type="integer" nullable="false" />
     </embedded-document>
 </doctrine-mongo-mapping>

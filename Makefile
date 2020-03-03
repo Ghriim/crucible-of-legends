@@ -23,7 +23,7 @@ up: down
 down:
 	@$(DOCKER) down --remove-orphan
 
-create_db: create_db_mysql create_db_mongo
+create_db: create_db_mongo
 
 create_db_mysql:
 	$(SF_CONSOLE) doctrine:database:drop --if-exists --force --env=dev

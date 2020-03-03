@@ -3,9 +3,11 @@
 namespace App\Domain\DataInteractor\DTO\Workout;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
 
 class ExerciseDTO extends AbstractBaseDTO
 {
+    use TimeAwareDTOTrait;
 
     /** @var int|null in seconds */
     private $durationProgrammed;

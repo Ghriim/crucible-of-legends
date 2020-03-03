@@ -5,5 +5,8 @@
 
     <document name="App\Domain\DataInteractor\DTO\Workout\ReferenceEquipmentDTO" collection="reference_equipment">
         <id />
+        <field field-name="amazonLink" type="string"/>
+        <field field-name="createdDate" type="date" />
+        <field field-name="updatedDate" type="date" />
     </document>
 </doctrine-mongo-mapping>

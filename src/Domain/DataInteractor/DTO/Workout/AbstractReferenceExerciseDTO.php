@@ -3,6 +3,7 @@
 namespace App\Domain\DataInteractor\DTO\Workout;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Infrastructure\Adapter\DatabaseCollectionAdapter;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\PersistentCollection;
 
@@ -14,7 +15,7 @@ abstract class AbstractReferenceExerciseDTO extends AbstractBaseDTO
     /** @var string|null */
     protected $videoLink;
 
-    /** @var PersistentCollection|ReferenceEquipmentDTO[] */
+    /** @var ReferenceExerciseEmbedReferenceEquipmentDTO[]|null */
     protected $referenceEquipments;
 
     protected function getDefaultStatus(): string
@@ -43,23 +44,17 @@ abstract class AbstractReferenceExerciseDTO extends AbstractBaseDTO
     }
 
     /**
-     * @return ReferenceEquipmentDTO[]
+     * @return ReferenceExerciseEmbedReferenceEquipmentDTO[]|null
      */
-    public function getReferenceEquipments():array
+    public function getReferenceEquipments(): ?array
     {
-        if ($this->referenceEquipments instanceof Collection) {
-            $this->lazyLoadProtect($this->referenceEquipments);
-
-            return $this->referenceEquipments->toArray();
-        }
-
-        return $this->referenceEquipments;
+        return DatabaseCollectionAdapter::getDatabaseCollection($this->referenceEquipments);
     }
 
     /**
-     * @param ReferenceEquipmentDTO[]
+     * @param ReferenceExerciseEmbedReferenceEquipmentDTO[]|null $referenceEquipments
      */
-    public function setReferenceEquipments(array $referenceEquipments): void
+    public function setReferenceEquipments(?array $referenceEquipments): void
     {
         $this->referenceEquipments = $referenceEquipments;
     }

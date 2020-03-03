@@ -6,6 +6,5 @@
     <mapped-superclass name="App\Domain\DataInteractor\DTO\Workout\AbstractReferenceEquipmentDTO">
         <id />
         <field field-name="name" type="string" index="true" />
-        <field field-name="amazonLink" type="string"/>
     </mapped-superclass>
 </doctrine-mongo-mapping>

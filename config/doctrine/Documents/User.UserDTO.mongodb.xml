@@ -9,6 +9,8 @@
         <field field-name="email" type="string" unique="true" />
         <field field-name="password" type="string" />
         <field field-name="type" type="string" />
+        <field field-name="createdDate" type="date" />
+        <field field-name="updatedDate" type="date" />
 
         <indexes>
             <index unique="true">
