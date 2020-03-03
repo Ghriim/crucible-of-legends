@@ -5,7 +5,7 @@ security:
 
     providers:
         user_provider:
-            entity:
+            mongodb:
                 class: App\Domain\DataInteractor\DTO\User\UserDTO
                 property: email
 

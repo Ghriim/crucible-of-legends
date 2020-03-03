@@ -4,6 +4,9 @@ namespace App\Repository;
 
 use Doctrine\ORM\QueryBuilder;
 
+/**
+ * @deprecated
+ */
 interface RepositoryInterface
 {
     /**

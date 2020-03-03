@@ -21,6 +21,11 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+
+    App\Infrastructure\:
+        resource: '../src/Infrastructure'
+
+
     Lexik\Bundle\JWTAuthenticationBundle\Services\JWTManager: '@lexik_jwt_authentication.jwt_manager'
     Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface: '@Lexik\Bundle\JWTAuthenticationBundle\Services\JWTManager'
     col.security.guard.jwt_token_authenticator: '@App\Security\Guard\JWTTokenAuthenticator'

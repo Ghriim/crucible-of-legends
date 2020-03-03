@@ -1,3 +1,8 @@
+public_reference_workout_get_many:
+    path: /references/workouts
+    methods: ['GET']
+    controller: App\Controller\Api\PublicApi\Workout\ReferenceWorkoutApiController::getMany
+
 public_reference_exercise_get_many:
     path: /references/exercises
     methods: ['GET']

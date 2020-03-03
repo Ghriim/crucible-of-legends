@@ -9,6 +9,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
+/**
+ * @deprecated
+ */
 abstract class AbstractDTOProvider
 {
     protected const DEFAULT_ENTITY_MANAGER = 'default';

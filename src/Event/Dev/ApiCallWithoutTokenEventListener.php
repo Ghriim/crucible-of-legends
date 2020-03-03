@@ -10,19 +10,19 @@ class ApiCallWithoutTokenEventListener
 {
     private $tokenManager;
     private $userDtoProvider;
-    private $defaultUserId;
+    private $defaultUserUsername;
     private $autoAddToken;
 
     public function __construct(
         JWTTokenManagerInterface $tokenManager,
         UserDTOProvider $userDtoProvider,
-        ?int $defaultUserId = null,
+        ?string $defaultUserUsername = null,
         bool $autoAddToken = false
     )
     {
         $this->tokenManager = $tokenManager;
         $this->userDtoProvider = $userDtoProvider;
-        $this->defaultUserId = $defaultUserId;
+        $this->defaultUserUsername = $defaultUserUsername;
         $this->autoAddToken = $autoAddToken;
     }
 
@@ -31,13 +31,13 @@ class ApiCallWithoutTokenEventListener
         $request = $event->getRequest();
         $path = $request->getPathInfo();
         if (false === $this->autoAddToken
-            || null === $this->defaultUserId
+            || null === $this->defaultUserUsername
             || $request->headers->has('Authorization')
             || 0 !== strpos($path, '/api')) {
             return;
         }
 
-        $user = $this->userDtoProvider->loadOneById($this->defaultUserId);
+        $user = $this->userDtoProvider->loadByUsername($this->defaultUserUsername);
         if (null !== $user) {
             $token = $this->tokenManager->create($user);
             $request->headers->add(['Authorization' => "Bearer $token"]);

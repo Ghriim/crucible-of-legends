@@ -7,6 +7,9 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\QueryBuilder;
 
+/**
+ * @deprecated
+ */
 abstract class AbstractBaseEntityRepository extends EntityRepository implements RepositoryInterface
 {
     public const ORDER_DIRECTION_ASC  = 'ASC';

@@ -1,5 +1,5 @@
 parameters:
-    defaultUserId: '%env(int:DEV_DEFAULT_USER_ID)%'
+    defaultUserUsername: '%env(string:DEV_DEFAULT_USER_USERNAME)%'
     autoAddToken: '%env(bool:DEV_DEFAULT_AUTO_ADD_TOKEN)%'
 
 services:
@@ -9,7 +9,7 @@ services:
 
     App\Event\Dev\ApiCallWithoutTokenEventListener:
         arguments:
-            $defaultUserId: '%defaultUserId%'
+            $defaultUserUsername: '%defaultUserUsername%'
             $autoAddToken: '%autoAddToken%'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: addTokenToRequest, priority: 999 }
