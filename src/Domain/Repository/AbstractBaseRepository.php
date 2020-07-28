@@ -11,7 +11,7 @@ abstract class AbstractBaseRepository implements RepositoryInterface
     public const ORDER_DIRECTION_ASC  = 'ASC';
     public const ORDER_DIRECTION_DESC = 'DESC';
 
-    private $databaseAdapter;
+    private DatabaseAdapter $databaseAdapter;
 
     abstract protected function getDTOClassName(): string;
 
@@ -63,6 +63,16 @@ abstract class AbstractBaseRepository implements RepositoryInterface
         $this->addCriteria($queryBuilder, $criteria);
 
         return $queryBuilder->exists();
+    }
+
+    public function flush(): void
+    {
+        $this->databaseAdapter->flush();
+    }
+
+    public function persist(AbstractBaseDTO $dto): void
+    {
+        $this->databaseAdapter->persist($dto);
     }
 
     protected function addCriteria(QueryBuilderAdapter $queryBuilder, array $criteria = []): self
@@ -132,4 +142,5 @@ abstract class AbstractBaseRepository implements RepositoryInterface
     {
         return $this->addCriterion($queryBuilder, 'status', $status);
     }
+
 }

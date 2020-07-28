@@ -1,3 +1,8 @@
+public_category_get_many:
+    path: /categories
+    methods: ['GET']
+    controller: App\Controller\Api\PublicApi\Workout\CategoryApiController::getMany
+
 public_workout_get_many:
     path: /workouts
     methods: ['GET']

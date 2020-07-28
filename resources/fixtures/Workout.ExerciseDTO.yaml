@@ -1,0 +1,24 @@
+App\Domain\DataInteractor\DTO\Workout\ExerciseDTO:
+    base_reference_exercise (template):
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
+
+    reference_exercise_push_up (extends base_reference_exercise):
+        name: "Push up"
+        canoncialName: "push-up"
+
+    reference_exercise_sit_up (extends base_reference_exercise):
+        name: "Sit up"
+        canoncialName: "sit-up"
+
+    reference_exercise_biceps_curl (extends base_reference_exercise):
+        name: "Biceps curl"
+        canoncialName: "biceps-curl"
+
+    reference_exercise_bench_press (extends base_reference_exercise):
+        name: "Bench press"
+        canoncialName: "bench-press"
+
+    reference_exercise_kettle_swing (extends base_reference_exercise):
+        name: "Kettle swing"
+        canoncialName: "kettle-swing"

@@ -3,6 +3,7 @@
 namespace App\Domain\DataInteractor\DTOPersister;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\Repository\AbstractBaseRepository;
 use App\Tools\Clock\ClockInterface;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -11,17 +12,11 @@ use Doctrine\ORM\ORMException;
 
 abstract class AbstractDTOPersister
 {
-    protected const DEFAULT_ENTITY_MANAGER = 'default';
+    protected AbstractBaseRepository $repository;
+    protected ClockInterface $clock;
 
-    /** @var ManagerRegistry */
-    protected $doctrine;
-
-    /** @var ClockInterface */
-    protected $clock;
-
-    public function __construct(ManagerRegistry $doctrine, ClockInterface $clock)
+    public function __construct(ClockInterface $clock)
     {
-        $this->doctrine = $doctrine;
         $this->clock = $clock;
     }
 
@@ -38,12 +33,8 @@ abstract class AbstractDTOPersister
             $this->save($dto, false);
         }
 
-        try {
-            if (true === $flush) {
-                $this->getEntityManager()->flush();
-            }
-        } catch (ORMException $exception) {
-            // TODO : do smth about the exception
+        if (true === $flush) {
+            $this->flush();
         }
 
         return $dtos;
@@ -54,11 +45,7 @@ abstract class AbstractDTOPersister
         $this->handleSaveHistory($dto);
 
         if ($dto->isNew()) {
-            try {
-                $this->getEntityManager()->persist($dto);
-            } catch (ORMException $exception) {
-                // TODO : do smth about the exception
-            }
+            $this->repository->persist($dto);
         }
 
         if (true === $flush) {
@@ -91,11 +78,7 @@ abstract class AbstractDTOPersister
 
     protected function flush(): void
     {
-        try {
-            $this->getEntityManager()->flush();
-        } catch (ORMException $exception) {
-            // TODO : do smth about the exception
-        }
+        $this->repository->flush();
     }
 
     private function handleSaveHistory(AbstractBaseDTO $dto): void
@@ -103,17 +86,9 @@ abstract class AbstractDTOPersister
         $now = $this->clock->now();
 
         if (true === $dto->isNew()) {
-            $dto->setCreatedDate($now);
+            //$dto->setCreatedDate($now);
         }
 
-        $dto->setUpdatedDate($now);
-    }
-
-    /**
-     * @return ObjectManager|EntityManager
-     */
-    private function getEntityManager(?string $managerName = null): EntityManager
-    {
-        return $this->doctrine->getManager($managerName ?? static::DEFAULT_ENTITY_MANAGER);
+        //$dto->setUpdatedDate($now);
     }
 }

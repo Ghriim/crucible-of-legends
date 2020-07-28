@@ -1,0 +1,12 @@
+App\Domain\DataInteractor\DTO\Workout\WorkoutDTO:
+    base_workout (template):
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
+
+    workout_ares (extends base_workout):
+        name: "ares"
+        canonicalName: "ares"
+
+    workout_hera (extends base_workout):
+        name: "hera"
+        canonicalName: "hera"

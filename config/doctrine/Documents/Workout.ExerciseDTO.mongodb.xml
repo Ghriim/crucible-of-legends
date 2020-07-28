@@ -3,10 +3,7 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                     http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <document name="App\Domain\DataInteractor\DTO\Workout\ReferenceEquipmentDTO" collection="reference_equipment">
+    <document name="App\Domain\DataInteractor\DTO\Workout\ExerciseDTO" collection="exercise">
         <id />
-        <field field-name="amazonLink" type="string"/>
-        <field field-name="createdDate" type="date" />
-        <field field-name="updatedDate" type="date" />
     </document>
 </doctrine-mongo-mapping>

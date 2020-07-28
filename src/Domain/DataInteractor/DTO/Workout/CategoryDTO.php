@@ -9,8 +9,7 @@ class CategoryDTO extends AbstractBaseDTO
 {
     use TimeAwareDTOTrait;
 
-    /** @var string */
-    private $title;
+    private string $title;
 
     protected function getDefaultStatus(): string
     {

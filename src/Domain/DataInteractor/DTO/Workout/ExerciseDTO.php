@@ -9,137 +9,32 @@ class ExerciseDTO extends AbstractBaseDTO
 {
     use TimeAwareDTOTrait;
 
-    /** @var int|null in seconds */
-    private $durationProgrammed;
+    private string $name;
 
-    /** @var int|null in seconds */
-    private $durationExecuted;
-
-    /** @var int|null */
-    private $repetitionsProgrammed;
-
-    /** @var int|null */
-    private $repetitionsExecuted;
-
-    /** @var int|null in grammes */
-    private $weightProgrammed;
-
-    /** @var int|null in grammes */
-    private $weightExecuted;
-
-    /** @var int|null */
-    private $position;
-
-    /** @var AbstractReferenceExerciseDTO */
-    private $referenceExercise;
-
-    /** @var WorkoutDTO|null */
-    private $workout;
+    private string $canonicalName;
 
     protected function getDefaultStatus(): string
     {
         return self::STATUS_ACTIVE;
     }
 
-    /**
-     * Method overridden
-     */
-    public function setStatus(string $status): void
+    public function getName(): string
     {
-        if (self::STATUS_DELETED === $status) {
-            $this->setPosition(null);
-        }
-
-        parent::setStatus($status);
+        return $this->name;
     }
 
-    public function getDurationProgrammed(): ?int
+    public function setName(string $name): void
     {
-        return $this->durationProgrammed;
+        $this->name = $name;
     }
 
-    public function setDurationProgrammed(?int $durationProgrammed): void
+    public function getCanonicalName(): string
     {
-        $this->durationProgrammed = $durationProgrammed;
+        return $this->canonicalName;
     }
 
-    public function getDurationExecuted(): ?int
+    public function setCanonicalName(string $canonicalName): void
     {
-        return $this->durationExecuted;
-    }
-
-    public function setDurationExecuted(?int $durationExecuted): void
-    {
-        $this->durationExecuted = $durationExecuted;
-    }
-
-    public function getRepetitionsProgrammed(): ?int
-    {
-        return $this->repetitionsProgrammed;
-    }
-
-    public function setRepetitionsProgrammed(?int $repetitionsProgrammed): void
-    {
-        $this->repetitionsProgrammed = $repetitionsProgrammed;
-    }
-
-    public function getRepetitionsExecuted(): ?int
-    {
-        return $this->repetitionsExecuted;
-    }
-
-    public function setRepetitionsExecuted(?int $repetitionsExecuted): void
-    {
-        $this->repetitionsExecuted = $repetitionsExecuted;
-    }
-
-    public function getWeightProgrammed(): ?int
-    {
-        return $this->weightProgrammed;
-    }
-
-    public function setWeightProgrammed(?int $weightProgrammed): void
-    {
-        $this->weightProgrammed = $weightProgrammed;
-    }
-
-    public function getWeightExecuted(): ?int
-    {
-        return $this->weightExecuted;
-    }
-
-    public function setWeightExecuted(?int $weightExecuted): void
-    {
-        $this->weightExecuted = $weightExecuted;
-    }
-
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(?int $position): void
-    {
-        $this->position = $position;
-    }
-
-    public function getReferenceExercise(): AbstractReferenceExerciseDTO
-    {
-        return $this->referenceExercise;
-    }
-
-    public function setReferenceExercise(AbstractReferenceExerciseDTO $referenceExercise): void
-    {
-        $this->referenceExercise = $referenceExercise;
-    }
-
-    public function getWorkout(): ?WorkoutDTO
-    {
-        return $this->workout;
-    }
-
-    public function setWorkout(?WorkoutDTO $workout): void
-    {
-        $this->workout = $workout;
+        $this->canonicalName = $canonicalName;
     }
 }

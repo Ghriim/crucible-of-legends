@@ -2,53 +2,39 @@
 
 namespace App\Domain\DataInteractor\DTO\Workout;
 
+use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\PersistentCollection;
 
-class WorkoutDTO extends AbstractBaseWorkoutDTO
+class WorkoutDTO extends AbstractBaseDTO
 {
     use TimeAwareDTOTrait;
 
-    /** @var PersistentCollection|ExerciseDTO[] */
-    private $exercises;
+    private string $name;
+
+    private string $canonicalName;
 
     protected function getDefaultStatus(): string
     {
         return self::STATUS_ACTIVE;
     }
 
-    /**
-     * @return ExerciseDTO[]
-     */
-    public function getExercises(): array
+    public function getName(): string
     {
-        if ($this->exercises instanceof Collection) {
-            $this->lazyLoadProtect($this->exercises);
-
-            return $this->exercises->toArray();
-        }
-
-        return $this->exercises;
+        return $this->name;
     }
 
-    /**
-     * @param ExerciseDTO[] $exercises
-     */
-    public function setExercises(array $exercises): void
+    public function setName(string $name): void
     {
-        $this->exercises = $exercises;
+        $this->name = $name;
     }
 
-    public function getHighestPosition(): int
+    public function getCanonicalName(): string
     {
-        $highestPosition = 0;
-        foreach ($this->getExercises() as $exercise) {
-            if ($exercise->getPosition() > $highestPosition) {
-                $highestPosition = $exercise->getPosition();
-            }
-        }
+        return $this->canonicalName;
+    }
 
-        return $highestPosition;
+    public function setCanonicalName(string $canonicalName): void
+    {
+        $this->canonicalName = $canonicalName;
     }
 }

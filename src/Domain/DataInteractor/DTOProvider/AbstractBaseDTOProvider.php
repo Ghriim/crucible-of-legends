@@ -7,8 +7,7 @@ use App\Domain\Repository\AbstractBaseRepository;
 
 abstract class AbstractBaseDTOProvider
 {
-    /** @var AbstractBaseRepository */
-    protected $repository;
+    protected AbstractBaseRepository $repository;
 
     /**
      * @return AbstractBaseDTO[]

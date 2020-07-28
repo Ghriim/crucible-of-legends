@@ -8,20 +8,28 @@
         </div>
 
         <div v-if="[] !== workouts">
-            <ul>
-                <li v-for="(workout, index) in workouts">
-                    <router-link :to="{name: 'workout', params: {canonicalName: workout.canonicalName}}">
-                        <a>{{ workout.name}}</a>
-                    </router-link>
-                    - <em>{{ workout.createdDate }}</em>
+            <md-card md-with-hover v-for="(workout, index) in workouts">
+                <md-card-header>
+                    <div class="md-title">
+                        <router-link :to="{name: 'workout', params: {canonicalName: workout.canonicalName}}">
+                            <a>{{ workout.name}}</a>
+                        </router-link>
+                    </div>
+                    <div class="md-subhead">
+                        Created: <em>{{ workout.createdDate }}</em>
+                    </div>
+                </md-card-header>
 
-                    <router-link :to="{name: 'workoutEdit', params: {canonicalName: workout.canonicalName}}">
-                        <a>Edit</a>
-                    </router-link>
+                <md-card-actions>
+                    <md-button class="md-primary">
+                        <router-link :to="{name: 'workoutEdit', params: {canonicalName: workout.canonicalName}}">
+                            Edit
+                        </router-link>
+                    </md-button>
 
-                    <button v-on:click="handleDelete(workout.canonicalName, index)">Delete</button>
-                </li>
-            </ul>
+                    <md-button class="md-accent" v-on:click="handleDelete(workout.canonicalName, index)">Delete</md-button>
+                </md-card-actions>
+            </md-card>
         </div>
     </div>
 </template>

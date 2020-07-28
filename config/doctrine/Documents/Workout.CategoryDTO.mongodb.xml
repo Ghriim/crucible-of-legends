@@ -6,6 +6,7 @@
     <document name="App\Domain\DataInteractor\DTO\Workout\CategoryDTO" collection="category">
         <id />
         <field field-name="title" type="string" unique="true" />
+
         <field field-name="createdDate" type="date" />
         <field field-name="updatedDate" type="date" />
     </document>

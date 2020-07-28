@@ -2,45 +2,55 @@
 
 namespace App\Domain\DataInteractor\DTOProvider\Workout;
 
+use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
-use App\Domain\DataInteractor\DTOProvider\AbstractDTOProvider;
+use App\Domain\DataInteractor\DTOProvider\AbstractBaseDTOProvider;
 use App\Repository\Workout\WorkoutDTORepository;
 
-/**
- * @method WorkoutDTORepository getRepository()
- */
-final class WorkoutDTOProvider extends AbstractDTOProvider
+final class WorkoutDTOProvider extends AbstractBaseDTOProvider
 {
+    public function __construct(WorkoutDTORepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @return WorkoutDTO[]
      */
     public function loadForGetMany(): array
     {
-        return $this->getRepository()->findManyByCriteria([], [], ['createdDate' => self::ORDER_DIRECTION_DESC]);
+        return $this->repository->findManyByCriteria([], [], ['createdDate' => WorkoutDTORepository::ORDER_DIRECTION_DESC]);
     }
 
+    /**
+     * @return AbstractBaseDTO|WorkoutDTO|null
+     */
     public function loadForGetOne(string $canonicalName): ?WorkoutDTO
     {
-        return $this->getRepository()->findOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
+        return $this->repository->findOneByCriteria(['canonicalName' => $canonicalName]);
     }
 
+    /**
+     * @return AbstractBaseDTO|WorkoutDTO|null
+     */
     public function loadForDelete(string $canonicalName): ?WorkoutDTO
     {
-        return $this->getRepository()->findOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
+        return $this->repository->findOneByCriteria(['canonicalName' => $canonicalName]);
     }
 
+    /**
+     * @return AbstractBaseDTO|WorkoutDTO|null
+     */
     public function loadOneWithExercise(string $canonicalName): ?WorkoutDTO
     {
-        return $this->getRepository()->findOneByCriteria(['canonicalName' => $canonicalName], ['exercises']);
+        return $this->repository->findOneByCriteria(['canonicalName' => $canonicalName]);
     }
 
+    /**
+     * @return AbstractBaseDTO|WorkoutDTO|null
+     */
     public function doesCanonicalNameAlreadyExist(string $canonicalName): bool
     {
-        return $this->getRepository()->exists(['canonicalName' => $canonicalName]);
-    }
-
-    protected function getEntityClassName(): string
-    {
-        return WorkoutDTO::class;
+        return $this->repository->exists(['canonicalName' => $canonicalName]);
     }
 }

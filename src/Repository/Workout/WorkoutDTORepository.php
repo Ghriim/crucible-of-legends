@@ -2,17 +2,23 @@
 
 namespace App\Repository\Workout;
 
-use App\Repository\AbstractBaseEntityRepository;
-use Doctrine\ORM\QueryBuilder;
+use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
+use App\Domain\Repository\AbstractBaseRepository;
+use App\Infrastructure\Adapter\QueryBuilderAdapter as QueryBuilder;
 
-final class WorkoutDTORepository extends AbstractBaseEntityRepository
+final class WorkoutDTORepository extends AbstractBaseRepository
 {
+    protected function getDTOClassName(): string
+    {
+        return WorkoutDTO::class;
+    }
+
     /**
      * @param string|string[]|null $name
      */
     protected function addCriterionName(QueryBuilder $queryBuilder, $name): bool
     {
-        return $this->addCriterion($queryBuilder, $this->getAlias(), 'name', $name);
+        return $this->addCriterion($queryBuilder, 'name', $name);
     }
 
     /**
@@ -20,25 +26,11 @@ final class WorkoutDTORepository extends AbstractBaseEntityRepository
      */
     protected function addCriterionCanonicalName(QueryBuilder $queryBuilder, $canonicalName): bool
     {
-        return $this->addCriterion($queryBuilder, $this->getAlias(), 'canonicalName', $canonicalName);
-    }
-
-    protected function addSelectExercises(QueryBuilder $queryBuilder): void
-    {
-        $this->addSelect($queryBuilder, $this->getAlias(), 'exercises', 'workout_exercise');
-        $this->addSelect($queryBuilder, 'workout_exercise', 'referenceExercise', 'reference_exercise');
-        $this->addSelect($queryBuilder, 'reference_exercise', 'referenceEquipments', 'workout_exercise_equipment');
-
-        $queryBuilder->addOrderBy('workout_exercise.position');
+        return $this->addCriterion($queryBuilder, 'canonicalName', $canonicalName);
     }
 
     protected function addOrderByCreatedDate(QueryBuilder $queryBuilder, string $direction = self::ORDER_DIRECTION_ASC): void
     {
-        $queryBuilder->addOrderBy($this->getAlias() . '.createdDate', $direction);
-    }
-
-    public function getAlias(): string
-    {
-        return 'workout';
+        $queryBuilder->addOrderBy('createdDate', $direction);
     }
 }
