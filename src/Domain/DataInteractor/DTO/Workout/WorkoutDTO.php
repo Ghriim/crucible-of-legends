@@ -4,6 +4,7 @@ namespace App\Domain\DataInteractor\DTO\Workout;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
 use App\Domain\DataInteractor\DTO\TimeAwareDTOTrait;
+use App\Infrastructure\Adapter\DatabaseCollectionAdapter;
 
 class WorkoutDTO extends AbstractBaseDTO
 {
@@ -12,6 +13,11 @@ class WorkoutDTO extends AbstractBaseDTO
     private string $name;
 
     private string $canonicalName;
+
+    /**
+     * @var ExerciseDTO[]
+     */
+    private $exercises = [];
 
     protected function getDefaultStatus(): string
     {
@@ -36,5 +42,18 @@ class WorkoutDTO extends AbstractBaseDTO
     public function setCanonicalName(string $canonicalName): void
     {
         $this->canonicalName = $canonicalName;
+    }
+
+    public function getExercises(): array
+    {
+        return DatabaseCollectionAdapter::getDatabaseCollection($this->exercises);
+    }
+
+    /**
+     * @param ExerciseDTO[] $exercises
+     */
+    public function setExercises(array $exercises): void
+    {
+        $this->exercises = $exercises;
     }
 }

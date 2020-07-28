@@ -1,0 +1,28 @@
+App\Domain\DataInteractor\DTO\Workout\EquipmentDTO:
+    base_equipment (template):
+        createdDate : "<(new DateTime())>"
+        updatedDate : "<(new DateTime())>"
+
+    equipment_{barbell, dumbbell, kettlebell} (extends base_equipment):
+        name: "<current()>"
+        canonicalName: "<current()>"
+
+    equipment_barbell (extends base_equipment):
+        name: "Barbell"
+        canonicalName: "barbell"
+
+    equipment_dumbbell (extends base_equipment):
+        name: "Dumbbell"
+        canonicalName: "dumbbell"
+
+    equipment_kettlebell (extends base_equipment):
+        name: "Kettlebell"
+        canonicalName: "kettlebell"
+
+    equipment_exercise_bench (extends base_equipment):
+        name: "Exercise bench"
+        canonicalName: "exercise-bench"
+
+    equipment_jump_rope (extends base_equipment):
+        name: "Jump rope"
+        canonicalName: "jump-rope"

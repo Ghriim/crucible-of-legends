@@ -11,7 +11,7 @@ reup:
 	docker ps
 
 start_working: vendor
-	sleep 15
+	sleep 10
 	make create_db
 
 vendor: up
@@ -25,13 +25,8 @@ down:
 
 create_db: create_db_mongo
 
-create_db_mysql:
-	$(SF_CONSOLE) doctrine:database:drop --if-exists --force --env=dev
-	$(SF_CONSOLE) doctrine:database:create --env=dev
-	$(SF_CONSOLE) doctrine:schema:create --env=dev
-
 create_db_mongo:
-	# $(SF_CONSOLE) doctrine:mongodb:schema:drop --env=dev
+	$(SF_CONSOLE) doctrine:mongodb:schema:drop --env=dev
 	$(SF_CONSOLE) doctrine:mongodb:schema:update --env=dev
 	$(SF_CONSOLE) load-odm-fixtures
 

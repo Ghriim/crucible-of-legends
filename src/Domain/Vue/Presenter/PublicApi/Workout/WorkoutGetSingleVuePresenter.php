@@ -3,8 +3,8 @@
 namespace App\Domain\Vue\Presenter\PublicApi\Workout;
 
 use App\Domain\DataInteractor\DTO\AbstractBaseDTO;
+use App\Domain\DataInteractor\DTO\Workout\EquipmentDTO;
 use App\Domain\DataInteractor\DTO\Workout\ExerciseDTO;
-use App\Domain\DataInteractor\DTO\Workout\ReferenceEquipmentDTO;
 use App\Domain\DataInteractor\DTO\Workout\WorkoutDTO;
 use App\Domain\Vue\Model\AbstractBaseVueModel;
 use App\Domain\Vue\Model\PublicApi\Workout\WorkoutGetSingleEquipmentVueModel;
@@ -41,13 +41,10 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
         $exercisesForVueModel = [];
         foreach ($exercises as $exercise) {
             $exerciseForVueModel = new WorkoutGetSingleExerciseVueModel();
-            $exerciseForVueModel->id = $exercise->getId();
-            $exerciseForVueModel->name = $exercise->getReferenceExercise()->getName();
-            $exerciseForVueModel->videoLink = $exercise->getReferenceExercise()->getVideoLink();
-            $exerciseForVueModel->position = $exercise->getPosition();
-
-            $exerciseForVueModel->details = $this->buildExerciseDetails($exercise);
-            $exerciseForVueModel->equipments = $this->buildEquipmentsForVueModel($exercise->getReferenceExercise()->getReferenceEquipments());
+            $exerciseForVueModel->name = $exercise->getName();
+            $exerciseForVueModel->canonicalName = $exercise->getCanonicalName();
+            $exerciseForVueModel->videoLink = $exercise->getCanonicalName();
+            $exerciseForVueModel->equipments = $this->buildEquipmentsForVueModel($exercise->getEquipments());
 
             $exercisesForVueModel[] = $exerciseForVueModel;
         }
@@ -56,7 +53,7 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
     }
 
     /**
-     * @param ReferenceEquipmentDTO[] $equipments
+     * @param EquipmentDTO[] $equipments
      *
      * @return WorkoutGetSingleEquipmentVueModel[]
      */
@@ -65,30 +62,12 @@ final class WorkoutGetSingleVuePresenter extends AbstractVuePresenter implements
         $equipmentsForVueModel = [];
         foreach ($equipments as $equipment) {
             $equipmentForVueModel = new WorkoutGetSingleEquipmentVueModel();
-            $equipmentForVueModel->id = $equipment->getId();
             $equipmentForVueModel->name = $equipment->getName();
+            $equipmentForVueModel->canonicalName = $equipment->getCanonicalName();
 
             $equipmentsForVueModel[] = $equipmentForVueModel;
         }
 
         return $equipmentsForVueModel;
-    }
-
-    private function buildExerciseDetails(ExerciseDTO $exercise): array
-    {
-        $info = [];
-        if (null !== $exercise->getDurationProgrammed()) {
-            $info['duration'] = $exercise->getDurationProgrammed() . 'sec';
-        }
-
-        if (null !== $exercise->getRepetitionsProgrammed()) {
-            $info['repetitions'] = $exercise->getRepetitionsProgrammed() . 'reps';
-        }
-
-        if (null !== $exercise->getWeightProgrammed()) {
-            $info['weight'] = ($exercise->getWeightProgrammed() / 1000) . ' kg';
-        }
-
-        return $info;
     }
 }

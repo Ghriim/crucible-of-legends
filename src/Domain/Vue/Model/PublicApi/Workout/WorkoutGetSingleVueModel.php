@@ -6,12 +6,9 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 
 final class WorkoutGetSingleVueModel extends AbstractBaseVueModel
 {
-    /** @var string */
-    public $name;
-
-    /** @var string */
-    public $canonicalName;
+    public string $name;
+    public string $canonicalName;
 
     /** @var WorkoutGetSingleExerciseVueModel[] */
-    public $exercises;
+    public array $exercises;
 }

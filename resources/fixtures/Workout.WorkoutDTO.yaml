@@ -6,7 +6,25 @@ App\Domain\DataInteractor\DTO\Workout\WorkoutDTO:
     workout_ares (extends base_workout):
         name: "ares"
         canonicalName: "ares"
+        exercises:
+            - '@exercise_sit_up'
+            - '@exercise_biceps_curl'
+            - '@exercise_sit_up'
+            - '@exercise_bench_press'
+            - '@exercise_sit_up'
+            - '@exercise_biceps_curl'
+            - '@exercise_sit_up'
 
     workout_hera (extends base_workout):
         name: "hera"
         canonicalName: "hera"
+        exercises:
+            - '@exercise_sit_up'
+            - '@exercise_kettle_swing'
+            - '@exercise_sit_up'
+            - '@exercise_kettle_swing'
+            - '@exercise_sit_up'
+            - '@exercise_kettle_swing'
+            - '@exercise_sit_up'
+            - '@exercise_kettle_swing'
+            - '@exercise_sit_up'

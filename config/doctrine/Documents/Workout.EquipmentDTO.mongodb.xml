@@ -3,14 +3,12 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                     http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <document name="App\Domain\DataInteractor\DTO\Workout\WorkoutDTO" collection="workout">
+    <document name="App\Domain\DataInteractor\DTO\Workout\EquipmentDTO" collection="equipment">
         <id />
-        <field field-name="name" type="string" unique="true" index="true" order="asc" />
-        <field field-name="canonicalName" type="string" unique="true" index="true" order="desc" />
+        <field field-name="name" type="string" index="true" order="asc" />
+        <field field-name="canonicalName" type="string" index="true" order="desc" />
 
         <field field-name="createdDate" type="date" />
         <field field-name="updatedDate" type="date" />
-
-        <embed-many field="exercises" target-document="App\Domain\DataInteractor\DTO\Workout\ExerciseDTO" nullable="true" />
     </document>
 </doctrine-mongo-mapping>

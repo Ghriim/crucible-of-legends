@@ -12,10 +12,8 @@ abstract class AbstractBaseDTO
     public const STATUS_DRAFT = 'draft';
     public const STATUS_DELETED = 'deleted';
 
-    protected $id;
-
-    /** @var string */
-    protected $status;
+    protected  $id;
+    protected string $status;
 
     abstract protected function getDefaultStatus(): string;
 
@@ -24,26 +22,12 @@ abstract class AbstractBaseDTO
         $this->setStatus($this->getDefaultStatus());
     }
 
-    /**
-     * @deprecated use DatabaseCollectionAdapter
-     *
-     * @param Collection|null $entities
-     */
-    protected function lazyLoadProtect(?Collection $entities): void
-    {
-        if ($entities instanceof PersistentCollection && false === $entities->isInitialized()) {
-            $lazyLoadedClass = $entities->getTypeClass()->getName();
-
-            throw new LazyLoadException($lazyLoadedClass);
-        }
-    }
-
     public function isNew(): bool
     {
         return null === $this->getId();
     }
 
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

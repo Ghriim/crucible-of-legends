@@ -5,5 +5,12 @@
 
     <document name="App\Domain\DataInteractor\DTO\Workout\ExerciseDTO" collection="exercise">
         <id />
+        <field field-name="name" type="string" index="true" order="asc" />
+        <field field-name="canonicalName" type="string" index="true" order="desc" />
+
+        <field field-name="createdDate" type="date" />
+        <field field-name="updatedDate" type="date" />
+
+        <embed-many field="equipments" target-document="App\Domain\DataInteractor\DTO\Workout\EquipmentDTO" nullable="true" />
     </document>
 </doctrine-mongo-mapping>

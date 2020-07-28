@@ -8,7 +8,7 @@ use Doctrine\ODM\MongoDB\Query\Builder as QueryBuilder;
 
 final class QueryBuilderAdapter
 {
-    private $queryBuilder;
+    private QueryBuilder $queryBuilder;
 
     public function __construct(QueryBuilder $queryBuilder)
     {

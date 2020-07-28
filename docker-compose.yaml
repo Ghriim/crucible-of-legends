@@ -29,7 +29,7 @@ services:
         build:
           context: ./.docker/php-fpm/${PHP_VERSION}
           args:
-            DOCKER_USER: qvignier
+            DOCKER_USER: lollip0ps
             DOCKER_USER_ID: 1000
         restart: ${RESTART_POLICIES}
         environment:
@@ -40,7 +40,7 @@ services:
           - ${PWD}:/var/www/html
           - $SSH_AUTH_SOCK:/ssh-agent
         working_dir: /var/www/html
-        user: "qvignier"
+        user: "lollip0ps"
         entrypoint:
           - ""
         command:
@@ -57,24 +57,6 @@ services:
             - ${MONGO_DEFAULT_PORT}
         ulimits:
             nproc: 65535
-        networks:
-            - "crucible-of-heroes"
-
-    mysql-default:
-        container_name: mysql-${PROJECT}-default
-        build:
-            context: ./.docker/mysql/${MYSQL_VERSION}
-        ports:
-            - ${MYSQL_DEFAULT_PORT}
-        environment:
-            MYSQL_DATABASE: ${MYSQL_DEFAULT_DB_NAME}
-            MYSQL_ROOT_USER: ${MYSQL_ROOT_USER}
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-            MYSQL_USER: ${MYSQL_USER}
-            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-        volumes:
-            - ${PWD}:/var/www/html
-        working_dir: /var/www/html
         networks:
             - "crucible-of-heroes"
 

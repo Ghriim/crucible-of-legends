@@ -16,16 +16,6 @@ class CategoryDTO extends AbstractBaseDTO
         return self::STATUS_ACTIVE;
     }
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
-
     public function getTitle(): string
     {
         return $this->title;

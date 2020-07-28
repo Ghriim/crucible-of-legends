@@ -6,6 +6,6 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 
 final class WorkoutGetSingleEquipmentVueModel extends AbstractBaseVueModel
 {
-    /** @var string */
-    public $name;
+    public string $name;
+    public string $canonicalName;
 }
