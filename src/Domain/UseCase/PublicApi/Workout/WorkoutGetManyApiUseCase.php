@@ -9,8 +9,8 @@ use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutGetManyVuePresenter;
 
 final class WorkoutGetManyApiUseCase extends AbstractUseCase implements GetManyUseCaseInterface
 {
-    private $dtoProvider;
-    private $presenter;
+    private WorkoutDTOProvider $dtoProvider;
+    private WorkoutGetManyVuePresenter $presenter;
 
     public function __construct(WorkoutDTOProvider $dtoProvider, WorkoutGetManyVuePresenter $presenter)
     {

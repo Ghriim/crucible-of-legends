@@ -17,7 +17,11 @@ final class QueryBuilderAdapter
 
     public function equals(string $fieldName, $value): void
     {
-        $this->queryBuilder->field($fieldName)->equals($value);
+        if ($value instanceof AbstractBaseDTO) {
+            $this->queryBuilder->field($fieldName)->references($value);
+        } else {
+            $this->queryBuilder->field($fieldName)->equals($value);
+        }
     }
 
     public function limit(?int $limit = null): void
@@ -61,14 +65,9 @@ final class QueryBuilderAdapter
         return $this->queryBuilder->getQuery()->getSingleResult();
     }
 
-    /**
-     * @return bool
-     */
     public function exists(): ?bool
     {
         $this->queryBuilder->count();
-
-        var_dump($this->queryBuilder->getQuery()->execute()); die;
 
         return 0 < $this->queryBuilder->getQuery()->execute();
     }

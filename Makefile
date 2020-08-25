@@ -23,9 +23,11 @@ up: down
 down:
 	@$(DOCKER) down --remove-orphan
 
-create_db: create_db_mongo
+create_db:
+	$(SF_CONSOLE) doctrine:mongodb:schema:update --env=dev
+	$(SF_CONSOLE) load-odm-fixtures
 
-create_db_mongo:
+reset_db_mongo:
 	$(SF_CONSOLE) doctrine:mongodb:schema:drop --env=dev
 	$(SF_CONSOLE) doctrine:mongodb:schema:update --env=dev
 	$(SF_CONSOLE) load-odm-fixtures

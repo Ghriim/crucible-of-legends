@@ -6,12 +6,9 @@ use App\Domain\Vue\Model\AbstractBaseVueModel;
 
 final class WorkoutGetManyVueModel extends AbstractBaseVueModel
 {
-    /** @var string */
-    public $name;
-
-    /** @var string */
-    public $canonicalName;
-
-    /** @var string */
-    public $createdDate;
+    public string $name;
+    public string $canonicalName;
+    public string $createdDate;
+    public string $creatorId;
+    public string $creatorName;
 }

@@ -12,27 +12,24 @@ use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractApiController extends AbstractController
 {
-    private $userDTOProvider;
+    private UserDTOProvider $userDTOProvider;
 
     public function __construct(UserDTOProvider $userDTOProvider)
     {
         $this->userDTOProvider = $userDTOProvider;
     }
 
-    protected function getCurrentUserId(Request $request): int
+    protected function getCurrentUserId(Request $request): string
     {
-        // TODO: Use id from token
-        return 1;
+        return $this->userDTOProvider->loadByUsername("ghriim")->getId();
     }
 
+    /**
+     * @throws UserShouldExistException
+     */
     protected function getCurrentUser(Request $request): UserDTO
     {
-        $user = $this->userDTOProvider->loadOneById($this->getCurrentUserId($request));
-        if (null === $user) {
-            throw new UserShouldExistException('User is load from JWT Token Id. It should exist !');
-        }
-
-        return $user;
+        return $this->userDTOProvider->loadForGetCurrent($this->getCurrentUserId($request));
     }
 
     protected function buildResponse($data, bool $emptyResponse = false): Response

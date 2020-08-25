@@ -1,6 +1,7 @@
 parameters:
     defaultUserUsername: '%env(string:DEV_DEFAULT_USER_USERNAME)%'
     autoAddToken: '%env(bool:DEV_DEFAULT_AUTO_ADD_TOKEN)%'
+    wrapApiResponse: '%env(bool:WRAP_RESPONSE_API_IN_HTML)%'
 
 services:
     _defaults:
@@ -13,3 +14,9 @@ services:
             $autoAddToken: '%autoAddToken%'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: addTokenToRequest, priority: 999 }
+
+    App\Event\Dev\WrapApiResponseInHtmlEventListener:
+        arguments:
+            $wrapApiResponse: '%wrapApiResponse%'
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: wrapResponseInHtml, priority: 1 }

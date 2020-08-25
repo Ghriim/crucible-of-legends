@@ -11,8 +11,8 @@ use App\Domain\Vue\Presenter\PublicApi\Workout\WorkoutGetSingleVuePresenter;
 
 final class WorkoutGetSingleApiUseCase extends AbstractUseCase implements GetSingleUseCaseInterface
 {
-    private $workoutDtoProvider;
-    private $presenter;
+    private WorkoutDTOProvider $workoutDtoProvider;
+    private WorkoutGetSingleVuePresenter $presenter;
 
     public function __construct(
         WorkoutDTOProvider $workoutDtoProvider,

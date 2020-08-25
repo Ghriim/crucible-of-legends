@@ -2,6 +2,11 @@ App\Domain\DataInteractor\DTO\Workout\WorkoutDTO:
     base_workout (template):
         createdDate : "<(new DateTime())>"
         updatedDate : "<(new DateTime())>"
+        programmedDate: null
+        completedDate: null
+        createdByUser: '@user_coach'
+        programmedForUser: '@user_ghriim'
+        isReference: true
 
     workout_ares (extends base_workout):
         name: "ares"

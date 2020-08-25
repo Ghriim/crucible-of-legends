@@ -7,9 +7,16 @@
         <id />
         <field field-name="name" type="string" unique="true" index="true" order="asc" />
         <field field-name="canonicalName" type="string" unique="true" index="true" order="desc" />
+        <field field-name="isReference" type="bool" index="true" order="desc" />
 
         <field field-name="createdDate" type="date" />
         <field field-name="updatedDate" type="date" />
+
+        <field field-name="programmedDate" type="date" nullable="true" />
+        <field field-name="completedDate" type="date" nullable="true" />
+
+        <reference-one field="createdByUser" target-document="App\Domain\DataInteractor\DTO\User\UserDTO" nullable="false" />
+        <reference-one field="programmedForUser" target-document="App\Domain\DataInteractor\DTO\User\UserDTO" nullable="false" />
 
         <embed-many field="exercises" target-document="App\Domain\DataInteractor\DTO\Workout\ExerciseDTO" nullable="true" />
     </document>

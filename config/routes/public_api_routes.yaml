@@ -1,6 +1,3 @@
-public_api_agenda:
-    resource: 'public_api/public_api_agenda_routes.yaml'
-
 public_api_reference:
     resource: 'public_api/public_api_reference_routes.yaml'
 

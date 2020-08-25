@@ -8,10 +8,10 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class ApiCallWithoutTokenEventListener
 {
-    private $tokenManager;
-    private $userDtoProvider;
-    private $defaultUserUsername;
-    private $autoAddToken;
+    private JWTTokenManagerInterface $tokenManager;
+    private UserDTOProvider $userDtoProvider;
+    private ?string $defaultUserUsername;
+    private bool $autoAddToken;
 
     public function __construct(
         JWTTokenManagerInterface $tokenManager,

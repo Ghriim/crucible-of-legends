@@ -23,7 +23,7 @@ final class UserDTOProvider extends AbstractBaseDTOProvider
      *
      * @throws UserShouldExistException
      */
-    public function loadForGetCurrent(int $id): ?UserDTO
+    public function loadForGetCurrent(string $id): UserDTO
     {
         $user = $this->getOneByCriteria(['id' => $id]);
         if (null === $user) {

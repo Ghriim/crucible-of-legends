@@ -30,6 +30,8 @@ class LoadODMFixturesCommand extends Command
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $loader = new NativeLoader();
+
+        # List fixtures in inverse order of the expected load
         $objectSet = $loader->loadFiles([
             $this->fixturesFolderPath . 'Workout.CategoryDTO.yaml',
             $this->fixturesFolderPath . 'Workout.EquipmentDTO.yaml',
